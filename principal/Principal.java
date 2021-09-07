@@ -10,7 +10,31 @@ public class Principal {
 		//Declarações
 		int opcao = 0;
 		char escolha = 0;
-		//Perfumaria perfume;
+		
+		//Instanciação de objetos para pré-carregamento do programa
+		Perfumaria zaad = new Perfumaria(249.90, 95, "B81382", "ZAAD", "Santal",
+				"Perfumaria Masculina", "Vegano e Cruelty Free", "Amadeirado", "Amadeirado");
+		Perfumaria malbec = new Perfumaria(143.90, 100, "B83188", "Malbec", "Bleu",
+				"Perfumaria Masculina", "Cruelty Free", "", "");
+		Hidratante nativaSPA = new Hidratante(42.90, 200, "B81338", "Nativa SPA", "Orgânico",
+				"Todos os tipos");
+		Hidratante lily = new Hidratante(74.90, 250, "B77687", "Lily", "", "Todos os tipos");
+		ProtetorSolar cuidesebem = new ProtetorSolar(54.90, 50, "B72104", "Cuide-se bem",
+				"Faciall", "Cruelty Free", 50);
+		ProtetorSolar cuidesebem2 = new ProtetorSolar(55.90, 200, "B75844", "Cuide-se bem",
+				"Solar", "Cruelty Free", 30);
+		Shampoo nativaSPA2 = new Shampoo(44.90, 300, "B79919", "Nativa SPA", "Matcha",
+				"Todos os tipos", "Cruelty Free", "Resíduos");
+		Shampoo match = new Shampoo(35.90, 250, "B81651", "Match.", "Anti Oleosidade",
+				"Oleosos ou Mistos", "Vegano e Cruelty Free", "Olesosos");
+		Condicionador cuidesebem3 = new Condicionador(24.90, 250, "B73913", "Cuide-se bem",
+				"Lisos", "Todos os tupos", "Cruelty Free", "Envelhecimento dos fios");
+		Condicionador sophie = new Condicionador(30.90, 200, "B75163", "Sophie", "",
+				"Todos os tipos", "Cruelty Free", "Resíduos");
+		SaboneteLiquido nativaSPA3 = new SaboneteLiquido(31.90, 200, "B71196", "Nativa SPA",
+				"Lichia", "Cruelty Free");
+		SaboneteLiquido floratta = new SaboneteLiquido(15.90, 75, "B75101", "Floratta",
+				"Rose", "Cruelty Free");
 		
 		
 		do {
