@@ -139,13 +139,13 @@ public class Principal {
 		return opcao;
 	}
 	
-	//OPÇÃO 1
-	public static void cadastrarProduto(GerenciadorDoSistema funcionario) {
+	
+	//Login (ambiente de acesso aos métodos)
+	public static boolean login(GerenciadorDoSistema funcionario) {
 		//Declarações
-		int opcao = 0;
 		String cpf = "", senha = "";
 		
-		//Somente o administrador pode cadastrar um produto no sistema
+		//Somente o administrador pode cadastrar, editar ou remover um produto no sistema
 		System.out.println("===============================================================================================");
 		System.out.println("LOGIN:");
 		System.out.print(">>>CPF: ");
@@ -153,8 +153,21 @@ public class Principal {
 		System.out.print(">>>Senha: ");
 		senha = LerDados.lerString();
 		
-		//Se o login for validado, o programa prossegue com o cadastro do produto
+		//Se o login for validado, o método retorna true, senão retorna false
 		if (cpf.equals(funcionario.getCpf()) && senha.equals(funcionario.getSenha())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	//OPÇÃO 1
+	public static void cadastrarProduto(GerenciadorDoSistema funcionario) {
+		//Declarações
+		int opcao = 0;
+		
+		//Se o login tiver sido validado com sucesso, podemos prosseguir com o cadastro
+		if (login(funcionario)) {
 			System.out.println("===============================================================================================");
 			System.out.println("Qual produto deseja cadastrar?");
 			System.out.println("[1] Perfume");
@@ -485,18 +498,9 @@ public class Principal {
 		//Declarações
 		String codigo = "";
 		Produto produto;
-		String cpf = "", senha = "";
 		
-		//Somente o administrador pode editar um produto no sistema
-		System.out.println("===============================================================================================");
-		System.out.println("LOGIN:");
-		System.out.print(">>>CPF: ");
-		cpf = LerDados.lerString();
-		System.out.print(">>>Senha: ");
-		senha = LerDados.lerString();
-		
-		//Se o login for validado, o programa prossegue com a edição do produto
-		if (cpf.equals(funcionario.getCpf()) && senha.equals(funcionario.getSenha())) {
+		//Se o login tiver sido validado, podemos prosseguir com a edição
+		if (login(funcionario)) {
 			//Programa continua se houver Produto cadastrado no sistema
 			if (ConjuntoProduto.temProduto()) {
 				System.out.print(">>>Informe o código do produto: ");
