@@ -17,7 +17,7 @@ public class ConjuntoProduto{
 		listaProdutos.remove(produto);
 	}
 	
-	//Pesquisa o objeto do tipo Perfumaria pelo código dentro do ArrayList
+	//Pesquisa o objeto do tipo Produto pelo código dentro do ArrayList
 	//e retorna esse objeto. Se o código informado não bater com o de nenhum
 	//objeto, retorna null
 	public static Produto pesquisarPerfume(String codigo) {

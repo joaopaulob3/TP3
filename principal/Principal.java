@@ -2,7 +2,8 @@ package principal;
 
 import leituraDeDados.LerDados;
 import produtos.*;
-import arraylists.ConjuntoProduto;
+import arraylists.*;
+import cliente.Cliente;
 
 public class Principal {
 
@@ -389,6 +390,38 @@ public class Principal {
 		ConjuntoProduto.cadastrarProduto(sabonete);
 	}
 	
+	//OPÇÃO 2
+	public static void cadastrarCliente() {
+		//Declarações
+		String nome = "", email = "", cpf = "", celular = "", genero = "", senha = "";
+		
+		System.out.println("===================================================================================================");
+		System.out.print(">>>Nome do cliente: ");
+		nome = LerDados.lerString();
+		
+		System.out.print(">>>E-mail do cliente: ");
+		email = LerDados.lerString();
+		
+		System.out.print(">>>CPF do cliente: ");
+		cpf = LerDados.lerString();
+		
+		System.out.print(">>>Celular do cliente: ");
+		celular = LerDados.lerString();
+		
+		System.out.print(">>>Gênero do cliente: ");
+		genero = LerDados.lerString();
+		
+		System.out.print(">>>Senha do cliente: ");
+		senha = LerDados.lerString();
+		System.out.println("===================================================================================================");
+		System.out.println("CLIENTE CADASTRADO!");
+		System.out.println("===================================================================================================");
+		
+		//Criação do objeto do tipo Cliente através Construtor
+		Cliente cliente = new Cliente(nome, email, cpf, celular, genero, senha);
+		//Adicionando o objeto criado no ArrayList de Produto
+		ConjuntoCliente.cadastrarCliente(cliente);
+	}
 	
 	public static char sair() {
 		//Declarações
