@@ -32,7 +32,7 @@ public class ConjuntoCliente {
 	
 	//Verifica se há objeto do tipo Cliente cadastrado no ArrayList
 	//Se tiver retorna true, senão retorna false
-	public static boolean temProduto() {
+	public static boolean temCliente() {
 		if (listaClientes.isEmpty()) {
 			return false;
 		} else {

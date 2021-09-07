@@ -81,6 +81,7 @@ public class Principal {
 				editarProduto(funcionario);
 				break;
 			case 4:
+				editarCliente(funcionario);
 				break;
 			case 5:
 				break;
@@ -531,6 +532,41 @@ public class Principal {
 			} else {
 				System.out.println("=================================================================================================");
 				System.out.println("Ainda não foi cadastrado nenhum produto.");
+				System.out.println("=================================================================================================");
+			}
+		} else {
+			System.out.println("===============================================================================================");
+			System.out.println("Usuário não autenticado. Tente novamente.");
+			System.out.println("===============================================================================================");
+		}
+	}
+	
+	//OPÇÃO 4
+	public static void editarCliente(GerenciadorDoSistema funcionario) {
+		//Declarações
+		Cliente cliente;
+		String nome = "";
+		
+		//Se o login tiver sido validado com sucesso, podemos prosseguir com a edição
+		if (login(funcionario)) {
+			//Programa continua se houver Produto cadastrado no sistema
+			if (ConjuntoCliente.temCliente()) {
+				System.out.print(">>>Informe o nome do cliente: ");
+				nome = LerDados.lerString();
+				cliente = ConjuntoCliente.pesquisarCliente(nome);
+				//Programa continua se o nome for encontrado no sistema
+				if (cliente != null) {
+					//Cliente é deletado e recadastrado
+					ConjuntoCliente.deletarCliente(cliente);
+					cadastrarCliente();
+				} else {
+					System.out.println("=================================================================================================");
+					System.out.println("O nome informado não foi encontrado no sistema.");
+					System.out.println("=================================================================================================");
+				}
+			} else {
+				System.out.println("=================================================================================================");
+				System.out.println("Ainda não foi cadastrado nenhum cliente.");
 				System.out.println("=================================================================================================");
 			}
 		} else {
