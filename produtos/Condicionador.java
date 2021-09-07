@@ -7,10 +7,12 @@ public class Condicionador extends Produto{
 	private String condicaoDosFiosDoCondicionador;
 		
 	//Construtor
-	public Condicionador(double precoDoProduto, double volumeDoProduto, String codigoDoProduto, 
-			String marcaDoProduto, String linhaDoProduto, String tipoDeCabeloDoCondicionador, 
-			String propriedadesDoCondicionador, String condicaoDosFiosDoCondicionador) {
-		super(precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, linhaDoProduto);
+	public Condicionador(String identificador, double precoDoProduto, double volumeDoProduto, 
+			String codigoDoProduto, String marcaDoProduto, String linhaDoProduto, 
+			String tipoDeCabeloDoCondicionador, String propriedadesDoCondicionador, 
+			String condicaoDosFiosDoCondicionador) {
+		super("Condicionador", precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, 
+				linhaDoProduto);
 		this.setTipoDeCabeloDoCondicionador(tipoDeCabeloDoCondicionador);
 		this.setPropriedadesDoCondicionador(propriedadesDoCondicionador);
 		this.setCondicaoDosFiosDoCondicionador(condicaoDosFiosDoCondicionador);
@@ -38,20 +40,6 @@ public class Condicionador extends Produto{
 		return this.condicaoDosFiosDoCondicionador;
 	}
 		
-	//Edita e atualiza os dados do objeto
-	public void editarDados(double precoDoProduto, double volumeDoProduto, String codigoDoProduto,
-			String marcaDoProduto, String linhaDoProduto, String tipoDeCabeloDoCondicionador,
-			String propriedadesDoCondicionador, String condicaoDosFiosDoCondicionador) {
-		this.setPrecoDoProduto(precoDoProduto);
-		this.setVolumeDoProduto(volumeDoProduto);
-		this.setCodigoDoProduto(codigoDoProduto);
-		this.setMarcaDoProduto(marcaDoProduto);
-		this.setLinhaDoProduto(linhaDoProduto);
-		this.setTipoDeCabeloDoCondicionador(tipoDeCabeloDoCondicionador);
-		this.setPropriedadesDoCondicionador(propriedadesDoCondicionador);
-		this.setCondicaoDosFiosDoCondicionador(condicaoDosFiosDoCondicionador);
-	}
-	
 	//Retorna uma String com os dados do objeto
 	public String listarDados() {
 		return "Preço do condicionador: R$" + this.getPrecoDoProduto() +

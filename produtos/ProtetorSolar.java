@@ -6,10 +6,10 @@ public class ProtetorSolar extends Produto{
 	private int fpsDoProtetorSolar;
 	
 	//Construtor
-	public ProtetorSolar(double precoDoProduto, double volumeDoProduto, String codigoDoProduto, 
-			String marcaDoProduto, String linhaDoProduto, String propriedadesDoProtetorSolar, 
-			int fpsDoProtetorSolar) {
-		super(precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, linhaDoProduto);
+	public ProtetorSolar(String identificador, double precoDoProduto, double volumeDoProduto, 
+			String codigoDoProduto, String marcaDoProduto, String linhaDoProduto, 
+			String propriedadesDoProtetorSolar, int fpsDoProtetorSolar) {
+		super("Protetor Solar", precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, linhaDoProduto);
 		this.setPropriedadesDoProtetorSolar(propriedadesDoProtetorSolar);
 		this.setFpsDoProtetorSolar(fpsDoProtetorSolar);
 	}
@@ -28,19 +28,6 @@ public class ProtetorSolar extends Produto{
 	}
 	public int getFpsDoProtetorSolar() {
 		return this.fpsDoProtetorSolar;
-	}
-	
-	//Edita e atualiza os dados do objeto
-	public void editarDados(double precoDoProduto, double volumeDoProduto, String codigoDoProduto,
-			String marcaDoProduto, String linhaDoProduto, String propriedadesDoProtetorSolar,
-			int fpsDoProtetorSolar) {
-		this.setPrecoDoProduto(precoDoProduto);
-		this.setVolumeDoProduto(volumeDoProduto);
-		this.setCodigoDoProduto(codigoDoProduto);
-		this.setMarcaDoProduto(marcaDoProduto);
-		this.setLinhaDoProduto(linhaDoProduto);
-		this.setPropriedadesDoProtetorSolar(propriedadesDoProtetorSolar);
-		this.setFpsDoProtetorSolar(fpsDoProtetorSolar);
 	}
 	
 	//Retorna uma String com os dados do objeto

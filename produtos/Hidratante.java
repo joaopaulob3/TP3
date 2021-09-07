@@ -5,9 +5,11 @@ public class Hidratante extends Produto{
 	private String tipoDePeleDoHidratante;
 	
 	//Construtor
-	public Hidratante(double precoDoProduto, double volumeDoProduto, String codigoDoProduto,
-			String marcaDoProduto, String linhaDoProduto, String tipoDePeleDoHidratante) {
-		super(precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, linhaDoProduto);
+	public Hidratante(String identificador, double precoDoProduto, double volumeDoProduto, 
+			String codigoDoProduto, String marcaDoProduto, String linhaDoProduto, 
+			String tipoDePeleDoHidratante) {
+		super("Hidratante", precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, 
+				linhaDoProduto);
 		this.setTipoDePeleDoHidratante(tipoDePeleDoHidratante);
 	}
 	
@@ -19,17 +21,6 @@ public class Hidratante extends Produto{
 	//Métodos acessores
 	public String getTipoDePeleDoHidratante() {
 		return this.tipoDePeleDoHidratante;
-	}
-
-	//Edita e atualiza os dados do objeto
-	public void editarDados(double precoDoProduto, double volumeDoProduto, String codigoDoProduto,
-			String marcaDoProduto, String linhaDoProduto, String tipoDePeleDoHidratante) {
-		this.setPrecoDoProduto(precoDoProduto);
-		this.setVolumeDoProduto(volumeDoProduto);
-		this.setCodigoDoProduto(codigoDoProduto);
-		this.setMarcaDoProduto(marcaDoProduto);
-		this.setLinhaDoProduto(linhaDoProduto);
-		this.setTipoDePeleDoHidratante(tipoDePeleDoHidratante);
 	}
 	
 	//Retorna uma String com os dados do objeto

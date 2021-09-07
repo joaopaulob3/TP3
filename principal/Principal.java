@@ -1,52 +1,84 @@
 package principal;
 
 import leituraDeDados.LerDados;
+import pessoas.*;
 import produtos.*;
 import arraylists.*;
-import cliente.Cliente;
 
 public class Principal {
 
+	//Instância de objetos para pré-carregamento do programa
+	//adicionando-os ao ArrayList de Produto
+	public static void carregamentoInicial() {
+		//Perfume
+		Perfumaria zaad = new Perfumaria("Perfume", 249.90, 95, "B81382", "ZAAD", "Santal",
+				"Perfumaria Masculina", "Vegano e Cruelty Free", "Amadeirado", "Amadeirado");
+		ConjuntoProduto.cadastrarProduto(zaad);
+		Perfumaria malbec = new Perfumaria("Perfume", 143.90, 100, "B83188", "Malbec", "Bleu",
+				"Perfumaria Masculina", "Cruelty Free", "", "");
+		ConjuntoProduto.cadastrarProduto(malbec);
+		//Hidratante
+		Hidratante nativaSPA = new Hidratante("Hidratante", 42.90, 200, "B81338", "Nativa SPA", 
+				"Orgânico","Todos os tipos");
+		ConjuntoProduto.cadastrarProduto(nativaSPA);
+		Hidratante lily = new Hidratante("Hidratante", 74.90, 250, "B77687", "Lily", "", 
+				"Todos os tipos");
+		ConjuntoProduto.cadastrarProduto(lily);
+		//ProtetorSolar
+		ProtetorSolar cuidesebem = new ProtetorSolar("Protetor Solar", 54.90, 50, "B72104", 
+				"Cuide-se bem","Faciall", "Cruelty Free", 50);
+		ConjuntoProduto.cadastrarProduto(cuidesebem);
+		ProtetorSolar cuidesebem2 = new ProtetorSolar("Protetor Solar", 55.90, 200, "B75844", 
+				"Cuide-se bem","Solar", "Cruelty Free", 30);
+		ConjuntoProduto.cadastrarProduto(cuidesebem2);
+		//Shampoo
+		Shampoo nativaSPA2 = new Shampoo("Shampoo", 44.90, 300, "B79919", "Nativa SPA", "Matcha",
+				"Todos os tipos", "Cruelty Free", "Resíduos");
+		ConjuntoProduto.cadastrarProduto(nativaSPA2);
+		Shampoo match = new Shampoo("Shampoo", 35.90, 250, "B81651", "Match.", "Anti Oleosidade",
+				"Oleosos ou Mistos", "Vegano e Cruelty Free", "Olesosos");
+		ConjuntoProduto.cadastrarProduto(match);
+		//Condicionador
+		Condicionador cuidesebem3 = new Condicionador("Condicionador", 24.90, 250, "B73913", 
+				"Cuide-se bem", "Lisos", "Todos os tupos", "Cruelty Free", 
+				"Envelhecimento dos fios");
+		ConjuntoProduto.cadastrarProduto(cuidesebem3);
+		Condicionador sophie = new Condicionador("Condicionador", 30.90, 200, "B75163", 
+				"Sophie", "", "Todos os tipos", "Cruelty Free", "Resíduos");
+		ConjuntoProduto.cadastrarProduto(sophie);
+		//Sabonete Líquido
+		SaboneteLiquido nativaSPA3 = new SaboneteLiquido("Sabonete Líquido", 31.90, 200, "B71196",
+				"Nativa SPA","Lichia", "Cruelty Free");
+		ConjuntoProduto.cadastrarProduto(nativaSPA3);
+		SaboneteLiquido floratta = new SaboneteLiquido("Sabonete Líquido", 15.90, 75, "B75101", 
+				"Floratta","Rose", "Cruelty Free");
+		ConjuntoProduto.cadastrarProduto(floratta);
+	}
+	
+	
 	public static void main(String[] args) {
 		//Declarações
 		int opcao = 0;
 		char escolha = 0;
 		
-		//Instanciação de objetos para pré-carregamento do programa
-		Perfumaria zaad = new Perfumaria(249.90, 95, "B81382", "ZAAD", "Santal",
-				"Perfumaria Masculina", "Vegano e Cruelty Free", "Amadeirado", "Amadeirado");
-		Perfumaria malbec = new Perfumaria(143.90, 100, "B83188", "Malbec", "Bleu",
-				"Perfumaria Masculina", "Cruelty Free", "", "");
-		Hidratante nativaSPA = new Hidratante(42.90, 200, "B81338", "Nativa SPA", "Orgânico",
-				"Todos os tipos");
-		Hidratante lily = new Hidratante(74.90, 250, "B77687", "Lily", "", "Todos os tipos");
-		ProtetorSolar cuidesebem = new ProtetorSolar(54.90, 50, "B72104", "Cuide-se bem",
-				"Faciall", "Cruelty Free", 50);
-		ProtetorSolar cuidesebem2 = new ProtetorSolar(55.90, 200, "B75844", "Cuide-se bem",
-				"Solar", "Cruelty Free", 30);
-		Shampoo nativaSPA2 = new Shampoo(44.90, 300, "B79919", "Nativa SPA", "Matcha",
-				"Todos os tipos", "Cruelty Free", "Resíduos");
-		Shampoo match = new Shampoo(35.90, 250, "B81651", "Match.", "Anti Oleosidade",
-				"Oleosos ou Mistos", "Vegano e Cruelty Free", "Olesosos");
-		Condicionador cuidesebem3 = new Condicionador(24.90, 250, "B73913", "Cuide-se bem",
-				"Lisos", "Todos os tupos", "Cruelty Free", "Envelhecimento dos fios");
-		Condicionador sophie = new Condicionador(30.90, 200, "B75163", "Sophie", "",
-				"Todos os tipos", "Cruelty Free", "Resíduos");
-		SaboneteLiquido nativaSPA3 = new SaboneteLiquido(31.90, 200, "B71196", "Nativa SPA",
-				"Lichia", "Cruelty Free");
-		SaboneteLiquido floratta = new SaboneteLiquido(15.90, 75, "B75101", "Floratta",
-				"Rose", "Cruelty Free");
+		//Cria um gerenciador do sistema
+		GerenciadorDoSistema funcionario = new GerenciadorDoSistema("12345678900", "login");
 		
+		//Chama o método de pré-carregamento dos objetos
+		carregamentoInicial();
 		
+		//Inicia o menu com suas funcionalidades
 		do {
 			opcao = menu();
 			switch (opcao) {
 			case 1:
-				cadastrarProduto();
+				cadastrarProduto(funcionario);
 				break;
 			case 2:
+				cadastrarCliente();
 				break;
 			case 3:
+				editarProduto(funcionario);
 				break;
 			case 4:
 				break;
@@ -108,47 +140,63 @@ public class Principal {
 	}
 	
 	//OPÇÃO 1
-	public static void cadastrarProduto() {
+	public static void cadastrarProduto(GerenciadorDoSistema funcionario) {
 		//Declarações
 		int opcao = 0;
+		String cpf = "", senha = "";
 		
+		//Somente o administrador pode cadastrar um produto no sistema
 		System.out.println("===============================================================================================");
-		System.out.println("Qual produto deseja cadastrar?");
-		System.out.println("[1] Perfume");
-		System.out.println("[2] Hidratante");
-		System.out.println("[3] Protetor Solar");
-		System.out.println("[4] Shampoo");
-		System.out.println("[5] Condicionador");
-		System.out.println("[6] Sabonete Líquido");
-		System.out.println("[0] Voltar ao menu");
-		System.out.println("===============================================================================================");
-		System.out.print(">>>Sua opção:");
-		do {
-			opcao = LerDados.lerInt(opcao);
-			if (opcao < 0 || opcao > 6) {
-				System.out.print(">>>Digite um valor válido: ");
+		System.out.println("LOGIN:");
+		System.out.print(">>>CPF: ");
+		cpf = LerDados.lerString();
+		System.out.print(">>>Senha: ");
+		senha = LerDados.lerString();
+		
+		//Se o login for validado, o programa prossegue com o cadastro do produto
+		if (cpf.equals(funcionario.getCpf()) && senha.equals(funcionario.getSenha())) {
+			System.out.println("===============================================================================================");
+			System.out.println("Qual produto deseja cadastrar?");
+			System.out.println("[1] Perfume");
+			System.out.println("[2] Hidratante");
+			System.out.println("[3] Protetor Solar");
+			System.out.println("[4] Shampoo");
+			System.out.println("[5] Condicionador");
+			System.out.println("[6] Sabonete Líquido");
+			System.out.println("[0] Voltar ao menu");
+			System.out.println("===============================================================================================");
+			System.out.print(">>>Sua opção: ");
+			do {
+				opcao = LerDados.lerInt(opcao);
+				if (opcao < 0 || opcao > 6) {
+					System.out.print(">>>Digite um valor válido: ");
+				}
+			} while(opcao < 0 || opcao > 6);
+			
+			switch (opcao) {
+			case 1:
+				cadastrarPerfume();
+				break;
+			case 2:
+				cadastrarHidratante();
+				break;
+			case 3:
+				cadastrarProtetorSolar();
+				break;
+			case 4:
+				cadastrarShampoo();
+				break;
+			case 5:
+				cadastrarCondicionador();
+				break;
+			case 6:
+				cadastrarSaboneteLiquido();
+				break;
 			}
-		} while(opcao < 0 || opcao > 6);
-		
-		switch (opcao) {
-		case 1:
-			cadastrarPerfume();
-			break;
-		case 2:
-			cadastrarHidratante();
-			break;
-		case 3:
-			cadastrarProtetorSolar();
-			break;
-		case 4:
-			cadastrarShampoo();
-			break;
-		case 5:
-			cadastrarCondicionador();
-			break;
-		case 6:
-			cadastrarSaboneteLiquido();
-			break;
+		} else {
+			System.out.println("===============================================================================================");
+			System.out.println("Usuário não autenticado. Tente novamente.");
+			System.out.println("===============================================================================================");
 		}
 	}
 	public static void cadastrarPerfume() {
@@ -192,8 +240,9 @@ public class Principal {
 		System.out.println("===============================================================================================");
 		
 		//Criação do objeto do tipo Perfumaria através do Construtor
-		Perfumaria perfume = new Perfumaria(preco, volume, codigo, marca, linha, categoria,
-				propriedades, familia, subfamilia);
+		Perfumaria perfume = new Perfumaria("Perfume", preco, volume, codigo, marca, linha, 
+				categoria, propriedades, familia, subfamilia);
+		
 		//Adicionando o objeto criado no ArrayList de Produto
 		ConjuntoProduto.cadastrarProduto(perfume);
 	}
@@ -227,7 +276,9 @@ public class Principal {
 		System.out.println("===============================================================================================");
 		
 		//Criação do objeto do tipo Perfumaria através do Construtor
-		Hidratante hidratante = new Hidratante(preco, volume, codigo, marca, linha, tipo);
+		Hidratante hidratante = new Hidratante("Hidratante", preco, volume, codigo, marca, linha, 
+				tipo);
+		
 		//Adicionando o objeto criado no ArrayList de Produto
 		ConjuntoProduto.cadastrarProduto(hidratante);
 	}
@@ -258,15 +309,16 @@ public class Principal {
 		System.out.print(">>>Propridades do protetor solar: ");
 		propriedades = LerDados.lerString();
 		
-		System.out.println(">>>FPS do protetor solar: ");
+		System.out.print(">>>FPS do protetor solar: ");
 		fps = LerDados.lerInt(fps);
 		System.out.println("===============================================================================================");
 		System.out.println("PRODUTO CADASTRADO!");
 		System.out.println("===============================================================================================");
 		
 		//Criação do objeto do tipo Perfumaria através do Construtor
-		ProtetorSolar protetor = new ProtetorSolar(preco, volume, codigo, marca, linha,
-				propriedades, fps);
+		ProtetorSolar protetor = new ProtetorSolar("Protetor Solar", preco, volume, codigo, marca,
+				linha, propriedades, fps);
+		
 		//Adicionando o objeto criado no ArrayList de Produto
 		ConjuntoProduto.cadastrarProduto(protetor);
 	}
@@ -307,8 +359,9 @@ public class Principal {
 		System.out.println("===============================================================================================");
 		
 		//Criação do objeto do tipo Perfumaria através do Construtor
-		Shampoo shampoo = new Shampoo(preco, volume, codigo, marca, linha, tipo, propriedades,
-				condicao);
+		Shampoo shampoo = new Shampoo("Shampoo", preco, volume, codigo, marca, linha, tipo, 
+				propriedades, condicao);
+		
 		//Adicionando o objeto criado no ArrayList de Produto
 		ConjuntoProduto.cadastrarProduto(shampoo);
 	}
@@ -349,8 +402,9 @@ public class Principal {
 		System.out.println("===============================================================================================");
 		
 		//Criação do objeto do tipo Perfumaria através do Construtor
-		Condicionador condicionador = new Condicionador(preco, volume, codigo, marca, linha,
-				tipo, propriedades, condicao);
+		Condicionador condicionador = new Condicionador("Condicionador", preco, volume, codigo, 
+				marca, linha, tipo, propriedades, condicao);
+		
 		//Adicionando o objeto criado no ArrayList de Produto
 		ConjuntoProduto.cadastrarProduto(condicionador);
 	}
@@ -384,8 +438,9 @@ public class Principal {
 		System.out.println("===============================================================================================");
 		
 		//Criação do objeto do tipo Perfumaria através do Construtor
-		SaboneteLiquido sabonete = new SaboneteLiquido(preco, volume, codigo, marca, linha,
-				propriedades);
+		SaboneteLiquido sabonete = new SaboneteLiquido("Sabonete Líquido", preco, volume, codigo, 
+				marca, linha, propriedades);
+		
 		//Adicionando o objeto criado no ArrayList de Produto
 		ConjuntoProduto.cadastrarProduto(sabonete);
 	}
@@ -395,6 +450,7 @@ public class Principal {
 		//Declarações
 		String nome = "", email = "", cpf = "", celular = "", genero = "", senha = "";
 		
+		//Leitura dos dados do usuário
 		System.out.println("===================================================================================================");
 		System.out.print(">>>Nome do cliente: ");
 		nome = LerDados.lerString();
@@ -418,9 +474,66 @@ public class Principal {
 		System.out.println("===================================================================================================");
 		
 		//Criação do objeto do tipo Cliente através Construtor
-		Cliente cliente = new Cliente(nome, email, cpf, celular, genero, senha);
+		Cliente cliente = new Cliente(cpf, senha, nome, email, celular, genero);
+		
 		//Adicionando o objeto criado no ArrayList de Produto
 		ConjuntoCliente.cadastrarCliente(cliente);
+	}
+	
+	//OPÇÃO 3
+	public static void editarProduto(GerenciadorDoSistema funcionario) {
+		//Declarações
+		String codigo = "";
+		Produto produto;
+		String cpf = "", senha = "";
+		
+		//Somente o administrador pode editar um produto no sistema
+		System.out.println("===============================================================================================");
+		System.out.println("LOGIN:");
+		System.out.print(">>>CPF: ");
+		cpf = LerDados.lerString();
+		System.out.print(">>>Senha: ");
+		senha = LerDados.lerString();
+		
+		//Se o login for validado, o programa prossegue com a edição do produto
+		if (cpf.equals(funcionario.getCpf()) && senha.equals(funcionario.getSenha())) {
+			//Programa continua se houver Produto cadastrado no sistema
+			if (ConjuntoProduto.temProduto()) {
+				System.out.print(">>>Informe o código do produto: ");
+				codigo = LerDados.lerString();
+				produto = ConjuntoProduto.pesquisarProduto(codigo);
+				//Programa continua se o código for encontrado no sistema
+				if (produto != null) {
+					//Produto é deletado e recadastrado
+					ConjuntoProduto.deletarProduto(produto);
+					if (produto.getIdentificador().equals("Perfume")) {
+						cadastrarPerfume();
+					} else if (produto.getIdentificador().equals("Hidratante")) {
+						cadastrarHidratante();
+					} else if (produto.getIdentificador().equals("Protetor Solar")) {
+						cadastrarProtetorSolar();
+					} else if (produto.getIdentificador().equals("Shampoo")) {
+						cadastrarShampoo();
+					} else if (produto.getIdentificador().equals("Condicionador")) {
+						cadastrarCondicionador();
+					} else if (produto.getIdentificador().equals("Sabonete Líquido")) {
+						cadastrarSaboneteLiquido();
+					}
+				} else {
+					System.out.println("=================================================================================================");
+					System.out.println("O código informado não foi encontrado no sistema.");
+					System.out.println("=================================================================================================");
+				}
+			} else {
+				System.out.println("=================================================================================================");
+				System.out.println("Ainda não foi cadastrado nenhum produto.");
+				System.out.println("=================================================================================================");
+			}
+		} else {
+			System.out.println("===============================================================================================");
+			System.out.println("Usuário não autenticado. Tente novamente.");
+			System.out.println("===============================================================================================");
+		}
 	}
 	
 	public static char sair() {

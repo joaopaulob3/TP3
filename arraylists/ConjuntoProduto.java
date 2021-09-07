@@ -20,7 +20,7 @@ public class ConjuntoProduto{
 	//Pesquisa o objeto do tipo Produto pelo código dentro do ArrayList
 	//e retorna esse objeto. Se o código informado não bater com o de nenhum
 	//objeto, retorna null
-	public static Produto pesquisarPerfume(String codigo) {
+	public static Produto pesquisarProduto(String codigo) {
 		for (Produto produto : listaProdutos) {
 			if (codigo.equals(produto.getCodigoDoProduto())) {
 				return produto;
@@ -29,4 +29,13 @@ public class ConjuntoProduto{
 		return null;
 	}
 	
+	//Verifica se há objeto do tipo Produto cadastrado no ArrayList
+	//Se tiver retorna true, senão retorna false
+	public static boolean temProduto() {
+		if (listaProdutos.isEmpty()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }

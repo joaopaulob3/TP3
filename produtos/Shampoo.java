@@ -7,10 +7,12 @@ public class Shampoo extends Produto{
 	private String condicaoDosFiosDoShampoo;
 	
 	//Construtor
-	public Shampoo(double precoDoProduto, double volumeDoProduto, String codigoDoProduto, 
-			String marcaDoProduto, String linhaDoProduto, String tipoDeCabeloDoShampoo, 
-			String propriedadesDoShampoo, String condicaoDosFiosDoShampoo) {
-		super(precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, linhaDoProduto);
+	public Shampoo(String identificador, double precoDoProduto, double volumeDoProduto, 
+			String codigoDoProduto, String marcaDoProduto, String linhaDoProduto, 
+			String tipoDeCabeloDoShampoo, String propriedadesDoShampoo, 
+			String condicaoDosFiosDoShampoo) {
+		super("Shampoo", precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, 
+				linhaDoProduto);
 		this.setTipoDeCabeloDoShampoo(tipoDeCabeloDoShampoo);
 		this.setPropriedadesDoShampoo(propriedadesDoShampoo);
 		this.setCondicaoDosFiosDoShampoo(condicaoDosFiosDoShampoo);
@@ -36,20 +38,6 @@ public class Shampoo extends Produto{
 	}
 	public String getCondicaoDosFiosDoShampoo() {
 		return this.condicaoDosFiosDoShampoo;
-	}
-	
-	//Edita e atualiza os dados do objeto
-	public void editarDados(double precoDoProduto, double volumeDoProduto, String codigoDoProduto,
-			String marcaDoProduto, String linhaDoProduto, String tipoDeCabeloDoShampoo,
-			String propriedadesDoShampoo, String condicaoDosFiosDoShampoo) {
-		this.setPrecoDoProduto(precoDoProduto);
-		this.setVolumeDoProduto(volumeDoProduto);
-		this.setCodigoDoProduto(codigoDoProduto);
-		this.setMarcaDoProduto(marcaDoProduto);
-		this.setLinhaDoProduto(linhaDoProduto);
-		this.setTipoDeCabeloDoShampoo(tipoDeCabeloDoShampoo);
-		this.setPropriedadesDoShampoo(propriedadesDoShampoo);
-		this.setCondicaoDosFiosDoShampoo(condicaoDosFiosDoShampoo);
 	}
 	
 	//Retorna uma String com os dados do objeto

@@ -1,7 +1,8 @@
 package arraylists;
 
 import java.util.ArrayList;
-import cliente.Cliente;
+
+import pessoas.Cliente;
 
 public class ConjuntoCliente {
 	//Criação do ArrayList de objetos do tipo Cliente
@@ -27,5 +28,15 @@ public class ConjuntoCliente {
 			}
 		}
 		return null;
+	}
+	
+	//Verifica se há objeto do tipo Cliente cadastrado no ArrayList
+	//Se tiver retorna true, senão retorna false
+	public static boolean temProduto() {
+		if (listaClientes.isEmpty()) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

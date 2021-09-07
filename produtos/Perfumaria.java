@@ -8,11 +8,11 @@ public class Perfumaria extends Produto{
 	private String subfamiliaDoPerfume;
 	
 	//Construtor
-	public Perfumaria(double precoDoProduto, double volumeDoProduto, 
+	public Perfumaria(String identificador, double precoDoProduto, double volumeDoProduto, 
 			String codigoDoProduto, String marcaDoProduto, String linhaDoProduto,
 			String categoriaDoPerfume, String propriedadesDoPerfume, 
 			String familiaOlfativaDoPerfume, String subfamiliaDoPerfume) {
-		super(precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, 
+		super("Perfume", precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, 
 				linhaDoProduto);
 		this.setCategoriaDoPerfume(categoriaDoPerfume);
 		this.setPropriedadesDoPerfume(propriedadesDoPerfume);
@@ -46,22 +46,6 @@ public class Perfumaria extends Produto{
 	}
 	public String getSubfamiliaDoPerfume() {
 		return this.subfamiliaDoPerfume;
-	}
-	
-	//Edita e atualiza os dados do objeto
-	public void editarDados(double precoDoProduto, double volumeDoProduto, String codigoDoProduto,
-			String marcaDoProduto, String linhaDoProduto, String categoriaDoPerfume, 
-			String propriedadesDoPerfume, String familiaOlfativaDoPerfume, 
-			String subfamiliaDoPerfume) {
-		this.setPrecoDoProduto(precoDoProduto);
-		this.setVolumeDoProduto(volumeDoProduto);
-		this.setCodigoDoProduto(codigoDoProduto);
-		this.setMarcaDoProduto(marcaDoProduto);
-		this.setLinhaDoProduto(linhaDoProduto);
-		this.setCategoriaDoPerfume(categoriaDoPerfume);
-		this.setPropriedadesDoPerfume(propriedadesDoPerfume);
-		this.setFamiliaOlfativaDoPerfume(familiaOlfativaDoPerfume);
-		this.setSubfamiliaDoPerfume(subfamiliaDoPerfume);
 	}
 	
 	//Retorna uma String com os dados do objeto

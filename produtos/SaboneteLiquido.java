@@ -5,9 +5,11 @@ public class SaboneteLiquido extends Produto{
 	private String propriedadesDoSaboneteLiquido;
 	
 	//Construor
-	public SaboneteLiquido(double precoDoProduto, double volumeDoProduto, String codigoDoProduto,
-			String marcaDoProduto, String linhaDoProduto, String propriedadesDoSaboneteLiquido) {
-		super(precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, linhaDoProduto);
+	public SaboneteLiquido(String identificador, double precoDoProduto, double volumeDoProduto, 
+			String codigoDoProduto, String marcaDoProduto, String linhaDoProduto, 
+			String propriedadesDoSaboneteLiquido) {
+		super("Sabonete Líquido", precoDoProduto, volumeDoProduto, codigoDoProduto, 
+				marcaDoProduto, linhaDoProduto);
 		this.setPropriedadesDoSaboneteLiquido(propriedadesDoSaboneteLiquido);
 	}
 
@@ -21,17 +23,6 @@ public class SaboneteLiquido extends Produto{
 		return this.propriedadesDoSaboneteLiquido;
 	}
 	
-	//Edita e atualiza os dados do objeto
-	public void editarDados(double precoDoProduto, double volumeDoProduto, String codigoDoProduto,
-			String marcaDoProduto, String linhaDoProduto, String propriedadesDoSaboneteLiquido) {
-		this.setPrecoDoProduto(precoDoProduto);
-		this.setVolumeDoProduto(volumeDoProduto);
-		this.setCodigoDoProduto(codigoDoProduto);
-		this.setMarcaDoProduto(marcaDoProduto);
-		this.setLinhaDoProduto(linhaDoProduto);
-		this.setPropriedadesDoSaboneteLiquido(propriedadesDoSaboneteLiquido);
-	}
-	
 	//Retorna uma String com os dados do objeto
 	public String listarDados() {
 		return "Preço do sabonete líquido: R$" + this.getPrecoDoProduto() +
@@ -39,6 +30,7 @@ public class SaboneteLiquido extends Produto{
 				"\nCódigo do sabonete líquido: " + this.getCodigoDoProduto() + 
 				"\nMarca do sabonete líquido: " + this.getMarcaDoProduto() + 
 				"\nLinha do sabonete líquido: " + this.getLinhaDoProduto() + 
-				"\nPropriedades do sabonete líquido: " + this.getPropriedadesDoSaboneteLiquido() + "\n";
+				"\nPropriedades do sabonete líquido: " + this.getPropriedadesDoSaboneteLiquido() 
+				+ "\n";
 	}
 }
