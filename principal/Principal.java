@@ -58,6 +58,14 @@ public class Principal {
 		SaboneteLiquido floratta = new SaboneteLiquido(15.90, 75, "B75101", 
 				"Floratta","Rose", "Cruelty Free");
 		ConjuntoSaboneteLiquido.cadastrarSaboneteLiquido(floratta);
+		
+		//Cliente
+		Cliente cliente1 = new Cliente("12388899970", "12345", "Jonas",
+				"jonas@gmail.com", "61991231231", "Masculino");
+		ConjuntoCliente.cadastrarCliente(cliente1);
+		Cliente cliente2 = new Cliente("127312731238", "772312", "Maria",
+				"maria@gmail.com", "413123123", "Feminino");
+		ConjuntoCliente.cadastrarCliente(cliente2);
 	}
 	
 	
@@ -99,6 +107,7 @@ public class Principal {
 				deletarProduto(funcionario);
 				break;
 			case 8:
+				deletarCliente(funcionario);
 				break;
 			case 9:
 				break;
@@ -256,7 +265,7 @@ public class Principal {
 		
 		System.out.print(">>>Subfamília do perfume: ");
 		subfamilia = LerDados.lerString();
-		System.out.println("===============================================================================================");
+		System.out.println("\n===============================================================================================");
 		System.out.println("PRODUTO CADASTRADO!");
 		System.out.println("===============================================================================================");
 		
@@ -292,7 +301,7 @@ public class Principal {
 		
 		System.out.print(">>>Tipo de pele do hidratante: ");
 		tipo = LerDados.lerString();
-		System.out.println("===============================================================================================");
+		System.out.println("\n===============================================================================================");
 		System.out.println("PRODUTO CADASTRADO!");
 		System.out.println("===============================================================================================");
 		
@@ -331,7 +340,7 @@ public class Principal {
 		
 		System.out.print(">>>FPS do protetor solar: ");
 		fps = LerDados.lerInt(fps);
-		System.out.println("===============================================================================================");
+		System.out.println("\n===============================================================================================");
 		System.out.println("PRODUTO CADASTRADO!");
 		System.out.println("===============================================================================================");
 		
@@ -374,7 +383,7 @@ public class Principal {
 		
 		System.out.print(">>>Condição dos fios do shampoo: ");
 		condicao = LerDados.lerString();
-		System.out.println("===============================================================================================");
+		System.out.println("\n===============================================================================================");
 		System.out.println("PRODUTO CADASTRADO!");
 		System.out.println("===============================================================================================");
 		
@@ -417,7 +426,7 @@ public class Principal {
 		
 		System.out.print(">>>Condição dos fios do condicionador: ");
 		condicao = LerDados.lerString();
-		System.out.println("===============================================================================================");
+		System.out.println("\n===============================================================================================");
 		System.out.println("PRODUTO CADASTRADO!");
 		System.out.println("===============================================================================================");
 		
@@ -453,7 +462,7 @@ public class Principal {
 		
 		System.out.print(">>>Propriedades do sabonete líquido: ");
 		propriedades = LerDados.lerString();
-		System.out.println("===============================================================================================");
+		System.out.println("\n===============================================================================================");
 		System.out.println("PRODUTO CADASTRADO!");
 		System.out.println("===============================================================================================");
 		
@@ -975,10 +984,47 @@ public class Principal {
 				}
 				break;
 			}
+		} else {
+			System.out.println("===============================================================================================");
+			System.out.println("Usuário não autenticado. Tente novamente.");
+			System.out.println("===============================================================================================");
 		}
 	}
 	
-	
+	//OPÇÃO 8
+	public static void deletarCliente(GerenciadorDoSistema funcionario) {
+		//Declarações
+		String nome = "";
+		Cliente cliente;
+		
+		//Se o login tiver sido validado, podemos prosseguir
+		if (login(funcionario)) {
+			//Se há cliente no sistema, podemos prosseguir
+			if (ConjuntoCliente.temCliente()) {
+				System.out.println("===============================================================================================");
+				System.out.print(">>>Informe o nome do cliente: ");
+				nome = LerDados.lerString();
+				cliente = ConjuntoCliente.pesquisarCliente(nome);
+				//Se o nome for encontrado no sistema, podemos prosseguir
+				if (cliente != null) {
+					//Deleta o cliente
+					ConjuntoCliente.deletarCliente(cliente);
+				} else {
+					System.out.println("=================================================================================================");
+					System.out.println("O nome informado não foi encontrado no sistema.");
+					System.out.println("=================================================================================================");
+				}
+			} else {
+				System.out.println("=================================================================================================");
+				System.out.println("Ainda não foi cadastrado nenhum cliente no sistema.");
+				System.out.println("=================================================================================================");
+			}
+		} else {
+			System.out.println("===============================================================================================");
+			System.out.println("Usuário não autenticado. Tente novamente.");
+			System.out.println("===============================================================================================");
+		}
+	}
 	
 	public static char sair() {
 		//Declarações
