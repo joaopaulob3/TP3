@@ -41,8 +41,17 @@ public class ConjuntoCondicionador {
 	
 	//Lista os dados dos condicionadores do Arraylist
 	public static void listaCondicionador() {
+		int i = 1;
+		
 		for (Condicionador condicionador : listaCondicionadores) {
-			condicionador.listarDados();
+			System.out.println("\n################################### " + (i++) + " ###################################");
+			System.out.println(condicionador.listarDados());
+			System.out.println("#########################################################################");
 		}
+	}
+	
+	//Retorna a quantidade de objetos do tipo Condicionador no ArrayList
+	public static int quantidade() {
+		return listaCondicionadores.size();
 	}
 }

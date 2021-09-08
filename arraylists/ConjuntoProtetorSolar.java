@@ -41,8 +41,17 @@ public class ConjuntoProtetorSolar {
 	
 	//Lista os dados dos protetores do Arraylist
 	public static void listaProtetorSolar() {
+		int i = 1;
+		
 		for (ProtetorSolar protetor : listaProtetorSolar) {
-			protetor.listarDados();
+			System.out.println("\n################################### " + (i++) + " ###################################");
+			System.out.println(protetor.listarDados());
+			System.out.println("#########################################################################");
 		}
+	}
+	
+	//Retorna a quantidade de objetos do tipo ProtetorSolar no ArrayList
+	public static int quantidade() {
+		return listaProtetorSolar.size();
 	}
 }

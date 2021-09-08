@@ -48,6 +48,6 @@ public class Condicionador extends Produto{
 				"\nLinha do condicionador: " + this.getLinhaDoProduto() + 
 				"\nTipo de cabelo do condicionador: " + this.getTipoDeCabeloDoCondicionador() + 
 				"\nPropriedades do condicionador: " + this.getPropriedadesDoCondicionador() + 
-				"\nCondição dos fios do condicionador: " + this.getCondicaoDosFiosDoCondicionador() + "\n";
+				"\nCondição dos fios do condicionador: " + this.getCondicaoDosFiosDoCondicionador();
 	}
 }

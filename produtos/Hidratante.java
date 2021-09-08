@@ -29,6 +29,6 @@ public class Hidratante extends Produto{
 				"\nCódigo do hidratante: " + this.getCodigoDoProduto() + 
 				"\nMarca do hidratante: " + this.getMarcaDoProduto() + 
 				"\nLinha do hidratante: " + this.getLinhaDoProduto() + 
-				"\nTipo de pele do hidratante: " + this.getTipoDePeleDoHidratante() + "\n";
+				"\nTipo de pele do hidratante: " + this.getTipoDePeleDoHidratante();
 	}
 }

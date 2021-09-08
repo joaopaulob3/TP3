@@ -31,7 +31,6 @@ public class SaboneteLiquido extends Produto{
 				"\nCódigo do sabonete líquido: " + this.getCodigoDoProduto() + 
 				"\nMarca do sabonete líquido: " + this.getMarcaDoProduto() + 
 				"\nLinha do sabonete líquido: " + this.getLinhaDoProduto() + 
-				"\nPropriedades do sabonete líquido: " + this.getPropriedadesDoSaboneteLiquido() 
-				+ "\n";
+				"\nPropriedades do sabonete líquido: " + this.getPropriedadesDoSaboneteLiquido();
 	}
 }

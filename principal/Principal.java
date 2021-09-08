@@ -74,6 +74,7 @@ public class Principal {
 		
 		//Inicia o menu com suas funcionalidades
 		do {
+			System.out.println();
 			opcao = menu();
 			switch (opcao) {
 			case 1:
@@ -89,6 +90,7 @@ public class Principal {
 				editarCliente(funcionario);
 				break;
 			case 5:
+				listarDadosDosProdutos();
 				break;
 			case 6:
 				break;
@@ -707,7 +709,7 @@ public class Principal {
 	//OPÇÃO 5
 	public static void listarDadosDosProdutos() {
 		//Declarações
-		int opcao = 0;
+		int opcao = 0, aux = 0;
 		
 		System.out.println("===============================================================================================");
 		System.out.println("Deseja ver os dados de quais produtos?");
@@ -729,12 +731,47 @@ public class Principal {
 		
 		switch (opcao){
 		case 1:
-			
+			aux = ConjuntoPerfumaria.quantidade();
+			ConjuntoPerfumaria.listaPerfumes();
+			System.out.println("\n==========================================================================================================");
+			System.out.println("Há " + aux + " perfumes cadastrados no sistema");
+			System.out.println("==========================================================================================================\n");
+			break;
 		case 2:
+			aux = ConjuntoHidratante.quantidade();
+			ConjuntoHidratante.listaHidratantes();
+			System.out.println("\n==========================================================================================================");
+			System.out.println("Há " + aux + " hidratantes cadastrados no sistema");
+			System.out.println("==========================================================================================================\n");
+			break;
 		case 3:
+			aux = ConjuntoProtetorSolar.quantidade();
+			ConjuntoProtetorSolar.listaProtetorSolar();
+			System.out.println("\n==========================================================================================================");
+			System.out.println("Há " + aux + " protetores solar cadastrados no sistema");
+			System.out.println("==========================================================================================================\n");
+			break;
 		case 4:
+			aux = ConjuntoShampoo.quantidade();
+			ConjuntoShampoo.listaShampoo();
+			System.out.println("\n==========================================================================================================");
+			System.out.println("Há " + aux + " shampoos cadastrados no sistema");
+			System.out.println("==========================================================================================================\n");
+			break;
 		case 5:
+			aux = ConjuntoCondicionador.quantidade();
+			ConjuntoCondicionador.listaCondicionador();
+			System.out.println("\n==========================================================================================================");
+			System.out.println("Há " + aux + " condicionadores cadastrados no sistema");
+			System.out.println("==========================================================================================================\n");
+			break;
 		case 6:
+			aux = ConjuntoSaboneteLiquido.quantidade();
+			ConjuntoSaboneteLiquido.listaSaboneteLiquido();
+			System.out.println("\n==========================================================================================================");
+			System.out.println("Há " + aux + " sabonetes líquido cadastrados no sistema");
+			System.out.println("==========================================================================================================\n");
+			break;
 		}
 	}
 	

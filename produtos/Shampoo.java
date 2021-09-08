@@ -50,6 +50,6 @@ public class Shampoo extends Produto{
 				"\nLinha do shampoo: " + this.getLinhaDoProduto() + 
 				"\nTipo de cabelo do shampoo: " + this.getTipoDeCabeloDoShampoo() + 
 				"\nPropriedades do shampoo: " + this.getPropriedadesDoShampoo() + 
-				"\nCondição dos fios do shampoo: " + this.getCondicaoDosFiosDoShampoo() + "\n";
+				"\nCondição dos fios do shampoo: " + this.getCondicaoDosFiosDoShampoo();
 	}
 }

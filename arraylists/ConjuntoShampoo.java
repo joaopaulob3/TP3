@@ -41,8 +41,17 @@ public class ConjuntoShampoo {
 	
 	//Lista os dados dos shampoos do Arraylist
 	public static void listaShampoo() {
+		int i = 1;
+		
 		for (Shampoo shampoo : listaShampoos) {
-			shampoo.listarDados();
+			System.out.println("\n################################### " + (i++) + " ###################################");
+			System.out.println(shampoo.listarDados());
+			System.out.println("#########################################################################");
 		}
+	}
+	
+	//Retorna a quantidade de objetos do tipo Shampoo no ArrayList
+	public static int quantidade() {
+		return listaShampoos.size();
 	}
 }

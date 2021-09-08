@@ -41,8 +41,17 @@ public class ConjuntoSaboneteLiquido {
 	
 	//Lista os dados dos sabonetes líquido do Arraylist
 	public static void listaSaboneteLiquido() {
+		int i = 1;
+		
 		for (SaboneteLiquido sabonete : listaSabonetesLiquido) {
-			sabonete.listarDados();
+			System.out.println("\n################################### " + (i++) + " ###################################");
+			System.out.println(sabonete.listarDados());
+			System.out.println("#########################################################################");
 		}
+	}
+	
+	//Retorna a quantidade de objetos do tipo Condicionador no ArrayList
+	public static int quantidade() {
+		return listaSabonetesLiquido.size();
 	}
 }

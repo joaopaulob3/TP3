@@ -39,6 +39,6 @@ public class ProtetorSolar extends Produto{
 				"\nMarca do protetor solar: " + this.getMarcaDoProduto() + 
 				"\nLinha do protetor solar: " + this.getLinhaDoProduto() + 
 				"\nPropriedades do protetor solar: " + this.getPropriedadesDoProtetorSolar() + 
-				"\nFPS do protetor solar: " + this.getFpsDoProtetorSolar() + "\n";
+				"\nFPS do protetor solar: " + this.getFpsDoProtetorSolar();
 	}
 }

@@ -59,6 +59,6 @@ public class Perfumaria extends Produto{
 				"\nCategoria do perfume: " + this.getCategoriaDoPerfume() + 
 				"\nPropriedades do perfume: " + this.getPropriedadesDoPerfume() + 
 				"\nFamília olfativa do perfume: " + this.getFamiliaOlfativaDoPerfume() +
-				"\nSubfamília do perfume: " + this.getSubfamiliaDoPerfume() + "\n";
+				"\nSubfamília do perfume: " + this.getSubfamiliaDoPerfume();
 	}
 }

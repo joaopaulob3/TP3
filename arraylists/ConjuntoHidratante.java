@@ -41,8 +41,17 @@ public class ConjuntoHidratante {
 	
 	//Lista os dados dos hidratantes do ArrayList
 	public static void listaHidratantes() {
+		int i = 1;
+		
 		for (Hidratante hidratante : listaHidratantes) {
-			hidratante.listarDados();
+			System.out.println("\n################################### " + (i++) + " ###################################");
+			System.out.println(hidratante.listarDados());
+			System.out.println("#########################################################################");
 		}
+	}
+	
+	//Retorna a quantidade de objetos do tipo Hidratante no ArrayList
+	public static int quantidade() {
+		return listaHidratantes.size();
 	}
 }
