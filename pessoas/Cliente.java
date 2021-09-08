@@ -45,4 +45,12 @@ public class Cliente extends Pessoa{
 		return generoCliente;
 	}
 	
+	//Retorna uma String com os dados do objeto
+	public String listarDados() {
+		return "Nome do cliente: " + this.getNomeCliente() + 
+				"\nEmail do cliente" + this.getEmailCliente() + 
+				"\nCelular do cliente:" + this.getCelularCliente() + 
+				"\nGênero do cliente: " + this.getGeneroCliente() + 
+				"\nCPF do cliente: " + this.getCpf();
+	}
 }

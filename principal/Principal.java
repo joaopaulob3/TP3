@@ -93,8 +93,10 @@ public class Principal {
 				listarDadosDosProdutos();
 				break;
 			case 6:
+				listarDadosDosClientes();
 				break;
 			case 7:
+				deletarProduto(funcionario);
 				break;
 			case 8:
 				break;
@@ -129,8 +131,8 @@ public class Principal {
 		System.out.println("[4] Editar informações de um cliente");
 		System.out.println("[5] Listar dados dos produtos");
 		System.out.println("[6] Listar dados dos clientes");
-		System.out.println("[9] Deletar um produto");
-		System.out.println("[10] Deletar um cliente");
+		System.out.println("[7] Deletar um produto");
+		System.out.println("[8] Deletar um cliente");
 		System.out.println("[11] Realizar uma compra");
 		System.out.println("[12] Sair");
 		System.out.println("===============================================================================================");
@@ -730,6 +732,7 @@ public class Principal {
 		} while(opcao < 0 || opcao > 6);
 		
 		switch (opcao){
+		//Listagem dos dados dos perfumes
 		case 1:
 			aux = ConjuntoPerfumaria.quantidade();
 			ConjuntoPerfumaria.listaPerfumes();
@@ -737,6 +740,7 @@ public class Principal {
 			System.out.println("Há " + aux + " perfumes cadastrados no sistema");
 			System.out.println("==========================================================================================================\n");
 			break;
+		//Listagem dos dados dos hidratantes
 		case 2:
 			aux = ConjuntoHidratante.quantidade();
 			ConjuntoHidratante.listaHidratantes();
@@ -744,6 +748,7 @@ public class Principal {
 			System.out.println("Há " + aux + " hidratantes cadastrados no sistema");
 			System.out.println("==========================================================================================================\n");
 			break;
+		//Listagem dos dados dos protetores solar
 		case 3:
 			aux = ConjuntoProtetorSolar.quantidade();
 			ConjuntoProtetorSolar.listaProtetorSolar();
@@ -751,6 +756,7 @@ public class Principal {
 			System.out.println("Há " + aux + " protetores solar cadastrados no sistema");
 			System.out.println("==========================================================================================================\n");
 			break;
+		//Listagem dos dados dos shampoos
 		case 4:
 			aux = ConjuntoShampoo.quantidade();
 			ConjuntoShampoo.listaShampoo();
@@ -758,6 +764,7 @@ public class Principal {
 			System.out.println("Há " + aux + " shampoos cadastrados no sistema");
 			System.out.println("==========================================================================================================\n");
 			break;
+		//Listagem dos dados dos condicionadores
 		case 5:
 			aux = ConjuntoCondicionador.quantidade();
 			ConjuntoCondicionador.listaCondicionador();
@@ -765,6 +772,7 @@ public class Principal {
 			System.out.println("Há " + aux + " condicionadores cadastrados no sistema");
 			System.out.println("==========================================================================================================\n");
 			break;
+		//Listagem dos dados dos sabonetes líquidos
 		case 6:
 			aux = ConjuntoSaboneteLiquido.quantidade();
 			ConjuntoSaboneteLiquido.listaSaboneteLiquido();
@@ -774,6 +782,203 @@ public class Principal {
 			break;
 		}
 	}
+	
+	//OPÇÃO 6
+	public static void listarDadosDosClientes() {
+		//Declarações
+		
+		if (ConjuntoCliente.temCliente()) {
+			ConjuntoCliente.listaClientes();
+		} else {
+			System.out.println("===============================================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum cliente no sistema.");
+			System.out.println("===============================================================================================");
+		}
+	}
+	
+	//OPÇÃO 7
+	public static void deletarProduto(GerenciadorDoSistema funcionario) {
+		//Declarações
+		int opcao = 0;
+		String codigo = "";
+		Perfumaria perfume;
+		Hidratante hidratante;
+		ProtetorSolar protetor;
+		Shampoo shampoo;
+		Condicionador condicionador;
+		SaboneteLiquido sabonete;
+		
+		//Se o login tiver sido validado, podemos prosseguir com a edição
+		if (login(funcionario)) {
+			System.out.println("===============================================================================================");
+			System.out.println("Qual produto deseja deletar?");
+			System.out.println("[1] Perfume");
+			System.out.println("[2] Hidratante");
+			System.out.println("[3] Protetor Solar");
+			System.out.println("[4] Shampoo");
+			System.out.println("[5] Condicionador");
+			System.out.println("[6] Sabonete Líquido");
+			System.out.println("[0] Voltar ao menu");
+			System.out.println("===============================================================================================");
+			System.out.print(">>>Sua opção: ");
+			do {
+				opcao = LerDados.lerInt(opcao);
+				if (opcao < 0 || opcao > 6) {
+					System.out.print(">>>Digite um valor válido: ");
+				}
+			} while(opcao < 0 || opcao > 6);
+			
+			//Inicia as deleções
+			switch (opcao){
+			case 1:
+				//Se há perfume no sistema, podemos prosseguir
+				if (ConjuntoPerfumaria.temPerfume()) {
+					System.out.print(">>>Informe o código do produto: ");
+					codigo = LerDados.lerString();
+					perfume = ConjuntoPerfumaria.pesquisarPerfume(codigo);
+					//Se o código for reconhecido no sistema, podemos prosseguir
+					if (perfume != null) {
+						//Deleta o perfume
+						ConjuntoPerfumaria.deletarPerfume(perfume);
+						System.out.println("=================================================================================================");
+						System.out.println("Perfume deletado.");
+						System.out.println("=================================================================================================");
+					} else {
+						System.out.println("=================================================================================================");
+						System.out.println("O código informado não foi encontrado no sistema.");
+						System.out.println("=================================================================================================");
+					}
+				} else {
+					System.out.println("=================================================================================================");
+					System.out.println("Ainda não foi cadastrado nenhum perfume.");
+					System.out.println("=================================================================================================");
+				}
+				break;
+			case 2:
+				//Se há hidratante no sistema, podemos prosseguir
+				if (ConjuntoHidratante.temHidratante()) {
+					System.out.print(">>>Informe o código do produto: ");
+					codigo = LerDados.lerString();
+					hidratante = ConjuntoHidratante.pesquisarHidratante(codigo);
+					//Se o código for reconhecido no sistema, podemos prosseguir
+					if (hidratante != null) {
+						//Deleta o hidratante
+						ConjuntoHidratante.deletarHidratante(hidratante);
+						System.out.println("=================================================================================================");
+						System.out.println("Hidratante deletado.");
+						System.out.println("=================================================================================================");
+					} else {
+						System.out.println("=================================================================================================");
+						System.out.println("O código informado não foi encontrado no sistema.");
+						System.out.println("=================================================================================================");
+					}
+				} else {
+					System.out.println("=================================================================================================");
+					System.out.println("Ainda não foi cadastrado nenhum hidratante.");
+					System.out.println("=================================================================================================");
+				}
+				break;
+			case 3:
+				//Se há protetor solar no sistema, podemos prosseguir
+				if (ConjuntoProtetorSolar.temProtetorSolar()) {
+					System.out.print(">>>Informe o código do produto: ");
+					codigo = LerDados.lerString();
+					protetor = ConjuntoProtetorSolar.pesquisarProtetorSolar(codigo);
+					//Se o código for reconhecido no sistema, podemos prosseguir
+					if (protetor != null) {
+						//Deleta o protetor solar
+						ConjuntoProtetorSolar.deletarProtetorSolar(protetor);
+						System.out.println("=================================================================================================");
+						System.out.println("Protetor Solar deletado.");
+						System.out.println("=================================================================================================");
+					} else {
+						System.out.println("=================================================================================================");
+						System.out.println("O código informado não foi encontrado no sistema.");
+						System.out.println("=================================================================================================");
+					}
+				} else {
+					System.out.println("=================================================================================================");
+					System.out.println("Ainda não foi cadastrado nenhum protetor solar.");
+					System.out.println("=================================================================================================");
+				}
+				break;
+			case 4:
+				//Se há shampoo no sistema, podemos prosseguir
+				if (ConjuntoShampoo.temShampoo()) {
+					System.out.print(">>>Informe o código do produto: ");
+					codigo = LerDados.lerString();
+					shampoo = ConjuntoShampoo.pesquisarShampoo(codigo);
+					//Se o código for reconhecido no sistema, podemos prosseguir
+					if (shampoo != null) {
+						//Deleta o shampoo
+						ConjuntoShampoo.deletarShampoo(shampoo);
+						System.out.println("=================================================================================================");
+						System.out.println("Shampoo deletado.");
+						System.out.println("=================================================================================================");
+					} else {
+						System.out.println("=================================================================================================");
+						System.out.println("O código informado não foi encontrado no sistema.");
+						System.out.println("=================================================================================================");
+					}
+				} else {
+					System.out.println("=================================================================================================");
+					System.out.println("Ainda não foi cadastrado nenhum shampoo.");
+					System.out.println("=================================================================================================");
+				}
+				break;
+			case 5:
+				//Se há condicionador no sistema, podemos prosseguir
+				if (ConjuntoCondicionador.temCondicionador()) {
+					System.out.print(">>>Informe o código do produto: ");
+					codigo = LerDados.lerString();
+					condicionador = ConjuntoCondicionador.pesquisarCondicionador(codigo);
+					//Se o código for reconhecido no sistema, podemos prosseguir
+					if (condicionador != null) {
+						//Deleta o condicionador
+						ConjuntoCondicionador.deletarCondicionador(condicionador);
+						System.out.println("=================================================================================================");
+						System.out.println("Condicionador deletado.");
+						System.out.println("=================================================================================================");
+					} else {
+						System.out.println("=================================================================================================");
+						System.out.println("O código informado não foi encontrado no sistema.");
+						System.out.println("=================================================================================================");
+					}
+				} else {
+					System.out.println("=================================================================================================");
+					System.out.println("Ainda não foi cadastrado nenhum condicionador.");
+					System.out.println("=================================================================================================");
+				}
+				break;
+			case 6:
+				//Se há sabonete líquido no sistema, podemos prosseguir
+				if (ConjuntoSaboneteLiquido.temSaboneteLiquido()) {
+					System.out.print(">>>Informe o código do produto: ");
+					codigo = LerDados.lerString();
+					sabonete = ConjuntoSaboneteLiquido.pesquisarSaboneteLiquido(codigo);
+					//Se o código for reconhecido no sistema, podemos prosseguir
+					if (sabonete != null) {
+						//Deleta o sabonete líquido
+						ConjuntoSaboneteLiquido.deletarSaboneteLiquido(sabonete);
+						System.out.println("=================================================================================================");
+						System.out.println("Sabonete Líquido deletado.");
+						System.out.println("=================================================================================================");
+					} else {
+						System.out.println("=================================================================================================");
+						System.out.println("O código informado não foi encontrado no sistema.");
+						System.out.println("=================================================================================================");
+					}
+				} else {
+					System.out.println("=================================================================================================");
+					System.out.println("Ainda não foi cadastrado nenhum sabonete líquido.");
+					System.out.println("=================================================================================================");
+				}
+				break;
+			}
+		}
+	}
+	
+	
 	
 	public static char sair() {
 		//Declarações

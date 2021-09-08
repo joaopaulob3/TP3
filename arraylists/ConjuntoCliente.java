@@ -3,6 +3,7 @@ package arraylists;
 import java.util.ArrayList;
 
 import pessoas.Cliente;
+import produtos.Condicionador;
 
 public class ConjuntoCliente {
 	//Criação do ArrayList de objetos do tipo Cliente
@@ -38,5 +39,21 @@ public class ConjuntoCliente {
 		} else {
 			return true;
 		}
+	}
+	
+	//Lista os dados dos clientes do Arraylist
+	public static void listaClientes() {
+		int i = 1;
+		
+		for (Cliente cliente : listaClientes) {
+			System.out.println("\n################################### " + (i++) + " ###################################");
+			System.out.println(cliente.listarDados());
+			System.out.println("#########################################################################");
+		}
+	}
+	
+	//Retorna a quantidade de objetos do tipo Cliente no ArrayList
+	public static int quantidade() {
+		return listaClientes.size();
 	}
 }
