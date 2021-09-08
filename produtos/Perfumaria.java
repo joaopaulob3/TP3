@@ -8,11 +8,11 @@ public class Perfumaria extends Produto{
 	private String subfamiliaDoPerfume;
 	
 	//Construtor
-	public Perfumaria(String identificador, double precoDoProduto, double volumeDoProduto, 
+	public Perfumaria(double precoDoProduto, double volumeDoProduto, 
 			String codigoDoProduto, String marcaDoProduto, String linhaDoProduto,
 			String categoriaDoPerfume, String propriedadesDoPerfume, 
 			String familiaOlfativaDoPerfume, String subfamiliaDoPerfume) {
-		super("Perfume", precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, 
+		super(precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, 
 				linhaDoProduto);
 		this.setCategoriaDoPerfume(categoriaDoPerfume);
 		this.setPropriedadesDoPerfume(propriedadesDoPerfume);
@@ -49,6 +49,7 @@ public class Perfumaria extends Produto{
 	}
 	
 	//Retorna uma String com os dados do objeto
+	@Override
 	public String listarDados() {
 		return "Preço do perfume: R$" + this.getPrecoDoProduto() +
 				"\nVolume do perfume (ml): " + this.getVolumeDoProduto() +

@@ -5,10 +5,10 @@ public class SaboneteLiquido extends Produto{
 	private String propriedadesDoSaboneteLiquido;
 	
 	//Construor
-	public SaboneteLiquido(String identificador, double precoDoProduto, double volumeDoProduto, 
+	public SaboneteLiquido(double precoDoProduto, double volumeDoProduto, 
 			String codigoDoProduto, String marcaDoProduto, String linhaDoProduto, 
 			String propriedadesDoSaboneteLiquido) {
-		super("Sabonete Líquido", precoDoProduto, volumeDoProduto, codigoDoProduto, 
+		super(precoDoProduto, volumeDoProduto, codigoDoProduto, 
 				marcaDoProduto, linhaDoProduto);
 		this.setPropriedadesDoSaboneteLiquido(propriedadesDoSaboneteLiquido);
 	}
@@ -24,6 +24,7 @@ public class SaboneteLiquido extends Produto{
 	}
 	
 	//Retorna uma String com os dados do objeto
+	@Override
 	public String listarDados() {
 		return "Preço do sabonete líquido: R$" + this.getPrecoDoProduto() +
 				"\nVolume do sabonete líquido (ml): " + this.getVolumeDoProduto() +

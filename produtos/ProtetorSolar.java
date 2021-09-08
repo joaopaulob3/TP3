@@ -6,10 +6,10 @@ public class ProtetorSolar extends Produto{
 	private int fpsDoProtetorSolar;
 	
 	//Construtor
-	public ProtetorSolar(String identificador, double precoDoProduto, double volumeDoProduto, 
-			String codigoDoProduto, String marcaDoProduto, String linhaDoProduto, 
-			String propriedadesDoProtetorSolar, int fpsDoProtetorSolar) {
-		super("Protetor Solar", precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, linhaDoProduto);
+	public ProtetorSolar(double precoDoProduto, double volumeDoProduto, String codigoDoProduto, 
+			String marcaDoProduto, String linhaDoProduto, String propriedadesDoProtetorSolar, 
+			int fpsDoProtetorSolar) {
+		super(precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, linhaDoProduto);
 		this.setPropriedadesDoProtetorSolar(propriedadesDoProtetorSolar);
 		this.setFpsDoProtetorSolar(fpsDoProtetorSolar);
 	}
@@ -31,6 +31,7 @@ public class ProtetorSolar extends Produto{
 	}
 	
 	//Retorna uma String com os dados do objeto
+	@Override
 	public String listarDados() {
 		return "Preço do protetor solar: R$" + this.getPrecoDoProduto() +
 				"\nVolume do protetor solar (ml): " + this.getVolumeDoProduto() +

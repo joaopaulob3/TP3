@@ -7,12 +7,10 @@ public class Condicionador extends Produto{
 	private String condicaoDosFiosDoCondicionador;
 		
 	//Construtor
-	public Condicionador(String identificador, double precoDoProduto, double volumeDoProduto, 
-			String codigoDoProduto, String marcaDoProduto, String linhaDoProduto, 
-			String tipoDeCabeloDoCondicionador, String propriedadesDoCondicionador, 
-			String condicaoDosFiosDoCondicionador) {
-		super("Condicionador", precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, 
-				linhaDoProduto);
+	public Condicionador(double precoDoProduto, double volumeDoProduto, String codigoDoProduto,
+			String marcaDoProduto, String linhaDoProduto, String tipoDeCabeloDoCondicionador, 
+			String propriedadesDoCondicionador, String condicaoDosFiosDoCondicionador) {
+		super(precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, linhaDoProduto);
 		this.setTipoDeCabeloDoCondicionador(tipoDeCabeloDoCondicionador);
 		this.setPropriedadesDoCondicionador(propriedadesDoCondicionador);
 		this.setCondicaoDosFiosDoCondicionador(condicaoDosFiosDoCondicionador);
@@ -41,6 +39,7 @@ public class Condicionador extends Produto{
 	}
 		
 	//Retorna uma String com os dados do objeto
+	@Override
 	public String listarDados() {
 		return "Preço do condicionador: R$" + this.getPrecoDoProduto() +
 				"\nVolume do condicionador (ml): " + this.getVolumeDoProduto() +
