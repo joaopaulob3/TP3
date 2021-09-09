@@ -8,11 +8,11 @@ public class Shampoo extends Produto{
 	
 	//Construtor
 	public Shampoo(double precoDoProduto, double volumeDoProduto, 
-			String codigoDoProduto, String marcaDoProduto, String linhaDoProduto, 
-			String tipoDeCabeloDoShampoo, String propriedadesDoShampoo, 
+			String codigoDoProduto, String marcaDoProduto, String linhaDoProduto,
+			int quantidadeProduto, String tipoDeCabeloDoShampoo, String propriedadesDoShampoo, 
 			String condicaoDosFiosDoShampoo) {
 		super(precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, 
-				linhaDoProduto);
+				linhaDoProduto, quantidadeProduto);
 		this.setTipoDeCabeloDoShampoo(tipoDeCabeloDoShampoo);
 		this.setPropriedadesDoShampoo(propriedadesDoShampoo);
 		this.setCondicaoDosFiosDoShampoo(condicaoDosFiosDoShampoo);
@@ -43,7 +43,8 @@ public class Shampoo extends Produto{
 	//Retorna uma String com os dados do objeto
 	@Override
 	public String listarDados() {
-		return "Preço do shampoo: R$" + this.getPrecoDoProduto() +
+		return "Quantidade no estoque: " + this.getQuantidadeProduto() +
+				"\nPreço do shampoo: R$" + this.getPrecoDoProduto() +
 				"\nVolume do shampoo (ml): " + this.getVolumeDoProduto() +
 				"\nCódigo do shampoo: " + this.getCodigoDoProduto() + 
 				"\nMarca do shampoo: " + this.getMarcaDoProduto() + 

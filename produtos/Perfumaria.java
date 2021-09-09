@@ -10,10 +10,10 @@ public class Perfumaria extends Produto{
 	//Construtor
 	public Perfumaria(double precoDoProduto, double volumeDoProduto, 
 			String codigoDoProduto, String marcaDoProduto, String linhaDoProduto,
-			String categoriaDoPerfume, String propriedadesDoPerfume, 
+			int quantidadeProduto, String categoriaDoPerfume, String propriedadesDoPerfume, 
 			String familiaOlfativaDoPerfume, String subfamiliaDoPerfume) {
 		super(precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, 
-				linhaDoProduto);
+				linhaDoProduto, quantidadeProduto);
 		this.setCategoriaDoPerfume(categoriaDoPerfume);
 		this.setPropriedadesDoPerfume(propriedadesDoPerfume);
 		this.setFamiliaOlfativaDoPerfume(familiaOlfativaDoPerfume);
@@ -51,7 +51,8 @@ public class Perfumaria extends Produto{
 	//Retorna uma String com os dados do objeto
 	@Override
 	public String listarDados() {
-		return "Preço do perfume: R$" + this.getPrecoDoProduto() +
+		return "Quantidade no estoque: " + this.getQuantidadeProduto() + 
+				"\nPreço do perfume: R$" + this.getPrecoDoProduto() +
 				"\nVolume do perfume (ml): " + this.getVolumeDoProduto() +
 				"\nCódigo do perfume: " + this.getCodigoDoProduto() + 
 				"\nMarca do perfume: " + this.getMarcaDoProduto() + 

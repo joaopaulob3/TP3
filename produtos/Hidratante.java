@@ -6,8 +6,10 @@ public class Hidratante extends Produto{
 	
 	//Construtor
 	public Hidratante(double precoDoProduto, double volumeDoProduto, String codigoDoProduto, 
-			String marcaDoProduto, String linhaDoProduto, String tipoDePeleDoHidratante) {
-		super(precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, linhaDoProduto);
+			String marcaDoProduto, String linhaDoProduto, int quantidadeProduto, 
+			String tipoDePeleDoHidratante) {
+		super(precoDoProduto, volumeDoProduto, codigoDoProduto, marcaDoProduto, linhaDoProduto,
+				quantidadeProduto);
 		this.setTipoDePeleDoHidratante(tipoDePeleDoHidratante);
 	}
 	
@@ -24,7 +26,8 @@ public class Hidratante extends Produto{
 	//Retorna uma String com os dados do objeto
 	@Override
 	public String listarDados() {
-		return "Preço do hidratante: R$" + this.getPrecoDoProduto() +
+		return "Quantidade no estoque: " + this.getQuantidadeProduto() +
+				"\nPreço do hidratante: R$" + this.getPrecoDoProduto() +
 				"\nVolume do hidratante (ml): " + this.getVolumeDoProduto() +
 				"\nCódigo do hidratante: " + this.getCodigoDoProduto() + 
 				"\nMarca do hidratante: " + this.getMarcaDoProduto() + 
