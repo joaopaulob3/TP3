@@ -26,12 +26,13 @@ public class SaboneteLiquido extends Produto{
 	//Retorna uma String com os dados do objeto
 	@Override
 	public String listarDados() {
-		return "Quantidade no estoque: " + this.getQuantidadeProduto() +
+		return "Marca do sabonete líquido: " + this.getMarcaDoProduto() + 
+				"\nLinha do sabonete líquido: " + this.getLinhaDoProduto() + 
+				"\nPropriedades do sabonete líquido: " + this.getPropriedadesDoSaboneteLiquido() +
+				"\nCódigo do sabonete líquido: " + this.getCodigoDoProduto() +
 				"\nPreço do sabonete líquido: R$" + this.getPrecoDoProduto() +
 				"\nVolume do sabonete líquido (ml): " + this.getVolumeDoProduto() +
-				"\nCódigo do sabonete líquido: " + this.getCodigoDoProduto() + 
-				"\nMarca do sabonete líquido: " + this.getMarcaDoProduto() + 
-				"\nLinha do sabonete líquido: " + this.getLinhaDoProduto() + 
-				"\nPropriedades do sabonete líquido: " + this.getPropriedadesDoSaboneteLiquido();
+				"\n-------------------------------------------------------------------------" + 
+				"\nQuantidade no estoque: " + this.getQuantidadeProduto();
 	}
 }

@@ -43,14 +43,15 @@ public class Condicionador extends Produto{
 	//Retorna uma String com os dados do objeto
 	@Override
 	public String listarDados() {
-		return "Quantidade no estoque: " + this.getQuantidadeProduto() + 
+		return "Marca do condicionador: " + this.getMarcaDoProduto() +
+				"\nLinha do condicionador: " + this.getLinhaDoProduto() +
+				"\nTipo de cabelo do condicionador: " + this.getTipoDeCabeloDoCondicionador() +
+				"\nPropriedades do condicionador: " + this.getPropriedadesDoCondicionador() + 
+				"\nCondição dos fios do condicionador: " + this.getCondicaoDosFiosDoCondicionador() +
+				"\nCódigo do condicionador: " + this.getCodigoDoProduto() +
 				"\nPreço do condicionador: R$" + this.getPrecoDoProduto() +
 				"\nVolume do condicionador (ml): " + this.getVolumeDoProduto() +
-				"\nCódigo do condicionador: " + this.getCodigoDoProduto() + 
-				"\nMarca do condicionador: " + this.getMarcaDoProduto() + 
-				"\nLinha do condicionador: " + this.getLinhaDoProduto() + 
-				"\nTipo de cabelo do condicionador: " + this.getTipoDeCabeloDoCondicionador() + 
-				"\nPropriedades do condicionador: " + this.getPropriedadesDoCondicionador() + 
-				"\nCondição dos fios do condicionador: " + this.getCondicaoDosFiosDoCondicionador();
+				"\n-------------------------------------------------------------------------" + 
+				"\nQuantidade no estoque: " + this.getQuantidadeProduto();
 	}
 }

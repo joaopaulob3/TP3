@@ -16,6 +16,12 @@ public abstract class LerDados {
 			System.out.print(">>>Digite um valor válido: ");
 			argumento = lerInt(argumento);
 		}
+		
+		if (argumento < 0) {
+			System.out.print(">>>Digite um valor válido: ");
+			argumento = lerInt(argumento);
+		}
+		
 		return argumento;
 	}
 	
@@ -27,6 +33,12 @@ public abstract class LerDados {
 			System.out.print(">>>Digite um valor válido: ");
 			argumento = lerDouble(argumento);
 		}
+		
+		if (argumento < 0) {
+			System.out.print(">>>Digite um valor válido: ");
+			argumento = lerDouble(argumento);
+		}
+		
 		return argumento;
 	}
 	

@@ -11,61 +11,61 @@ public class Principal {
 	//adicionando-os aos seus respectivos ArrayList
 	public static void carregamentoInicial() {
 		//Perfume
-		Perfumaria zaad = new Perfumaria(249.90, 95, "B81382", "ZAAD", "Santal", 10,
+		Perfumaria zaad = new Perfumaria(249.90, 95, "perfume1", "ZAAD", "Santal", 10,
 				"Perfumaria Masculina", "Vegano e Cruelty Free", "Amadeirado", "Amadeirado");
 		ConjuntoPerfumaria.cadastrarPerfume(zaad);
-		Perfumaria malbec = new Perfumaria(143.90, 100, "B83188", "Malbec", "Bleu", 15,
+		Perfumaria malbec = new Perfumaria(143.90, 100, "perfume2", "Malbec", "Bleu", 15,
 				"Perfumaria Masculina", "Cruelty Free", "", "");
 		ConjuntoPerfumaria.cadastrarPerfume(malbec);
 		
 		//Hidratante
-		Hidratante nativaSPA = new Hidratante(42.90, 200, "B81338", "Nativa SPA", 
+		Hidratante nativaSPA = new Hidratante(42.90, 200, "hidratante1", "Nativa SPA", 
 				"Orgânico", 4, "Todos os tipos");
 		ConjuntoHidratante.cadastrarHidratante(nativaSPA);
-		Hidratante lily = new Hidratante(74.90, 250, "B77687", "Lily", "", 6,
+		Hidratante lily = new Hidratante(74.90, 250, "hidratante2", "Lily", "", 6,
 				"Todos os tipos");
 		ConjuntoHidratante.cadastrarHidratante(lily);
 		
 		//ProtetorSolar
-		ProtetorSolar cuidesebem = new ProtetorSolar(54.90, 50, "B72104", 
+		ProtetorSolar cuidesebem = new ProtetorSolar(54.90, 50, "protetor1", 
 				"Cuide-se bem", "Faciall", 5, "Cruelty Free", 50);
 		ConjuntoProtetorSolar.cadastrarProtetorSolar(cuidesebem);
-		ProtetorSolar cuidesebem2 = new ProtetorSolar(55.90, 200, "B75844", 
+		ProtetorSolar cuidesebem2 = new ProtetorSolar(55.90, 200, "protetor2", 
 				"Cuide-se bem", "Solar", 2, "Cruelty Free", 30);
 		ConjuntoProtetorSolar.cadastrarProtetorSolar(cuidesebem2);
 		
 		//Shampoo
-		Shampoo nativaSPA2 = new Shampoo(44.90, 300, "B79919", "Nativa SPA", "Matcha",
+		Shampoo nativaSPA2 = new Shampoo(44.90, 300, "shampoo1", "Nativa SPA", "Matcha",
 				6, "Todos os tipos", "Cruelty Free", "Resíduos");
 		ConjuntoShampoo.cadastrarShampoo(nativaSPA2);
-		Shampoo match = new Shampoo(35.90, 250, "B81651", "Match.", "Anti Oleosidade",
+		Shampoo match = new Shampoo(35.90, 250, "shampoo2", "Match.", "Anti Oleosidade",
 				12, "Oleosos ou Mistos", "Vegano e Cruelty Free", "Olesosos");
 		ConjuntoShampoo.cadastrarShampoo(match);
 		
 		//Condicionador
-		Condicionador cuidesebem3 = new Condicionador(24.90, 250, "B73913", 
-				"Cuide-se bem", "Lisos", 20, "Todos os tupos", "Cruelty Free", 
+		Condicionador cuidesebem3 = new Condicionador(24.90, 250, "condicionador1", 
+				"Cuide-se bem", "Lisos", 20, "Todos os tipos", "Cruelty Free", 
 				"Envelhecimento dos fios");
 		ConjuntoCondicionador.cadastrarCondicionador(cuidesebem3);
-		Condicionador sophie = new Condicionador(30.90, 200, "B75163", 
+		Condicionador sophie = new Condicionador(30.90, 200, "condicionador2", 
 				"Sophie", "", 12, "Todos os tipos", "Cruelty Free", "Resíduos");
 		ConjuntoCondicionador.cadastrarCondicionador(sophie);
 		
 		//Sabonete Líquido
-		SaboneteLiquido nativaSPA3 = new SaboneteLiquido(31.90, 200, "B71196",
+		SaboneteLiquido nativaSPA3 = new SaboneteLiquido(31.90, 200, "sabonete1",
 				"Nativa SPA","Lichia", 10, "Cruelty Free");
 		ConjuntoSaboneteLiquido.cadastrarSaboneteLiquido(nativaSPA3);
-		SaboneteLiquido floratta = new SaboneteLiquido(15.90, 75, "B75101", 
+		SaboneteLiquido floratta = new SaboneteLiquido(15.90, 75, "sabonete2", 
 				"Floratta","Rose", 18, "Cruelty Free");
 		ConjuntoSaboneteLiquido.cadastrarSaboneteLiquido(floratta);
 		
 		//Cliente
-		Cliente cliente1 = new Cliente("12388899970", "12345", "Jonas",
+		Cliente jonas = new Cliente("12388899970", "12345", "Jonas",
 				"jonas@gmail.com", "61991231231", "Masculino");
-		ConjuntoCliente.cadastrarCliente(cliente1);
-		Cliente cliente2 = new Cliente("127312731238", "772312", "Maria",
+		ConjuntoCliente.cadastrarCliente(jonas);
+		Cliente maria = new Cliente("127312731238", "772312", "Maria",
 				"maria@gmail.com", "413123123", "Feminino");
-		ConjuntoCliente.cadastrarCliente(cliente2);
+		ConjuntoCliente.cadastrarCliente(maria);
 	}
 	
 	
@@ -112,23 +112,19 @@ public class Principal {
 			case 9:
 				break;
 			case 10:
-				break;
-			case 11:
-				break;
-			case 12:
 				escolha = sair();
 				if (escolha == 'S' || escolha == 's') {
 					System.out.println("=============================================================================");
 					System.out.println("Você optou por sair do programa...");
 					System.out.println("=============================================================================");
 					System.exit(0);
-					break;
 				}
+				break;
 			}
-		} while(opcao != 12 || escolha == 'n' || escolha == 'N');
+		} while(opcao != 10 || escolha == 'n' || escolha == 'N');
 	}
 
-	
+	//MENU
 	public static int menu() {
 		//Declarações
 		int opcao = 0;
@@ -162,7 +158,8 @@ public class Principal {
 		//Declarações
 		String cpf = "", senha = "";
 		
-		//Somente o administrador pode cadastrar, editar ou remover um produto no sistema
+		//Somente o gerenciador do sistema pode cadastrar, editar ou 
+		//remover um produto no sistema
 		System.out.println("===============================================================================================");
 		System.out.println("LOGIN:");
 		System.out.print(">>>CPF: ");
@@ -178,6 +175,7 @@ public class Principal {
 		}
 	}
 	
+	//OPÇÃO 1 - Somente o gerenciador do sistema
 	//OPÇÃO 1 - Somente o gerenciador do sistema
 	public static void cadastrarProduto(GerenciadorDoSistema funcionario) {
 		//Declarações
@@ -500,6 +498,7 @@ public class Principal {
 	}
 	
 	//OPÇÃO 2
+	//OPÇÃO 2
 	public static void cadastrarCliente() {
 		//Declarações
 		String nome = "", email = "", cpf = "", celular = "", genero = "", senha = "";
@@ -534,6 +533,7 @@ public class Principal {
 		ConjuntoCliente.cadastrarCliente(cliente);
 	}
 	
+	//OPÇÃO 3 - Somente o gerenciador do sistema
 	//OPÇÃO 3 - Somente o gerenciador do sistema
 	public static void editarProduto(GerenciadorDoSistema funcionario) {
 		//Declarações
@@ -708,6 +708,7 @@ public class Principal {
 	}
 	
 	//OPÇÃO 4 - Somente o gerenciador do sistema
+	//OPÇÃO 4 - Somente o gerenciador do sistema
 	public static void editarCliente(GerenciadorDoSistema funcionario) {
 		//Declarações
 		Cliente cliente;
@@ -745,7 +746,7 @@ public class Principal {
 	//OPÇÃO 5
 	public static void listarDadosDosProdutos() {
 		//Declarações
-		int opcao = 0, aux = 0;
+		int opcao = 0;
 		
 		System.out.println("===============================================================================================");
 		System.out.println("Deseja ver os dados de quais produtos?");
@@ -768,53 +769,89 @@ public class Principal {
 		switch (opcao){
 		//Listagem dos dados dos perfumes
 		case 1:
-			aux = ConjuntoPerfumaria.quantidade();
-			ConjuntoPerfumaria.listaPerfumes();
-			System.out.println("\n==========================================================================================================");
-			System.out.println("Há " + aux + " perfumes cadastrados no sistema");
-			System.out.println("==========================================================================================================\n");
+			listarPerfume();
 			break;
 		//Listagem dos dados dos hidratantes
 		case 2:
-			aux = ConjuntoHidratante.quantidade();
-			ConjuntoHidratante.listaHidratantes();
-			System.out.println("\n==========================================================================================================");
-			System.out.println("Há " + aux + " hidratantes cadastrados no sistema");
-			System.out.println("==========================================================================================================\n");
+			listarHidratante();
 			break;
 		//Listagem dos dados dos protetores solar
 		case 3:
-			aux = ConjuntoProtetorSolar.quantidade();
-			ConjuntoProtetorSolar.listaProtetorSolar();
-			System.out.println("\n==========================================================================================================");
-			System.out.println("Há " + aux + " protetores solar cadastrados no sistema");
-			System.out.println("==========================================================================================================\n");
+			listarProtetorSolar();
 			break;
 		//Listagem dos dados dos shampoos
 		case 4:
-			aux = ConjuntoShampoo.quantidade();
-			ConjuntoShampoo.listaShampoo();
-			System.out.println("\n==========================================================================================================");
-			System.out.println("Há " + aux + " shampoos cadastrados no sistema");
-			System.out.println("==========================================================================================================\n");
+			listarShampoo();
 			break;
 		//Listagem dos dados dos condicionadores
 		case 5:
-			aux = ConjuntoCondicionador.quantidade();
-			ConjuntoCondicionador.listaCondicionador();
-			System.out.println("\n==========================================================================================================");
-			System.out.println("Há " + aux + " condicionadores cadastrados no sistema");
-			System.out.println("==========================================================================================================\n");
+			listarCondicionador();
 			break;
 		//Listagem dos dados dos sabonetes líquidos
 		case 6:
-			aux = ConjuntoSaboneteLiquido.quantidade();
-			ConjuntoSaboneteLiquido.listaSaboneteLiquido();
-			System.out.println("\n==========================================================================================================");
-			System.out.println("Há " + aux + " sabonetes líquido cadastrados no sistema");
-			System.out.println("==========================================================================================================\n");
+			listarSaboneteLiquido();
 			break;
 		}
+	}
+	public static void listarPerfume() {
+		//Declarações
+		int aux = 0;
+		
+		aux = ConjuntoPerfumaria.quantidade();
+		ConjuntoPerfumaria.listaPerfumes();
+		System.out.println("\n==========================================================================================================");
+		System.out.println("Há " + aux + " perfumes cadastrados no sistema");
+		System.out.println("==========================================================================================================\n");
+	}
+	public static void listarHidratante() {
+		//Declarações
+		int aux = 0;
+		
+		aux = ConjuntoHidratante.quantidade();
+		ConjuntoHidratante.listaHidratantes();
+		System.out.println("\n==========================================================================================================");
+		System.out.println("Há " + aux + " hidratantes cadastrados no sistema");
+		System.out.println("==========================================================================================================\n");
+	}
+	public static void listarProtetorSolar() {
+		//Declarações
+		int aux = 0;
+		
+		aux = ConjuntoProtetorSolar.quantidade();
+		ConjuntoProtetorSolar.listaProtetorSolar();
+		System.out.println("\n==========================================================================================================");
+		System.out.println("Há " + aux + " protetores solar cadastrados no sistema");
+		System.out.println("==========================================================================================================\n");
+	}
+	public static void listarShampoo() {
+		//Declarações
+		int aux = 0;
+		
+		aux = ConjuntoShampoo.quantidade();
+		ConjuntoShampoo.listaShampoo();
+		System.out.println("\n==========================================================================================================");
+		System.out.println("Há " + aux + " shampoos cadastrados no sistema");
+		System.out.println("==========================================================================================================\n");
+	}
+	public static void listarCondicionador() {
+		//Declarações
+		int aux = 0;
+		
+		aux = ConjuntoCondicionador.quantidade();
+		ConjuntoCondicionador.listaCondicionador();
+		System.out.println("\n==========================================================================================================");
+		System.out.println("Há " + aux + " condicionadores cadastrados no sistema");
+		System.out.println("==========================================================================================================\n");
+	}
+	public static void listarSaboneteLiquido() {
+		//Declarações
+		int aux = 0;
+		
+		aux = ConjuntoSaboneteLiquido.quantidade();
+		ConjuntoSaboneteLiquido.listaSaboneteLiquido();
+		System.out.println("\n==========================================================================================================");
+		System.out.println("Há " + aux + " sabonetes líquido cadastrados no sistema");
+		System.out.println("==========================================================================================================\n");
 	}
 	
 	//OPÇÃO 6 - Somente o gerenciador do sistema

@@ -51,15 +51,16 @@ public class Perfumaria extends Produto{
 	//Retorna uma String com os dados do objeto
 	@Override
 	public String listarDados() {
-		return "Quantidade no estoque: " + this.getQuantidadeProduto() + 
-				"\nPreço do perfume: R$" + this.getPrecoDoProduto() +
-				"\nVolume do perfume (ml): " + this.getVolumeDoProduto() +
-				"\nCódigo do perfume: " + this.getCodigoDoProduto() + 
-				"\nMarca do perfume: " + this.getMarcaDoProduto() + 
+		return "Marca do perfume: " + this.getMarcaDoProduto() + 
 				"\nLinha do perfume: " + this.getLinhaDoProduto() + 
 				"\nCategoria do perfume: " + this.getCategoriaDoPerfume() + 
 				"\nPropriedades do perfume: " + this.getPropriedadesDoPerfume() + 
 				"\nFamília olfativa do perfume: " + this.getFamiliaOlfativaDoPerfume() +
-				"\nSubfamília do perfume: " + this.getSubfamiliaDoPerfume();
+				"\nSubfamília do perfume: " + this.getSubfamiliaDoPerfume() +
+				"\nCódigo do perfume: " + this.getCodigoDoProduto() +
+				"\nPreço do perfume: R$" + this.getPrecoDoProduto() +
+				"\nVolume do perfume (ml): " + this.getVolumeDoProduto() +
+				"\n-------------------------------------------------------------------------" + 
+				"\nQuantidade no estoque: " + this.getQuantidadeProduto();
 	}
 }

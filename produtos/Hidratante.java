@@ -26,12 +26,13 @@ public class Hidratante extends Produto{
 	//Retorna uma String com os dados do objeto
 	@Override
 	public String listarDados() {
-		return "Quantidade no estoque: " + this.getQuantidadeProduto() +
+		return "Marca do hidratante: " + this.getMarcaDoProduto() + 
+				"\nLinha do hidratante: " + this.getLinhaDoProduto() + 
+				"\nTipo de pele do hidratante: " + this.getTipoDePeleDoHidratante() +
+				"\nCódigo do hidratante: " + this.getCodigoDoProduto() +
 				"\nPreço do hidratante: R$" + this.getPrecoDoProduto() +
 				"\nVolume do hidratante (ml): " + this.getVolumeDoProduto() +
-				"\nCódigo do hidratante: " + this.getCodigoDoProduto() + 
-				"\nMarca do hidratante: " + this.getMarcaDoProduto() + 
-				"\nLinha do hidratante: " + this.getLinhaDoProduto() + 
-				"\nTipo de pele do hidratante: " + this.getTipoDePeleDoHidratante();
+				"\n-------------------------------------------------------------------------" +
+				"\nQuantidade no estoque: " + this.getQuantidadeProduto();
 	}
 }

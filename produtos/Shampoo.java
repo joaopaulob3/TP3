@@ -43,14 +43,15 @@ public class Shampoo extends Produto{
 	//Retorna uma String com os dados do objeto
 	@Override
 	public String listarDados() {
-		return "Quantidade no estoque: " + this.getQuantidadeProduto() +
-				"\nPreço do shampoo: R$" + this.getPrecoDoProduto() +
-				"\nVolume do shampoo (ml): " + this.getVolumeDoProduto() +
-				"\nCódigo do shampoo: " + this.getCodigoDoProduto() + 
-				"\nMarca do shampoo: " + this.getMarcaDoProduto() + 
+		return "Marca do shampoo: " + this.getMarcaDoProduto() + 
 				"\nLinha do shampoo: " + this.getLinhaDoProduto() + 
 				"\nTipo de cabelo do shampoo: " + this.getTipoDeCabeloDoShampoo() + 
 				"\nPropriedades do shampoo: " + this.getPropriedadesDoShampoo() + 
-				"\nCondição dos fios do shampoo: " + this.getCondicaoDosFiosDoShampoo();
+				"\nCondição dos fios do shampoo: " + this.getCondicaoDosFiosDoShampoo() + 
+				"\nCódigo do shampoo: " + this.getCodigoDoProduto() + 
+				"\nPreço do shampoo: R$" + this.getPrecoDoProduto() +
+				"\nVolume do shampoo (ml): " + this.getVolumeDoProduto() +
+				"\n-------------------------------------------------------------------------" + 
+				"\nQuantidade no estoque: " + this.getQuantidadeProduto();
 	}
 }
