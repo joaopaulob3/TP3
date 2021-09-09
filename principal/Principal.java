@@ -4,6 +4,7 @@ import leituraDeDados.*;
 import pessoas.*;
 import produtos.*;
 import arraylists.*;
+import compra.Compra;
 
 public class Principal {
 
@@ -68,17 +69,16 @@ public class Principal {
 		ConjuntoCliente.cadastrarCliente(maria);
 	}
 	
-	
 	public static void main(String[] args) {
 		//Declarações
 		int opcao = 0;
 		char escolha = 0;
 		
-		//Cria um gerenciador do sistema
-		GerenciadorDoSistema funcionario = new GerenciadorDoSistema("12345678900", "login");
-		
 		//Chama o método de pré-carregamento dos objetos
 		carregamentoInicial();
+		
+		//Cria um gerenciador do sistema
+		GerenciadorDoSistema funcionario = new GerenciadorDoSistema("12345678900", "login");
 		
 		//Inicia o menu com suas funcionalidades
 		do {
@@ -110,8 +110,9 @@ public class Principal {
 				deletarCliente(funcionario);
 				break;
 			case 9:
+				realizarCompra();
 				break;
-			case 10:
+			case 11:
 				escolha = sair();
 				if (escolha == 'S' || escolha == 's') {
 					System.out.println("=============================================================================");
@@ -129,7 +130,8 @@ public class Principal {
 		//Declarações
 		int opcao = 0;
 		
-		System.out.println("=============== PERFUMARIA, CORPO E BANHO ========================================================");
+		//Menu com validação da opção escolhida
+		System.out.println("=============== PERFUMARIA, CORPO E BANHO ================================");
 		System.out.println("[1] Cadastrar um produto");
 		System.out.println("[2] Cadastrar um cliente");
 		System.out.println("[3] Editar informações de um produto");
@@ -139,28 +141,28 @@ public class Principal {
 		System.out.println("[7] Deletar um produto");
 		System.out.println("[8] Deletar um cliente");
 		System.out.println("[9] Realizar uma compra");
-		System.out.println("[10] Sair");
-		System.out.println("===============================================================================================");
+		System.out.println("[10 Listar compras");
+		System.out.println("[11] Sair");
+		System.out.println("===========================================================================");
 		System.out.print(">>>Sua opção: ");
 		do {
 			opcao = LerDados.lerInt(opcao);
-			if (opcao < 1 || opcao > 12) {
+			if (opcao < 1 || opcao > 11) {
 				System.out.print(">>>Digite um valor válido: ");
 			}
-		} while(opcao < 1 || opcao > 12);
+		} while(opcao < 1 || opcao > 11);
 		
 		return opcao;
 	}
 	
-	
+	//Login do gerenciador do sistema. Somente o gerenciador do sistema 
+	//pode cadastrar, editar ou remover um produto no sistema
 	//Login (ambiente de acesso aos métodos)
 	public static boolean login(GerenciadorDoSistema funcionario) {
 		//Declarações
 		String cpf = "", senha = "";
 		
-		//Somente o gerenciador do sistema pode cadastrar, editar ou 
-		//remover um produto no sistema
-		System.out.println("===============================================================================================");
+		System.out.println("=========================================================================");
 		System.out.println("LOGIN:");
 		System.out.print(">>>CPF: ");
 		cpf = LerDados.lerString();
@@ -183,7 +185,8 @@ public class Principal {
 		
 		//Se o login tiver sido validado com sucesso, podemos prosseguir com o cadastro
 		if (login(funcionario)) {
-			System.out.println("===============================================================================================");
+			//Inicia o menu de cadastro e valida a opção do usuário
+			System.out.println("=========================================================================");
 			System.out.println("Qual produto deseja cadastrar?");
 			System.out.println("[1] Perfume");
 			System.out.println("[2] Hidratante");
@@ -192,7 +195,7 @@ public class Principal {
 			System.out.println("[5] Condicionador");
 			System.out.println("[6] Sabonete Líquido");
 			System.out.println("[0] Voltar ao menu");
-			System.out.println("===============================================================================================");
+			System.out.println("=========================================================================");
 			System.out.print(">>>Sua opção: ");
 			do {
 				opcao = LerDados.lerInt(opcao);
@@ -201,6 +204,7 @@ public class Principal {
 				}
 			} while(opcao < 0 || opcao > 6);
 			
+			//Inicia os cadastros
 			switch (opcao) {
 			case 1:
 				cadastrarPerfume();
@@ -222,9 +226,9 @@ public class Principal {
 				break;
 			}
 		} else {
-			System.out.println("===============================================================================================");
+			System.out.println("=========================================================================");
 			System.out.println("Usuário não autenticado. Tente novamente.");
-			System.out.println("===============================================================================================");
+			System.out.println("=========================================================================");
 		}
 	}
 	public static void cadastrarPerfume() {
@@ -237,7 +241,7 @@ public class Principal {
 		String subfamilia = "";
 		
 		//Leitura dos dados do usuário
-		System.out.println("===============================================================================================");
+		System.out.println("=========================================================================");
 		System.out.print(">>>Preço do perfume: R$");
 		preco = LerDados.lerDouble(preco);
 		
@@ -267,15 +271,15 @@ public class Principal {
 		
 		System.out.print(">>>Subfamília do perfume: ");
 		subfamilia = LerDados.lerString();
-		System.out.println("\n===============================================================================================");
+		System.out.println("\n=========================================================================");
 		System.out.println("PRODUTO CADASTRADO!");
-		System.out.println("===============================================================================================");
+		System.out.println("=========================================================================");
 		
 		//Criação do objeto do tipo Perfumaria através do Construtor
 		Perfumaria perfume = new Perfumaria(preco, volume, codigo, marca, linha, 
 				quantidade, categoria, propriedades, familia, subfamilia);
 		
-		//Adicionando o objeto criado no ArrayList ConjuntoPerfumaria
+		//Adicionando o objeto criado no ArrayList listaPerfumes
 		ConjuntoPerfumaria.cadastrarPerfume(perfume);
 	}
 	public static void cadastrarHidratante() {
@@ -286,7 +290,7 @@ public class Principal {
 		String linha = "", tipo = "";
 		
 		//Leitura dos dados do usuário
-		System.out.println("===============================================================================================");
+		System.out.println("=========================================================================");
 		System.out.print(">>>Preço do hidratante: R$");
 		preco = LerDados.lerDouble(preco);
 		
@@ -307,15 +311,15 @@ public class Principal {
 		
 		System.out.print(">>>Tipo de pele do hidratante: ");
 		tipo = LerDados.lerString();
-		System.out.println("\n===============================================================================================");
+		System.out.println("\n=========================================================================");
 		System.out.println("PRODUTO CADASTRADO!");
-		System.out.println("===============================================================================================");
+		System.out.println("=========================================================================");
 		
-		//Criação do objeto do tipo Perfumaria através do Construtor
+		//Criação do objeto do tipo Hidratante através do Construtor
 		Hidratante hidratante = new Hidratante(preco, volume, codigo, marca, linha,
 				quantidade,tipo);
 		
-		//Adicionando o objeto criado no ArrayList ConjuntoHidratante
+		//Adicionando o objeto criado no ArrayList listaHidratantes
 		ConjuntoHidratante.cadastrarHidratante(hidratante);
 	}
 	public static void cadastrarProtetorSolar() {
@@ -327,7 +331,7 @@ public class Principal {
 		int fps = 0;
 		
 		//Leitura dos dados do usuário
-		System.out.println("===============================================================================================");
+		System.out.println("=========================================================================");
 		System.out.print(">>>Preço do protetor solar: R$");
 		preco = LerDados.lerDouble(preco);
 		
@@ -351,15 +355,15 @@ public class Principal {
 		
 		System.out.print(">>>FPS do protetor solar: ");
 		fps = LerDados.lerInt(fps);
-		System.out.println("\n===============================================================================================");
+		System.out.println("\n=========================================================================");
 		System.out.println("PRODUTO CADASTRADO!");
-		System.out.println("===============================================================================================");
+		System.out.println("=========================================================================");
 		
-		//Criação do objeto do tipo Perfumaria através do Construtor
+		//Criação do objeto do tipo ProtetorSolar através do Construtor
 		ProtetorSolar protetor = new ProtetorSolar(preco, volume, codigo, marca,
 				linha, quantidade, propriedades, fps);
 		
-		//Adicionando o objeto criado no ArrayList ConjuntoProtetorSolar
+		//Adicionando o objeto criado no ArrayList listaProtetorSolar
 		ConjuntoProtetorSolar.cadastrarProtetorSolar(protetor);
 	}
 	public static void cadastrarShampoo() {
@@ -371,7 +375,7 @@ public class Principal {
 		String propriedades = "", condicao = "";
 		
 		//Leitura dos dados do usuário
-		System.out.println("===============================================================================================");
+		System.out.println("=========================================================================");
 		System.out.print(">>>Preço do shampoo: R$");
 		preco = LerDados.lerDouble(preco);
 		
@@ -398,15 +402,15 @@ public class Principal {
 		
 		System.out.print(">>>Condição dos fios do shampoo: ");
 		condicao = LerDados.lerString();
-		System.out.println("\n===============================================================================================");
+		System.out.println("\n=========================================================================");
 		System.out.println("PRODUTO CADASTRADO!");
-		System.out.println("===============================================================================================");
+		System.out.println("=========================================================================");
 		
-		//Criação do objeto do tipo Perfumaria através do Construtor
+		//Criação do objeto do tipo Shampoo através do Construtor
 		Shampoo shampoo = new Shampoo(preco, volume, codigo, marca, linha, 
 				quantidade, tipo, propriedades, condicao);
 		
-		//Adicionando o objeto criado no ArrayList ConjuntoShampoo
+		//Adicionando o objeto criado no ArrayList listaShampoos
 		ConjuntoShampoo.cadastrarShampoo(shampoo);
 	}
 	public static void cadastrarCondicionador() {
@@ -418,7 +422,7 @@ public class Principal {
 		String propriedades = "", condicao = "";
 		
 		//Leitura dos dados do usuário
-		System.out.println("===============================================================================================");
+		System.out.println("=========================================================================");
 		System.out.print(">>>Preço do condicionador: R$");
 		preco = LerDados.lerDouble(preco);
 		
@@ -445,15 +449,15 @@ public class Principal {
 		
 		System.out.print(">>>Condição dos fios do condicionador: ");
 		condicao = LerDados.lerString();
-		System.out.println("\n===============================================================================================");
+		System.out.println("\n=========================================================================");
 		System.out.println("PRODUTO CADASTRADO!");
-		System.out.println("===============================================================================================");
+		System.out.println("=========================================================================");
 		
-		//Criação do objeto do tipo Perfumaria através do Construtor
+		//Criação do objeto do tipo Condicionador através do Construtor
 		Condicionador condicionador = new Condicionador(preco, volume, codigo, 
 				marca, linha, quantidade, tipo, propriedades, condicao);
 		
-		//Adicionando o objeto criado no ArrayList ConjuntoCondicionador
+		//Adicionando o objeto criado no ArrayList listaCondicionadores
 		ConjuntoCondicionador.cadastrarCondicionador(condicionador);
 	}
 	public static void cadastrarSaboneteLiquido() {
@@ -464,7 +468,7 @@ public class Principal {
 		String linha = "", propriedades = "";
 		
 		//Leitura dos dados do usuário
-		System.out.println("===============================================================================================");
+		System.out.println("=========================================================================");
 		System.out.print(">>>Preço do sabonete líquido: R$");
 		preco = LerDados.lerDouble(preco);
 		
@@ -485,15 +489,15 @@ public class Principal {
 		
 		System.out.print(">>>Propriedades do sabonete líquido: ");
 		propriedades = LerDados.lerString();
-		System.out.println("\n===============================================================================================");
+		System.out.println("\n=========================================================================");
 		System.out.println("PRODUTO CADASTRADO!");
-		System.out.println("===============================================================================================");
+		System.out.println("=========================================================================");
 		
-		//Criação do objeto do tipo Perfumaria através do Construtor
+		//Criação do objeto do tipo SaboneteLiquido através do Construtor
 		SaboneteLiquido sabonete = new SaboneteLiquido(preco, volume, codigo, 
 				marca, linha, quantidade, propriedades);
 		
-		//Adicionando o objeto criado no ArrayList ConjuntoSaboneteLiquido
+		//Adicionando o objeto criado no ArrayList listaSabonetesLiquido
 		ConjuntoSaboneteLiquido.cadastrarSaboneteLiquido(sabonete);
 	}
 	
@@ -504,7 +508,7 @@ public class Principal {
 		String nome = "", email = "", cpf = "", celular = "", genero = "", senha = "";
 		
 		//Leitura dos dados do usuário
-		System.out.println("===================================================================================================");
+		System.out.println("=========================================================================");
 		System.out.print(">>>Nome do cliente: ");
 		nome = LerDados.lerString();
 		
@@ -522,14 +526,14 @@ public class Principal {
 		
 		System.out.print(">>>Senha do cliente: ");
 		senha = LerDados.lerString();
-		System.out.println("===================================================================================================");
+		System.out.println("\n=========================================================================");
 		System.out.println("CLIENTE CADASTRADO!");
-		System.out.println("===================================================================================================");
+		System.out.println("=========================================================================");
 		
 		//Criação do objeto do tipo Cliente através Construtor
 		Cliente cliente = new Cliente(cpf, senha, nome, email, celular, genero);
 		
-		//Adicionando o objeto criado no ArrayList de Produto
+		//Adicionando o objeto criado no ArrayList listaClientes
 		ConjuntoCliente.cadastrarCliente(cliente);
 	}
 	
@@ -548,7 +552,8 @@ public class Principal {
 		
 		//Se o login tiver sido validado, podemos prosseguir com a edição
 		if (login(funcionario)) {
-			System.out.println("===============================================================================================");
+			//Inicia o menu de edição e valida a opção do usuário
+			System.out.println("=========================================================================");
 			System.out.println("Qual produto deseja editar?");
 			System.out.println("[1] Perfume");
 			System.out.println("[2] Hidratante");
@@ -557,7 +562,7 @@ public class Principal {
 			System.out.println("[5] Condicionador");
 			System.out.println("[6] Sabonete Líquido");
 			System.out.println("[0] Voltar ao menu");
-			System.out.println("===============================================================================================");
+			System.out.println("=========================================================================");
 			System.out.print(">>>Sua opção: ");
 			do {
 				opcao = LerDados.lerInt(opcao);
@@ -573,6 +578,7 @@ public class Principal {
 				if (ConjuntoPerfumaria.temPerfume()) {
 					System.out.print(">>>Informe o código do produto: ");
 					codigo = LerDados.lerString();
+					//Resgata o objeto do tipo Perfumaria do ArrayList listaPerfumes
 					perfume = ConjuntoPerfumaria.pesquisarPerfume(codigo);
 					//Se o código for reconhecido no sistema, podemos prosseguir
 					if (perfume != null) {
@@ -580,14 +586,14 @@ public class Principal {
 						ConjuntoPerfumaria.deletarPerfume(perfume);
 						cadastrarPerfume();
 					} else {
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					}
 				} else {
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 					System.out.println("Ainda não foi cadastrado nenhum perfume.");
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 				}
 				break;
 			case 2:
@@ -595,6 +601,7 @@ public class Principal {
 				if (ConjuntoHidratante.temHidratante()) {
 					System.out.print(">>>Informe o código do produto: ");
 					codigo = LerDados.lerString();
+					//Resgata o objeto do tipo Hidratante do ArrayList listaHidratantes
 					hidratante = ConjuntoHidratante.pesquisarHidratante(codigo);
 					//Se o código for reconhecido no sistema, podemos prosseguir
 					if (hidratante != null) {
@@ -602,14 +609,14 @@ public class Principal {
 						ConjuntoHidratante.deletarHidratante(hidratante);
 						cadastrarHidratante();
 					} else {
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					}
 				} else {
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 					System.out.println("Ainda não foi cadastrado nenhum hidratante.");
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 				}
 				break;
 			case 3:
@@ -617,6 +624,7 @@ public class Principal {
 				if (ConjuntoProtetorSolar.temProtetorSolar()) {
 					System.out.print(">>>Informe o código do produto: ");
 					codigo = LerDados.lerString();
+					//Resgata o objeto do tipo ProtetorSolar do ArrayList listaProtetorSolar
 					protetor = ConjuntoProtetorSolar.pesquisarProtetorSolar(codigo);
 					//Se o código for reconhecido no sistema, podemos prosseguir
 					if (protetor != null) {
@@ -624,14 +632,14 @@ public class Principal {
 						ConjuntoProtetorSolar.deletarProtetorSolar(protetor);
 						cadastrarProtetorSolar();
 					} else {
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					}
 				} else {
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 					System.out.println("Ainda não foi cadastrado nenhum protetor solar.");
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 				}
 				break;
 			case 4:
@@ -639,6 +647,7 @@ public class Principal {
 				if (ConjuntoShampoo.temShampoo()) {
 					System.out.print(">>>Informe o código do produto: ");
 					codigo = LerDados.lerString();
+					//Resgata o objeto do tipo Shampoo do ArrayList listaShampoos
 					shampoo = ConjuntoShampoo.pesquisarShampoo(codigo);
 					//Se o código for reconhecido no sistema, podemos prosseguir
 					if (shampoo != null) {
@@ -646,14 +655,14 @@ public class Principal {
 						ConjuntoShampoo.deletarShampoo(shampoo);
 						cadastrarShampoo();
 					} else {
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					}
 				} else {
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 					System.out.println("Ainda não foi cadastrado nenhum shampoo.");
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 				}
 				break;
 			case 5:
@@ -661,6 +670,7 @@ public class Principal {
 				if (ConjuntoCondicionador.temCondicionador()) {
 					System.out.print(">>>Informe o código do produto: ");
 					codigo = LerDados.lerString();
+					//Resgata o objeto do tipo Condicionador do ArrayList listaCondicionadores
 					condicionador = ConjuntoCondicionador.pesquisarCondicionador(codigo);
 					//Se o código for reconhecido no sistema, podemos prosseguir
 					if (condicionador != null) {
@@ -668,14 +678,14 @@ public class Principal {
 						ConjuntoCondicionador.deletarCondicionador(condicionador);
 						cadastrarCondicionador();
 					} else {
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					}
 				} else {
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 					System.out.println("Ainda não foi cadastrado nenhum condicionador.");
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 				}
 				break;
 			case 6:
@@ -683,6 +693,7 @@ public class Principal {
 				if (ConjuntoSaboneteLiquido.temSaboneteLiquido()) {
 					System.out.print(">>>Informe o código do produto: ");
 					codigo = LerDados.lerString();
+					//Resgata o objeto do tipo SaboneteLiquido do ArrayList listaSabonetesLiquido
 					sabonete = ConjuntoSaboneteLiquido.pesquisarSaboneteLiquido(codigo);
 					//Se o código for reconhecido no sistema, podemos prosseguir
 					if (sabonete != null) {
@@ -690,20 +701,20 @@ public class Principal {
 						ConjuntoSaboneteLiquido.deletarSaboneteLiquido(sabonete);
 						cadastrarSaboneteLiquido();
 					} else {
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					}
 				} else {
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 					System.out.println("Ainda não foi cadastrado nenhum sabonete líquido.");
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 				}
 			}
 		} else {
-			System.out.println("===============================================================================================");
+			System.out.println("=========================================================================");
 			System.out.println("Usuário não autenticado. Tente novamente.");
-			System.out.println("===============================================================================================");
+			System.out.println("=========================================================================");
 		}
 	}
 	
@@ -712,34 +723,35 @@ public class Principal {
 	public static void editarCliente(GerenciadorDoSistema funcionario) {
 		//Declarações
 		Cliente cliente;
-		String nome = "";
+		String cpf = "";
 		
 		//Se o login tiver sido validado com sucesso, podemos prosseguir com a edição
 		if (login(funcionario)) {
 			//Programa continua se houver Produto cadastrado no sistema
 			if (ConjuntoCliente.temCliente()) {
-				System.out.print(">>>Informe o nome do cliente: ");
-				nome = LerDados.lerString();
-				cliente = ConjuntoCliente.pesquisarCliente(nome);
+				System.out.print(">>>Informe o CPF do cliente: ");
+				cpf = LerDados.lerString();
+				//Resgata o objeto do tipo Cliente do ArrayList listaClientes
+				cliente = ConjuntoCliente.pesquisarCliente(cpf);
 				//Programa continua se o nome for encontrado no sistema
 				if (cliente != null) {
 					//Cliente é deletado e recadastrado
 					ConjuntoCliente.deletarCliente(cliente);
 					cadastrarCliente();
 				} else {
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 					System.out.println("O nome informado não foi encontrado no sistema.");
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 				}
 			} else {
-				System.out.println("=================================================================================================");
+				System.out.println("=========================================================================");
 				System.out.println("Ainda não foi cadastrado nenhum cliente.");
-				System.out.println("=================================================================================================");
+				System.out.println("=========================================================================");
 			}
 		} else {
-			System.out.println("===============================================================================================");
+			System.out.println("=========================================================================");
 			System.out.println("Usuário não autenticado. Tente novamente.");
-			System.out.println("===============================================================================================");
+			System.out.println("=========================================================================");
 		}
 	}
 	
@@ -748,7 +760,8 @@ public class Principal {
 		//Declarações
 		int opcao = 0;
 		
-		System.out.println("===============================================================================================");
+		//Inicia o menu de listagem e valida a opção do usuário
+		System.out.println("=========================================================================");
 		System.out.println("Deseja ver os dados de quais produtos?");
 		System.out.println("[1] Perfume");
 		System.out.println("[2] Hidratante");
@@ -757,7 +770,7 @@ public class Principal {
 		System.out.println("[5] Condicionador");
 		System.out.println("[6] Sabonete Líquido");
 		System.out.println("[0] Voltar ao menu");
-		System.out.println("===============================================================================================");
+		System.out.println("=========================================================================");
 		System.out.print(">>>Sua opção: ");
 		do {
 			opcao = LerDados.lerInt(opcao);
@@ -766,28 +779,23 @@ public class Principal {
 			}
 		} while(opcao < 0 || opcao > 6);
 		
+		//Inicia as listagens
 		switch (opcao){
-		//Listagem dos dados dos perfumes
 		case 1:
 			listarPerfume();
 			break;
-		//Listagem dos dados dos hidratantes
 		case 2:
 			listarHidratante();
 			break;
-		//Listagem dos dados dos protetores solar
 		case 3:
 			listarProtetorSolar();
 			break;
-		//Listagem dos dados dos shampoos
 		case 4:
 			listarShampoo();
 			break;
-		//Listagem dos dados dos condicionadores
 		case 5:
 			listarCondicionador();
 			break;
-		//Listagem dos dados dos sabonetes líquidos
 		case 6:
 			listarSaboneteLiquido();
 			break;
@@ -799,9 +807,9 @@ public class Principal {
 		
 		aux = ConjuntoPerfumaria.quantidade();
 		ConjuntoPerfumaria.listaPerfumes();
-		System.out.println("\n==========================================================================================================");
+		System.out.println("\n=========================================================================");
 		System.out.println("Há " + aux + " perfumes cadastrados no sistema");
-		System.out.println("==========================================================================================================\n");
+		System.out.println("=========================================================================\n");
 	}
 	public static void listarHidratante() {
 		//Declarações
@@ -809,9 +817,9 @@ public class Principal {
 		
 		aux = ConjuntoHidratante.quantidade();
 		ConjuntoHidratante.listaHidratantes();
-		System.out.println("\n==========================================================================================================");
+		System.out.println("\n=========================================================================");
 		System.out.println("Há " + aux + " hidratantes cadastrados no sistema");
-		System.out.println("==========================================================================================================\n");
+		System.out.println("=========================================================================\n");
 	}
 	public static void listarProtetorSolar() {
 		//Declarações
@@ -819,9 +827,9 @@ public class Principal {
 		
 		aux = ConjuntoProtetorSolar.quantidade();
 		ConjuntoProtetorSolar.listaProtetorSolar();
-		System.out.println("\n==========================================================================================================");
+		System.out.println("\n=========================================================================");
 		System.out.println("Há " + aux + " protetores solar cadastrados no sistema");
-		System.out.println("==========================================================================================================\n");
+		System.out.println("=========================================================================\n");
 	}
 	public static void listarShampoo() {
 		//Declarações
@@ -829,9 +837,9 @@ public class Principal {
 		
 		aux = ConjuntoShampoo.quantidade();
 		ConjuntoShampoo.listaShampoo();
-		System.out.println("\n==========================================================================================================");
+		System.out.println("\n=========================================================================");
 		System.out.println("Há " + aux + " shampoos cadastrados no sistema");
-		System.out.println("==========================================================================================================\n");
+		System.out.println("=========================================================================\n");
 	}
 	public static void listarCondicionador() {
 		//Declarações
@@ -839,9 +847,9 @@ public class Principal {
 		
 		aux = ConjuntoCondicionador.quantidade();
 		ConjuntoCondicionador.listaCondicionador();
-		System.out.println("\n==========================================================================================================");
+		System.out.println("\n=========================================================================");
 		System.out.println("Há " + aux + " condicionadores cadastrados no sistema");
-		System.out.println("==========================================================================================================\n");
+		System.out.println("=========================================================================\n");
 	}
 	public static void listarSaboneteLiquido() {
 		//Declarações
@@ -849,9 +857,9 @@ public class Principal {
 		
 		aux = ConjuntoSaboneteLiquido.quantidade();
 		ConjuntoSaboneteLiquido.listaSaboneteLiquido();
-		System.out.println("\n==========================================================================================================");
+		System.out.println("\n=========================================================================");
 		System.out.println("Há " + aux + " sabonetes líquido cadastrados no sistema");
-		System.out.println("==========================================================================================================\n");
+		System.out.println("=========================================================================\n");
 	}
 	
 	//OPÇÃO 6 - Somente o gerenciador do sistema
@@ -864,14 +872,14 @@ public class Principal {
 			if (ConjuntoCliente.temCliente()) {
 				ConjuntoCliente.listaClientes();
 			} else {
-				System.out.println("===============================================================================================");
+				System.out.println("=========================================================================");
 				System.out.println("Ainda não foi cadastrado nenhum cliente no sistema.");
-				System.out.println("===============================================================================================");
+				System.out.println("=========================================================================");
 			}
 		} else {
-			System.out.println("===============================================================================================");
+			System.out.println("=========================================================================");
 			System.out.println("Usuário não autenticado. Tente novamente.");
-			System.out.println("===============================================================================================");
+			System.out.println("=========================================================================");
 		}
 	}
 	
@@ -889,7 +897,8 @@ public class Principal {
 		
 		//Se o login tiver sido validado, podemos prosseguir com a edição
 		if (login(funcionario)) {
-			System.out.println("===============================================================================================");
+			//Inicia o menu de deleção e valida a opção do usuário
+			System.out.println("=========================================================================");
 			System.out.println("Qual produto deseja deletar?");
 			System.out.println("[1] Perfume");
 			System.out.println("[2] Hidratante");
@@ -898,7 +907,7 @@ public class Principal {
 			System.out.println("[5] Condicionador");
 			System.out.println("[6] Sabonete Líquido");
 			System.out.println("[0] Voltar ao menu");
-			System.out.println("===============================================================================================");
+			System.out.println("=========================================================================");
 			System.out.print(">>>Sua opção: ");
 			do {
 				opcao = LerDados.lerInt(opcao);
@@ -914,23 +923,24 @@ public class Principal {
 				if (ConjuntoPerfumaria.temPerfume()) {
 					System.out.print(">>>Informe o código do produto: ");
 					codigo = LerDados.lerString();
+					//Resgata o objeto do tipo Perfumaria do ArrayList listaPerfumes
 					perfume = ConjuntoPerfumaria.pesquisarPerfume(codigo);
 					//Se o código for reconhecido no sistema, podemos prosseguir
 					if (perfume != null) {
 						//Deleta o perfume
 						ConjuntoPerfumaria.deletarPerfume(perfume);
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("Perfume deletado.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					} else {
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					}
 				} else {
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 					System.out.println("Ainda não foi cadastrado nenhum perfume.");
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 				}
 				break;
 			case 2:
@@ -938,23 +948,24 @@ public class Principal {
 				if (ConjuntoHidratante.temHidratante()) {
 					System.out.print(">>>Informe o código do produto: ");
 					codigo = LerDados.lerString();
+					//Resgata o objeto do tipo Hidratante do ArrayList listaHidratantes
 					hidratante = ConjuntoHidratante.pesquisarHidratante(codigo);
 					//Se o código for reconhecido no sistema, podemos prosseguir
 					if (hidratante != null) {
 						//Deleta o hidratante
 						ConjuntoHidratante.deletarHidratante(hidratante);
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("Hidratante deletado.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					} else {
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					}
 				} else {
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 					System.out.println("Ainda não foi cadastrado nenhum hidratante.");
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 				}
 				break;
 			case 3:
@@ -962,23 +973,24 @@ public class Principal {
 				if (ConjuntoProtetorSolar.temProtetorSolar()) {
 					System.out.print(">>>Informe o código do produto: ");
 					codigo = LerDados.lerString();
+					//Resgata o objeto do tipo ProtetorSolar do ArrayList listaProtetorSolar
 					protetor = ConjuntoProtetorSolar.pesquisarProtetorSolar(codigo);
 					//Se o código for reconhecido no sistema, podemos prosseguir
 					if (protetor != null) {
 						//Deleta o protetor solar
 						ConjuntoProtetorSolar.deletarProtetorSolar(protetor);
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("Protetor Solar deletado.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					} else {
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					}
 				} else {
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 					System.out.println("Ainda não foi cadastrado nenhum protetor solar.");
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 				}
 				break;
 			case 4:
@@ -986,23 +998,24 @@ public class Principal {
 				if (ConjuntoShampoo.temShampoo()) {
 					System.out.print(">>>Informe o código do produto: ");
 					codigo = LerDados.lerString();
+					//Resgata o objeto do tipo Shampoo do ArrayList listaShampoos
 					shampoo = ConjuntoShampoo.pesquisarShampoo(codigo);
 					//Se o código for reconhecido no sistema, podemos prosseguir
 					if (shampoo != null) {
 						//Deleta o shampoo
 						ConjuntoShampoo.deletarShampoo(shampoo);
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("Shampoo deletado.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					} else {
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");;
 					}
 				} else {
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 					System.out.println("Ainda não foi cadastrado nenhum shampoo.");
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 				}
 				break;
 			case 5:
@@ -1010,23 +1023,24 @@ public class Principal {
 				if (ConjuntoCondicionador.temCondicionador()) {
 					System.out.print(">>>Informe o código do produto: ");
 					codigo = LerDados.lerString();
+					//Resgata oo objeto do tipo Condicionador do ArrayList listaCondicionadores
 					condicionador = ConjuntoCondicionador.pesquisarCondicionador(codigo);
 					//Se o código for reconhecido no sistema, podemos prosseguir
 					if (condicionador != null) {
 						//Deleta o condicionador
 						ConjuntoCondicionador.deletarCondicionador(condicionador);
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("Condicionador deletado.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					} else {
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					}
 				} else {
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 					System.out.println("Ainda não foi cadastrado nenhum condicionador.");
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 				}
 				break;
 			case 6:
@@ -1034,30 +1048,31 @@ public class Principal {
 				if (ConjuntoSaboneteLiquido.temSaboneteLiquido()) {
 					System.out.print(">>>Informe o código do produto: ");
 					codigo = LerDados.lerString();
+					//Resgata o objeto do tipo SaboneteLiquido do ArrayList listaSabonetesLiquido
 					sabonete = ConjuntoSaboneteLiquido.pesquisarSaboneteLiquido(codigo);
 					//Se o código for reconhecido no sistema, podemos prosseguir
 					if (sabonete != null) {
 						//Deleta o sabonete líquido
 						ConjuntoSaboneteLiquido.deletarSaboneteLiquido(sabonete);
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("Sabonete Líquido deletado.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					} else {
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=================================================================================================");
+						System.out.println("=========================================================================");
 					}
 				} else {
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 					System.out.println("Ainda não foi cadastrado nenhum sabonete líquido.");
-					System.out.println("=================================================================================================");
+					System.out.println("=========================================================================");
 				}
 				break;
 			}
 		} else {
-			System.out.println("===============================================================================================");
+			System.out.println("=========================================================================");
 			System.out.println("Usuário não autenticado. Tente novamente.");
-			System.out.println("===============================================================================================");
+			System.out.println("=========================================================================");
 		}
 	}
 	
@@ -1098,16 +1113,518 @@ public class Principal {
 	
 	//OPÇÃO 9
 	public static void realizarCompra() {
-		//Perguntar o CPF e qual produto o cliente irá comprar
-		//Listar todos os produtos da categoria escolhida (entre as 6 disponíveis)
-		//Quando a pessoa escolher, peça a senha e dados do cartão de crédito para validar tudo
-		//Compute a venda no sistema e a redução do item no estoque
+		//Declarações
+		Cliente cliente;
+		String senha = "", cpf = "";
+		int opcao = 0;
+		
+		//Verifica se o CPF digitado existe no sistema e se a senha está correta
+		System.out.print(">>>Digite o CPF: ");
+		cpf = LerDados.lerString();
+		//Resgata o objeto do tipo Cliente do ArrayList listaClientes
+		cliente = ConjuntoCliente.pesquisarCliente(cpf);
+		
+		//Se o objeto Cliente tiver sido resgatado, podemos prosseguir
+		if (cliente != null) {
+			System.out.print(">>>Digite a senha: ");
+			senha = LerDados.lerString();
+			//Se a senha informada, for a senha do objeto Cliente resgatado,
+			//podemos prosseguir
+			if (senha.equals(cliente.getSenha())) {
+				//Inicia o menu de compra e valida as informações
+				System.out.println("=========================================================================");
+				System.out.println("Deseja comprar qual tipo de produto?");
+				System.out.println("[1] Perfume");
+				System.out.println("[2] Hidratante");
+				System.out.println("[3] Protetor Solar");
+				System.out.println("[4] Shampoo");
+				System.out.println("[5] Condicionador");
+				System.out.println("[6] Sabonete Líquido");
+				System.out.println("[0] Voltar ao menu");
+				System.out.println("=========================================================================");
+				System.out.print(">>>Sua opção: ");
+				do {
+					opcao = LerDados.lerInt(opcao);
+					if (opcao < 0 || opcao > 6) {
+						System.out.print(">>>Digite um valor válido: ");
+					}
+				} while(opcao < 0 || opcao > 6);
+				
+				//Imprime os dados do tipo de produto selecionado e realiza a compra,
+				//cadastrando o objeto no ArrayList respectivo ao seu tipo
+				switch (opcao) {
+				case 1:
+					compraPerfume(cliente, cpf);
+					break;
+				case 2:
+					compraHidratante(cliente, cpf);
+					break;
+				case 3:
+					compraProtetorSolar(cliente, cpf);
+					break;
+				case 4:
+					compraShampoo(cliente, cpf);
+					break;
+				case 5:
+					compraCondicionador(cliente, cpf);
+					break;
+				case 6:
+					compraSaboneteLiquido(cliente, cpf);
+					break;
+				}
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("Senha incorreta. Tente novamente.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("O CPF informado não foi encontrado no sistema.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void compraPerfume(Cliente cliente, String cpf) {
+		//Declarações
+		String codigo = "";
+		int quantidade = 0;
+		char escolha = 0;
+		double valorDaCompra = 0;
+		Perfumaria perfume;
+		
+		//Lista os perfumes existentes no sistema
+		listarPerfume();
+		
+		System.out.println("-------------------------------------------------------------------------");
+		System.out.print(">>>Informe o código do perfume que deseja comprar: ");
+		codigo = LerDados.lerString();
+		//Resgata o objeto do tipo Perfumaria do ArrayList listaPerfumes
+		perfume = ConjuntoPerfumaria.pesquisarPerfume(codigo);
+		
+		//Se o objeto do tipo Perfumaria tiver sido resgatado, podemos prosseguir
+		if (perfume != null) {
+			do {
+				System.out.print(">>>Quantidade que deseja comprar: ");
+				quantidade = LerDados.lerInt(quantidade);
+				//Se a quantidade informada pelo usuário for menor ou igual à quantidade em
+				//estoque, podemos prosseguir
+				if (quantidade > perfume.getQuantidadeProduto()) {
+					System.out.println("=========================================================================");
+					System.out.println("A quantidade informada é maior que a quantidade em estoque!");
+					System.out.println("=========================================================================");
+				} else {
+					//Valida a escolha do usuário
+					System.out.print("\n>>>Deseja finalizar a compra? [S/N]: ");
+					do {
+						escolha = LerDados.lerChar(escolha);
+						if (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S') {
+							System.out.print(">>>Digite S para sim e N para não: ");
+						}
+					} while (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S');
+					//Se a escolha for sim, prosseguimos
+					if (escolha == 'S' || escolha == 's') {
+						//Armazena o valor da compra
+						valorDaCompra = quantidade*perfume.getPrecoDoProduto();
+						//Criação do objeto Compra através do Construtor
+						Compra compraPerfume = new Compra(cliente, perfume, valorDaCompra);
+						//Adicionando o objeto criado no ArrayList listaCompras
+						ConjuntoCompra.cadastrarCompra(compraPerfume);
+						//Diminui a quantidade comprada do estoque do produto
+						perfume.setQuantidadeProduto(perfume.getQuantidadeProduto() - quantidade);
+						
+						System.out.println("\n=========================================================================");
+						System.out.println("Compra finalizada! Agradecemos a preferência");
+						System.out.println("=========================================================================");
+						System.out.println("Sobre o produto: ");
+						System.out.println("-------------------------------------------------------------------------");
+						System.out.println(perfume.listarDados());
+						System.out.println("=========================================================================");
+						System.out.println("Valor da compra: R$ " + valorDaCompra);
+						System.out.println("=========================================================================");
+						quantidade = ConjuntoCompra.quantidade(cpf);
+						System.out.println("\n=========================================================================");
+						System.out.println("Compras realizadas até o momento em nossa loja: " + quantidade);
+						System.out.println("=========================================================================");
+					}
+				}
+			} while(quantidade > perfume.getQuantidadeProduto());
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Código não encontrado. Tente novamente.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void compraHidratante(Cliente cliente, String cpf) {
+		//Declarações
+		String codigo = "";
+		int quantidade = 0;
+		char escolha = 0;
+		double valorDaCompra = 0;
+		Hidratante hidratante;
+		
+		//Lista os hidratantes existentes no sistema
+		listarHidratante();
+		
+		System.out.println("-------------------------------------------------------------------------");
+		System.out.print(">>>Informe o código do hidratante que deseja comprar: ");
+		codigo = LerDados.lerString();
+		//Resgata o objeto do tipo Hidratante do ArrayList listaHidratantes
+		hidratante = ConjuntoHidratante.pesquisarHidratante(codigo);
+		
+		//Se o objeto do tipo Hidratante tiver sido resgatado, podemos prosseguir
+		if (hidratante != null) {
+			do {
+				System.out.print(">>>Quantidade que deseja comprar: ");
+				quantidade = LerDados.lerInt(quantidade);
+				//Se a quantidade informada pelo usuário for menor ou igual à quantidade em
+				//estoque, podemos prosseguir
+				if (quantidade > hidratante.getQuantidadeProduto()) {
+					System.out.println("=========================================================================");
+					System.out.println("A quantidade informada é maior que a quantidade em estoque!");
+					System.out.println("=========================================================================");
+				} else {
+					//Valida a escolha do usuário
+					System.out.print("\n>>>Deseja finalizar a compra? [S/N]: ");
+					do {
+						escolha = LerDados.lerChar(escolha);
+						if (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S') {
+							System.out.print(">>>Digite S para sim e N para não: ");
+						}
+					} while (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S');
+					//Se a escolha for sim, prosseguimos
+					if (escolha == 'S' || escolha == 's') {
+						//Armazena o valor da compra
+						valorDaCompra = quantidade*hidratante.getPrecoDoProduto();
+						//Criação do objeto Compra através do Construtor
+						Compra compraHidratante = new Compra(cliente, hidratante, valorDaCompra);
+						//Adicionando o objeto criado no ArrayList listaCompras
+						ConjuntoCompra.cadastrarCompra(compraHidratante);
+						//Diminui a quantidade comprada do estoque do produto
+						hidratante.setQuantidadeProduto(hidratante.getQuantidadeProduto() - quantidade);
+						
+						System.out.println("\n=========================================================================");
+						System.out.println("Compra finalizada! Agradecemos a preferência");
+						System.out.println("=========================================================================");
+						System.out.println("Sobre o produto: ");
+						System.out.println("-------------------------------------------------------------------------");
+						System.out.println(hidratante.listarDados());
+						System.out.println("=========================================================================");
+						System.out.println("Valor da compra: R$ " + valorDaCompra);
+						System.out.println("=========================================================================");
+						quantidade = ConjuntoCompra.quantidade(cpf);
+						System.out.println("\n=========================================================================");
+						System.out.println("Compras realizadas até o momento em nossa loja: " + quantidade);	
+						System.out.println("=========================================================================");
+					}
+				}
+			} while(quantidade > hidratante.getQuantidadeProduto());
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Código não encontrado. Tente novamente.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void compraProtetorSolar(Cliente cliente, String cpf) {
+		//Declarações
+		String codigo = "";
+		int quantidade = 0;
+		char escolha = 0;
+		double valorDaCompra = 0;
+		ProtetorSolar protetor;
+		
+		//Lista os protetores existentes no sistema
+		listarProtetorSolar();
+		
+		System.out.println("-------------------------------------------------------------------------");
+		System.out.print(">>>Informe o código do protetor que deseja comprar: ");
+		codigo = LerDados.lerString();
+		//Resgata o objeto do tipo ProtetorSolar do ArrayList listaProtetoresSolar
+		protetor = ConjuntoProtetorSolar.pesquisarProtetorSolar(codigo);
+		
+		//Se o objeto do tipo ProtetorSolar tiver sido resgatado, podemos prosseguir
+		if (protetor != null) {
+			do {
+				System.out.print(">>>Quantidade que deseja comprar: ");
+				quantidade = LerDados.lerInt(quantidade);
+				//Se a quantidade informada pelo usuário for menor ou igual à quantidade em
+				//estoque, podemos prosseguir
+				if (quantidade > protetor.getQuantidadeProduto()) {
+					System.out.println("=========================================================================");
+					System.out.println("A quantidade informada é maior que a quantidade em estoque!");
+					System.out.println("=========================================================================");
+				} else {
+					//Valida a escolha do usuário
+					System.out.print("\n>>>Deseja finalizar a compra? [S/N]: ");
+					do {
+						escolha = LerDados.lerChar(escolha);
+						if (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S') {
+							System.out.print(">>>Digite S para sim e N para não: ");
+						}
+					} while (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S');
+					//Se a escolha for sim, prosseguimos
+					if (escolha == 'S' || escolha == 's') {
+						//Armazena o valor da compra
+						valorDaCompra = quantidade*protetor.getPrecoDoProduto();
+						//Criação do objeto Compra através do Construtor
+						Compra compraProtetor = new Compra(cliente, protetor, valorDaCompra);
+						//Adicionando o objeto criado no ArrayList listaCompras
+						ConjuntoCompra.cadastrarCompra(compraProtetor);
+						//Diminui a quantidade comprada do estoque do produto
+						protetor.setQuantidadeProduto(protetor.getQuantidadeProduto() - quantidade);
+						
+						System.out.println("\n=========================================================================");
+						System.out.println("Compra finalizada! Agradecemos a preferência");
+						System.out.println("=========================================================================");
+						System.out.println("Sobre o produto: ");
+						System.out.println("-------------------------------------------------------------------------");
+						System.out.println(protetor.listarDados());
+						System.out.println("=========================================================================");
+						System.out.println("Valor da compra: R$ " + valorDaCompra);
+						System.out.println("=========================================================================");
+						quantidade = ConjuntoCompra.quantidade(cpf);
+						System.out.println("\n=========================================================================");
+						System.out.println("Compras realizadas até o momento em nossa loja: " + quantidade);			
+						System.out.println("=========================================================================");
+					}
+				}
+			} while(quantidade > protetor.getQuantidadeProduto());
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Código não encontrado. Tente novamente.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void compraShampoo(Cliente cliente, String cpf) {
+		//Declarações
+		String codigo = "";
+		int quantidade = 0;
+		char escolha = 0;
+		double valorDaCompra = 0;
+		Shampoo shampoo;
+		
+		//Lista os shampoos existentes no sistema
+		listarShampoo();
+		
+		System.out.println("-------------------------------------------------------------------------");
+		System.out.print(">>>Informe o código do shampoo que deseja comprar: ");
+		codigo = LerDados.lerString();
+		//Resgata o objeto do tipo Shampoo do ArrayList listaShampoos
+		shampoo = ConjuntoShampoo.pesquisarShampoo(codigo);
+		
+		//Se o objeto do tipo Shampoo tiver sido resgatado, podemos prosseguir
+		if (shampoo != null) {
+			do {
+				System.out.print(">>>Quantidade que deseja comprar: ");
+				quantidade = LerDados.lerInt(quantidade);
+				//Se a quantidade informada pelo usuário for menor ou igual à quantidade em
+				//estoque, podemos prosseguir
+				if (quantidade > shampoo.getQuantidadeProduto()) {
+					System.out.println("=========================================================================");
+					System.out.println("A quantidade informada é maior que a quantidade em estoque!");
+					System.out.println("=========================================================================");
+				} else {
+					//Valida a escolha do usuário
+					System.out.print("\n>>>Deseja finalizar a compra? [S/N]: ");
+					do {
+						escolha = LerDados.lerChar(escolha);
+						if (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S') {
+							System.out.print(">>>Digite S para sim e N para não: ");
+						}
+					} while (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S');
+					//Se a escolha for sim, prosseguimos
+					if (escolha == 'S' || escolha == 's') {
+						//Armazena o valor da compra
+						valorDaCompra = quantidade*shampoo.getPrecoDoProduto();
+						//Criação do objeto Compra através do Construtor
+						Compra compraShampoo = new Compra(cliente, shampoo, valorDaCompra);
+						//Adicionando o objeto criado no ArrayList listaCompras
+						ConjuntoCompra.cadastrarCompra(compraShampoo);
+						//Diminui a quantidade comprada do estoque do produto
+						shampoo.setQuantidadeProduto(shampoo.getQuantidadeProduto() - quantidade);
+						
+						System.out.println("\n=========================================================================");
+						System.out.println("Compra finalizada! Agradecemos a preferência");
+						System.out.println("=========================================================================");
+						System.out.println("Sobre o produto: ");
+						System.out.println("-------------------------------------------------------------------------");
+						System.out.println(shampoo.listarDados());
+						System.out.println("=========================================================================");
+						System.out.println("Valor da compra: R$ " + valorDaCompra);
+						System.out.println("=========================================================================");
+						quantidade = ConjuntoCompra.quantidade(cpf);
+						System.out.println("\n=========================================================================");
+						System.out.println("Compras realizadas até o momento em nossa loja: " + quantidade);			
+						System.out.println("=========================================================================");
+					}
+				}
+			} while(quantidade > shampoo.getQuantidadeProduto());
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Código não encontrado. Tente novamente.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void compraCondicionador(Cliente cliente, String cpf) {
+		//Declarações
+		String codigo = "";
+		int quantidade = 0;
+		char escolha = 0;
+		double valorDaCompra = 0;
+		Condicionador condicionador;
+		
+		//Lista os condicionadores existentes no sistema
+		listarCondicionador();
+		
+		System.out.println("-------------------------------------------------------------------------");
+		System.out.print(">>>Informe o código do condicionador que deseja comprar: ");
+		codigo = LerDados.lerString();
+		//Resgata o objeto do tipo Condicionador do ArrayList listaCondicionadores
+		condicionador = ConjuntoCondicionador.pesquisarCondicionador(codigo);
+		
+		//Se o objeto do tipo Condicionador tiver sido resgatado, podemos prosseguir
+		if (condicionador != null) {
+			do {
+				System.out.print(">>>Quantidade que deseja comprar: ");
+				quantidade = LerDados.lerInt(quantidade);
+				//Se a quantidade informada pelo usuário for menor ou igual à quantidade em
+				//estoque, podemos prosseguir
+				if (quantidade > condicionador.getQuantidadeProduto()) {
+					System.out.println("=========================================================================");
+					System.out.println("A quantidade informada é maior que a quantidade em estoque!");
+					System.out.println("=========================================================================");
+				} else {
+					//Valida a escolha do usuário
+					System.out.print("\n>>>Deseja finalizar a compra? [S/N]: ");
+					do {
+						escolha = LerDados.lerChar(escolha);
+						if (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S') {
+							System.out.print(">>>Digite S para sim e N para não: ");
+						}
+					} while (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S');
+					//Se a escolha for sim, prosseguimos
+					if (escolha == 'S' || escolha == 's') {
+						//Armazena o valor da compra
+						valorDaCompra = quantidade*condicionador.getPrecoDoProduto();
+						//Criação do objeto Compra através do Construtor
+						Compra compraCondicionador = new Compra(cliente, condicionador, valorDaCompra);
+						//Adicionando o objeto criado no ArrayList listaCompras
+						ConjuntoCompra.cadastrarCompra(compraCondicionador);
+						//Diminui a quantidade comprada do estoque do produto
+						condicionador.setQuantidadeProduto(condicionador.getQuantidadeProduto() - quantidade);
+						
+						System.out.println("\n=========================================================================");
+						System.out.println("Compra finalizada! Agradecemos a preferência");
+						System.out.println("=========================================================================");
+						System.out.println("Sobre o produto: ");
+						System.out.println("-------------------------------------------------------------------------");
+						System.out.println(condicionador.listarDados());
+						System.out.println("=========================================================================");
+						System.out.println("Valor da compra: R$ " + valorDaCompra);
+						System.out.println("=========================================================================");
+						quantidade = ConjuntoCompra.quantidade(cpf);
+						System.out.println("\n=========================================================================");
+						System.out.println("Compras realizadas até o momento em nossa loja: " + quantidade);	
+						System.out.println("=========================================================================");
+					}
+				}
+			} while(quantidade > condicionador.getQuantidadeProduto());
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Código não encontrado. Tente novamente.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void compraSaboneteLiquido(Cliente cliente, String cpf) {
+		//Declarações
+		String codigo = "";
+		int quantidade = 0;
+		char escolha = 0;
+		double valorDaCompra = 0;
+		SaboneteLiquido sabonete;
+		
+		//Lista os sabonetes líquido existentes no sistema
+		listarSaboneteLiquido();
+		
+		System.out.println("-------------------------------------------------------------------------");
+		System.out.print(">>>Informe o código do sabonete líquido que deseja comprar: ");
+		codigo = LerDados.lerString();
+		//Resgata o objeto do tipo SaboneteLiquido do ArrayList listaSabonetesLiquido
+		sabonete = ConjuntoSaboneteLiquido.pesquisarSaboneteLiquido(codigo);
+		
+		//Se o objeto do tipo SaboneteLiquido tiver sido resgatado, podemos prosseguir
+		if (sabonete != null) {
+			do {
+				System.out.print(">>>Quantidade que deseja comprar: ");
+				quantidade = LerDados.lerInt(quantidade);
+				//Se a quantidade informada pelo usuário for menor ou igual à quantidade em
+				//estoque, podemos prosseguir
+				if (quantidade > sabonete.getQuantidadeProduto()) {
+					System.out.println("=========================================================================");
+					System.out.println("A quantidade informada é maior que a quantidade em estoque!");
+					System.out.println("=========================================================================");
+				} else {
+					//Valida a escolha do usuário
+					System.out.print("\n>>>Deseja finalizar a compra? [S/N]: ");
+					do {
+						escolha = LerDados.lerChar(escolha);
+						if (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S') {
+							System.out.print(">>>Digite S para sim e N para não: ");
+						}
+					} while (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S');
+					//Se a escolha for sim, prosseguimos
+					if (escolha == 'S' || escolha == 's') {
+						//Armazena o valor da compra
+						valorDaCompra = quantidade*sabonete.getPrecoDoProduto();
+						//Criação do objeto Compra através do Construtor
+						Compra compraSabonete = new Compra(cliente, sabonete, valorDaCompra);
+						//Adicionando o objeto criado no ArrayList listaCompras
+						ConjuntoCompra.cadastrarCompra(compraSabonete);
+						//Diminui a quantidade comprada do estoque do produto
+						sabonete.setQuantidadeProduto(sabonete.getQuantidadeProduto() - quantidade);
+						
+						System.out.println("\n=========================================================================");
+						System.out.println("Compra finalizada! Agradecemos a preferência");
+						System.out.println("=========================================================================");
+						System.out.println("Sobre o produto: ");
+						System.out.println("-------------------------------------------------------------------------");
+						System.out.println(sabonete.listarDados());
+						System.out.println("=========================================================================");
+						System.out.println("Valor da compra: R$ " + valorDaCompra);
+						System.out.println("=========================================================================");
+						quantidade = ConjuntoCompra.quantidade(cpf);
+						System.out.println("\n=========================================================================");
+						System.out.println("Compras realizadas até o momento em nossa loja: " + quantidade);	
+						System.out.println("=========================================================================");
+					}
+				}
+			} while(quantidade > sabonete.getQuantidadeProduto());
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Código não encontrado. Tente novamente.");
+			System.out.println("=========================================================================");
+		}
 	}
 	
+	//OPÇÃO 10 - Somente o gerenciador do sistema
+	public static void listarCompras(GerenciadorDoSistema funcionario) {
+		//Declarações
+		
+		//Se o login tiver sido validado com sucesso, podemos prosseguir com a listagem
+		if (login(funcionario)) {
+			
+		} else {
+			System.out.println("=========================================================================");
+			System.out.println("Usuário não autenticado. Tente novamente.");
+			System.out.println("=========================================================================");
+		}
+	}
+	
+	//OPÇÃO 11
 	public static char sair() {
 		//Declarações
 		char escolha = 0;
 		
+		//Pergunta se o usuário deseja sair do programa, valida a entrada
+		//de dado e retorna um caractere 
 		System.out.print("\n>>>Deseja realmente sair? [S/N]: ");
 		do {
 			escolha = LerDados.lerChar(escolha);

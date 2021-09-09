@@ -1,9 +1,8 @@
 package arraylists;
 
 import java.util.ArrayList;
-
 import pessoas.Cliente;
-import produtos.Condicionador;
+
 
 public class ConjuntoCliente {
 	//Criação do ArrayList de objetos do tipo Cliente
@@ -19,12 +18,12 @@ public class ConjuntoCliente {
 		listaClientes.remove(cliente);
 	}
 	
-	//Pesquisa o objeto do tipo Cliente pelo nome dentro do ArrayList
-	//e retorna esse objeto. Se o código informado não bater com o de nenhum
+	//Pesquisa o objeto do tipo Cliente pelo CPF dentro do ArrayList
+	//e retorna esse objeto. Se o CPF informado não bater com o de nenhum
 	//objeto, retorna null
-	public static Cliente pesquisarCliente(String nome) {
+	public static Cliente pesquisarCliente(String cpf) {
 		for (Cliente cliente : listaClientes) {
-			if (nome.equalsIgnoreCase(cliente.getNomeCliente())) {
+			if (cpf.equals(cliente.getCpf())) {
 				return cliente;
 			}
 		}
