@@ -112,17 +112,20 @@ public class Principal {
 			case 9:
 				realizarCompra();
 				break;
+			case 10:
+				listarCompras(funcionario);
+				break;
 			case 11:
 				escolha = sair();
 				if (escolha == 'S' || escolha == 's') {
-					System.out.println("=============================================================================");
+					System.out.println("\n=============================================================================");
 					System.out.println("Você optou por sair do programa...");
 					System.out.println("=============================================================================");
 					System.exit(0);
 				}
 				break;
 			}
-		} while(opcao != 10 || escolha == 'n' || escolha == 'N');
+		} while(opcao != 11 || escolha == 'n' || escolha == 'N');
 	}
 
 	//MENU
@@ -141,7 +144,7 @@ public class Principal {
 		System.out.println("[7] Deletar um produto");
 		System.out.println("[8] Deletar um cliente");
 		System.out.println("[9] Realizar uma compra");
-		System.out.println("[10 Listar compras");
+		System.out.println("[10] Listar compras");
 		System.out.println("[11] Sair");
 		System.out.println("===========================================================================");
 		System.out.print(">>>Sua opção: ");
@@ -740,7 +743,7 @@ public class Principal {
 					cadastrarCliente();
 				} else {
 					System.out.println("=========================================================================");
-					System.out.println("O nome informado não foi encontrado no sistema.");
+					System.out.println("O CPF informado não foi encontrado no sistema.");
 					System.out.println("=========================================================================");
 				}
 			} else {
@@ -1221,11 +1224,11 @@ public class Principal {
 						}
 					} while (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S');
 					//Se a escolha for sim, prosseguimos
-					if (escolha == 'S' || escolha == 's') {
+					if (escolha == 'S' || escolha == 's' && quantidade > 0) {
 						//Armazena o valor da compra
 						valorDaCompra = quantidade*perfume.getPrecoDoProduto();
 						//Criação do objeto Compra através do Construtor
-						Compra compraPerfume = new Compra(cliente, perfume, valorDaCompra);
+						Compra compraPerfume = new Compra(cliente, perfume, valorDaCompra, quantidade);
 						//Adicionando o objeto criado no ArrayList listaCompras
 						ConjuntoCompra.cadastrarCompra(compraPerfume);
 						//Diminui a quantidade comprada do estoque do produto
@@ -1244,6 +1247,8 @@ public class Principal {
 						System.out.println("\n=========================================================================");
 						System.out.println("Compras realizadas até o momento em nossa loja: " + quantidade);
 						System.out.println("=========================================================================");
+						//Reiniciando o valor da variável para não ter problema no loop
+						quantidade = 0;
 					}
 				}
 			} while(quantidade > perfume.getQuantidadeProduto());
@@ -1291,11 +1296,11 @@ public class Principal {
 						}
 					} while (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S');
 					//Se a escolha for sim, prosseguimos
-					if (escolha == 'S' || escolha == 's') {
+					if (escolha == 'S' || escolha == 's' && quantidade > 0) {
 						//Armazena o valor da compra
 						valorDaCompra = quantidade*hidratante.getPrecoDoProduto();
 						//Criação do objeto Compra através do Construtor
-						Compra compraHidratante = new Compra(cliente, hidratante, valorDaCompra);
+						Compra compraHidratante = new Compra(cliente, hidratante, valorDaCompra, quantidade);
 						//Adicionando o objeto criado no ArrayList listaCompras
 						ConjuntoCompra.cadastrarCompra(compraHidratante);
 						//Diminui a quantidade comprada do estoque do produto
@@ -1361,11 +1366,11 @@ public class Principal {
 						}
 					} while (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S');
 					//Se a escolha for sim, prosseguimos
-					if (escolha == 'S' || escolha == 's') {
+					if (escolha == 'S' || escolha == 's' && quantidade > 0) {
 						//Armazena o valor da compra
 						valorDaCompra = quantidade*protetor.getPrecoDoProduto();
 						//Criação do objeto Compra através do Construtor
-						Compra compraProtetor = new Compra(cliente, protetor, valorDaCompra);
+						Compra compraProtetor = new Compra(cliente, protetor, valorDaCompra, quantidade);
 						//Adicionando o objeto criado no ArrayList listaCompras
 						ConjuntoCompra.cadastrarCompra(compraProtetor);
 						//Diminui a quantidade comprada do estoque do produto
@@ -1431,11 +1436,11 @@ public class Principal {
 						}
 					} while (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S');
 					//Se a escolha for sim, prosseguimos
-					if (escolha == 'S' || escolha == 's') {
+					if (escolha == 'S' || escolha == 's' && quantidade > 0) {
 						//Armazena o valor da compra
 						valorDaCompra = quantidade*shampoo.getPrecoDoProduto();
 						//Criação do objeto Compra através do Construtor
-						Compra compraShampoo = new Compra(cliente, shampoo, valorDaCompra);
+						Compra compraShampoo = new Compra(cliente, shampoo, valorDaCompra, quantidade);
 						//Adicionando o objeto criado no ArrayList listaCompras
 						ConjuntoCompra.cadastrarCompra(compraShampoo);
 						//Diminui a quantidade comprada do estoque do produto
@@ -1501,11 +1506,11 @@ public class Principal {
 						}
 					} while (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S');
 					//Se a escolha for sim, prosseguimos
-					if (escolha == 'S' || escolha == 's') {
+					if (escolha == 'S' || escolha == 's' && quantidade > 0) {
 						//Armazena o valor da compra
 						valorDaCompra = quantidade*condicionador.getPrecoDoProduto();
 						//Criação do objeto Compra através do Construtor
-						Compra compraCondicionador = new Compra(cliente, condicionador, valorDaCompra);
+						Compra compraCondicionador = new Compra(cliente, condicionador, valorDaCompra, quantidade);
 						//Adicionando o objeto criado no ArrayList listaCompras
 						ConjuntoCompra.cadastrarCompra(compraCondicionador);
 						//Diminui a quantidade comprada do estoque do produto
@@ -1571,11 +1576,11 @@ public class Principal {
 						}
 					} while (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S');
 					//Se a escolha for sim, prosseguimos
-					if (escolha == 'S' || escolha == 's') {
+					if (escolha == 'S' || escolha == 's' && quantidade > 0) {
 						//Armazena o valor da compra
 						valorDaCompra = quantidade*sabonete.getPrecoDoProduto();
 						//Criação do objeto Compra através do Construtor
-						Compra compraSabonete = new Compra(cliente, sabonete, valorDaCompra);
+						Compra compraSabonete = new Compra(cliente, sabonete, valorDaCompra, quantidade);
 						//Adicionando o objeto criado no ArrayList listaCompras
 						ConjuntoCompra.cadastrarCompra(compraSabonete);
 						//Diminui a quantidade comprada do estoque do produto
@@ -1607,13 +1612,50 @@ public class Principal {
 	//OPÇÃO 10 - Somente o gerenciador do sistema
 	public static void listarCompras(GerenciadorDoSistema funcionario) {
 		//Declarações
+		String cpf = "";
+		int quantidade = 0;
+		Cliente cliente;
 		
-		//Se o login tiver sido validado com sucesso, podemos prosseguir com a listagem
-		if (login(funcionario)) {
-			
+		//Se tiver compra cadastrada no sistema, podemos prosseguir
+		if (ConjuntoCompra.temCompra()) {
+			//Se tiver cliente cadastrado no sistema, podemos prosseguir
+			if (ConjuntoCliente.temCliente()) {
+				//Se o login tiver sido validado com sucesso, podemos prosseguir
+				if (login(funcionario)) {
+					System.out.print(">>>Informe o CPF do cliente: ");
+					cpf = LerDados.lerString();
+					//Resgata o objeto do tipo Cliente do ArrayList listaClientes
+					cliente = ConjuntoCliente.pesquisarCliente(cpf);
+					//Programa continua se o CPF for encontrado no sistema
+					if (cliente != null) {
+						System.out.println("\n=========================================================================");
+						System.out.println("Produtos comprados pelo cliente: " + cliente.getNomeCliente());
+						System.out.println("=========================================================================");
+						//Lista as compras
+						ConjuntoCompra.listagemCompras(cliente.getCpf());
+						//Armazena a quantidade de compras na loja pelo cliente
+						quantidade = ConjuntoCompra.quantidade(cliente.getCpf());
+						System.out.println("=========================================================================");
+						System.out.println("Quantidade de compras realizadas: " + quantidade);
+						System.out.println("=========================================================================\n");
+					} else {
+						System.out.println("\n=========================================================================");
+						System.out.println("O CPF informado não foi encontrado no sistema.");
+						System.out.println("=========================================================================");
+					}
+				} else {
+					System.out.println("\n=========================================================================");
+					System.out.println("Usuário não autenticado. Tente novamente.");
+					System.out.println("=========================================================================");
+				}
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("Ainda não foi cadastrado nenhum cliente no sistema.");
+				System.out.println("=========================================================================");
+			}
 		} else {
-			System.out.println("=========================================================================");
-			System.out.println("Usuário não autenticado. Tente novamente.");
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrada nenhuma compra no sistema.");
 			System.out.println("=========================================================================");
 		}
 	}

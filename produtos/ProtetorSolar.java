@@ -44,4 +44,11 @@ public class ProtetorSolar extends Produto{
 				"\n-------------------------------------------------------------------------" + 
 				"\nQuantidade no estoque: " + this.getQuantidadeProduto();
 	}
+	
+	//Retorna uma String com os dados relevantes para a listagem das compras
+	public String listarDadosFormaSeletiva() {
+		return "\nMarca do protetor solar: " + this.getMarcaDoProduto() + 
+				"\nCódigo do protetor solar: " + this.getCodigoDoProduto() +
+				"\nPreço do protetor solar: R$" + this.getPrecoDoProduto();
+	}
 }

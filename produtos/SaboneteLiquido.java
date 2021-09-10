@@ -35,4 +35,11 @@ public class SaboneteLiquido extends Produto{
 				"\n-------------------------------------------------------------------------" + 
 				"\nQuantidade no estoque: " + this.getQuantidadeProduto();
 	}
+	
+	//Retorna uma String com os dados relevantes para a listagem das compras
+	public String listarDadosFormaSeletiva() {
+		return "\nMarca do sabonete líquido: " + this.getMarcaDoProduto() + 
+				"\nCódigo do sabonete líquido: " + this.getCodigoDoProduto() +
+				"\nPreço do sabonete líquido: R$" + this.getPrecoDoProduto();
+	}
 }

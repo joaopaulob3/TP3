@@ -35,4 +35,11 @@ public class Hidratante extends Produto{
 				"\n-------------------------------------------------------------------------" +
 				"\nQuantidade no estoque: " + this.getQuantidadeProduto();
 	}
+	
+	//Retorna uma String com os dados relevantes para a listagem das compras
+	public String listarDadosFormaSeletiva() {
+		return "\nMarca do hidratante: " + this.getMarcaDoProduto() + 
+				"\nCódigo do hidratante: " + this.getCodigoDoProduto() +
+				"\nPreço do hidratante: R$" + this.getPrecoDoProduto();
+	}
 }

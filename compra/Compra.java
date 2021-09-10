@@ -8,12 +8,14 @@ public class Compra {
 	private Cliente cliente;
 	private Produto produto;
 	private double valorDaCompra;
+	private int quantidadeComprada;
 	
 	//Construtor
-	public Compra(Cliente cliente, Produto produto, double valorDaCompra) {
+	public Compra(Cliente cliente, Produto produto, double valorDaCompra, int quantidadeComprada) {
 		this.setCliente(cliente);
 		this.setProduto(produto);
 		this.setValorDaCompra(valorDaCompra);
+		this.setQuantidadeComprada(quantidadeComprada);
 	}
 	
 	//Métodos modificadores
@@ -26,6 +28,9 @@ public class Compra {
 	public void setValorDaCompra(double valorDaCompra) {
 		this.valorDaCompra = valorDaCompra;
 	}
+	public void setQuantidadeComprada(int quantidadeComprada) {
+		this.quantidadeComprada = quantidadeComprada;
+	}
 	
 	//Métodos acessores
 	public Cliente getCliente() {
@@ -36,5 +41,8 @@ public class Compra {
 	}
 	public double getValorDaCompra() {
 		return this.valorDaCompra;
+	}
+	public int getQuantidadeComprada() {
+		return this.quantidadeComprada;
 	}
 }

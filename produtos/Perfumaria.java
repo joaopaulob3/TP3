@@ -63,4 +63,11 @@ public class Perfumaria extends Produto{
 				"\n-------------------------------------------------------------------------" + 
 				"\nQuantidade no estoque: " + this.getQuantidadeProduto();
 	}
+	
+	//Retorna uma String com os dados relevantes para a listagem das compras
+	public String listarDadosFormaSeletiva() {
+		return "\nMarca do perfume: " + this.getMarcaDoProduto() + 
+				"\nCódigo do perfume: " + this.getCodigoDoProduto() +
+				"\nPreço do perfume: R$" + this.getPrecoDoProduto();
+	}
 }

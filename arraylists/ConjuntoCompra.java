@@ -2,6 +2,7 @@ package arraylists;
 
 import java.util.ArrayList;
 import compra.Compra;
+import produtos.*;
 
 public class ConjuntoCompra {
 	//Criação do ArrayList contendo objetos do tipo Compra (com Cliente e Produto)
@@ -35,16 +36,69 @@ public class ConjuntoCompra {
 		return contador;
 	}
 	
-	//Retorna o valor financeiro gasto de um cliente específico na loja
-	public static double valorGasto(String cpf) {
-		double valor = 0;
+	//Se o ArrayList estiver vazio retorna false, senão retorna true
+	public static boolean temCompra() {
+		if (listaCompras.isEmpty()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	
+	//Lista as compras que um cliente específico realizou
+	public static void listagemCompras(String cpf) {
+		//Declarações
+		double comprasPerfume = 0, comprasHidratante = 0, comprasProtetorSolar = 0,
+		comprasShampoo = 0, comprasCondicionador = 0, comprasSabonteLiquido = 0, somaValorGasto = 0;
 		
 		for (Compra compra : listaCompras) {
 			if (cpf.equals(compra.getCliente().getCpf())) {
-				valor += compra.getValorDaCompra();
+				//Se o produto for um perfume
+				if (compra.getProduto() instanceof Perfumaria) {
+					comprasPerfume += compra.getValorDaCompra();
+					System.out.println(((Perfumaria) compra.getProduto()).listarDadosFormaSeletiva());
+					System.out.println("Quantidade comprada: " + compra.getQuantidadeComprada());
+					System.out.println("Valor gasto: R$" + comprasPerfume);
+				//Se o produto for um hidratante
+				} else if (compra.getProduto() instanceof Hidratante) {
+					comprasHidratante += compra.getValorDaCompra();
+					System.out.println(((Hidratante) compra.getProduto()).listarDadosFormaSeletiva());
+					System.out.println("Quantidade comprada: " + compra.getQuantidadeComprada());
+					System.out.println("Valor gasto: R$" + comprasHidratante);
+				//Se o produto for um protetor solar
+				} else if (compra.getProduto() instanceof ProtetorSolar) {
+					comprasProtetorSolar += compra.getValorDaCompra();
+					System.out.println(((ProtetorSolar) compra.getProduto()).listarDadosFormaSeletiva());
+					System.out.println("Quantidade comprada: " + compra.getQuantidadeComprada());
+					System.out.println("Valor gasto: R$" + comprasProtetorSolar);
+				//Se o produto for um shampoo
+				} else if (compra.getProduto() instanceof Shampoo) {
+					comprasShampoo += compra.getValorDaCompra();
+					System.out.println(((Shampoo) compra.getProduto()).listarDadosFormaSeletiva());
+					System.out.println("Quantidade comprada: " + compra.getQuantidadeComprada());
+					System.out.println("Valor gasto: R$" + comprasShampoo);
+				//Se o produto for um condicionador
+				} else if (compra.getProduto() instanceof Condicionador) {
+					comprasCondicionador += compra.getValorDaCompra();
+					System.out.println(((Condicionador) compra.getProduto()).listarDadosFormaSeletiva());
+					System.out.println("Quantidade comprada: " + compra.getQuantidadeComprada());
+					System.out.println("Valor gasto: R$" + comprasCondicionador);
+				//Se o produto for um sabonete líquido
+				} else if (compra.getProduto() instanceof SaboneteLiquido) {
+					comprasSabonteLiquido += compra.getValorDaCompra();
+					System.out.println(((SaboneteLiquido) compra.getProduto()).listarDadosFormaSeletiva());
+					System.out.println("Quantidade comprada: " + compra.getQuantidadeComprada());
+					System.out.println("Valor gasto: R$" + comprasSabonteLiquido);
+				}
 			}
 		}
-		
-		return valor;
+		//Soma dos gastos
+		somaValorGasto += comprasPerfume + comprasHidratante + comprasProtetorSolar + comprasShampoo +
+				comprasCondicionador + comprasSabonteLiquido;
+		System.out.println("\n=========================================================================");
+		System.out.println("Total gasto na loja até o momento: R$" + somaValorGasto);
+		System.out.println("=========================================================================\n");
 	}
+
 }
