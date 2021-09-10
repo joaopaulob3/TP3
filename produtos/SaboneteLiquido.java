@@ -37,6 +37,7 @@ public class SaboneteLiquido extends Produto{
 	}
 	
 	//Retorna uma String com os dados relevantes para a listagem das compras
+	@Override
 	public String listarDadosFormaSeletiva() {
 		return "\nMarca do sabonete líquido: " + this.getMarcaDoProduto() + 
 				"\nCódigo do sabonete líquido: " + this.getCodigoDoProduto() +

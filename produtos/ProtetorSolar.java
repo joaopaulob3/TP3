@@ -46,6 +46,7 @@ public class ProtetorSolar extends Produto{
 	}
 	
 	//Retorna uma String com os dados relevantes para a listagem das compras
+	@Override
 	public String listarDadosFormaSeletiva() {
 		return "\nMarca do protetor solar: " + this.getMarcaDoProduto() + 
 				"\nCódigo do protetor solar: " + this.getCodigoDoProduto() +

@@ -78,7 +78,7 @@ public class Principal {
 		carregamentoInicial();
 		
 		//Cria um gerenciador do sistema. Somente ele conseguirá acessar algumas
-		//opções do menu
+		//opções do menu. Use esse CPF e senha respectivamente para acessar os métodos
 		GerenciadorDoSistema funcionario = new GerenciadorDoSistema("12345678900", "login");
 		
 		//Inicia o menu com suas funcionalidades
@@ -1409,6 +1409,7 @@ public class Principal {
 	public static void deletarCliente(GerenciadorDoSistema funcionario) {
 		//Declarações
 		String cpf = "";
+		char escolha = 0;
 		Cliente cliente;
 		
 		//Se o login tiver sido validado, podemos prosseguir
@@ -1421,11 +1422,21 @@ public class Principal {
 				cliente = ConjuntoCliente.pesquisarCliente(cpf);
 				//Se o nome for encontrado no sistema, podemos prosseguir
 				if (cliente != null) {
-					//Deleta o cliente
-					ConjuntoCliente.deletarCliente(cliente);
-					System.out.println("\n=================================================================================================");
-					System.out.println("Cliente deletado.");
-					System.out.println("=================================================================================================");
+					//Valida a escolha do usuário
+					System.out.print("\n>>>Deseja deletar o cliente do sistema? [S/N]: ");
+					do {
+						escolha = LerDados.lerChar(escolha);
+						if (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S') {
+							System.out.print(">>>Digite S para sim e N para não: ");
+						}
+					} while (escolha != 'n' && escolha != 'N' && escolha != 's' && escolha != 'S');
+					if (escolha == 's' || escolha == 'S') {
+						//Deleta o cliente
+						ConjuntoCliente.deletarCliente(cliente);
+						System.out.println("\n=================================================================================================");
+						System.out.println("Cliente deletado.");
+						System.out.println("=================================================================================================");
+					}
 				} else {
 					System.out.println("\n=================================================================================================");
 					System.out.println("O CPF informado não foi encontrado no sistema.");

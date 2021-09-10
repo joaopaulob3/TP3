@@ -56,6 +56,7 @@ public class Shampoo extends Produto{
 	}
 	
 	//Retorna uma String com os dados relevantes para a listagem das compras
+	@Override
 	public String listarDadosFormaSeletiva() {
 		return "\nMarca do shampoo: " + this.getMarcaDoProduto() + 
 				"\nCódigo do shampoo: " + this.getCodigoDoProduto() + 

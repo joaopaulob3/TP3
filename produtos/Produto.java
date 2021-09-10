@@ -61,4 +61,8 @@ public abstract class Produto {
 	
 	//Método abstrato de listar comum a todos os produtos que será sobreposto em cada classe
 	public abstract String listarDados();
+	
+	//Método abstrato de listar de forma seletiva comum a todos os produtos que será sobreposto
+	//em cada classe
+	public abstract String listarDadosFormaSeletiva();
 }
