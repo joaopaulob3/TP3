@@ -93,30 +93,33 @@ public class Principal {
 				cadastrarCliente();
 				break;
 			case 3:
-				editarProduto(funcionario);
+				alterarEstoque(funcionario);
 				break;
 			case 4:
-				editarCliente(funcionario);
+				editarProduto(funcionario);
 				break;
 			case 5:
-				listarDadosDosProdutos();
+				editarCliente(funcionario);
 				break;
 			case 6:
-				listarDadosDosClientes(funcionario);
+				listarDadosDosProdutos();
 				break;
 			case 7:
-				deletarProduto(funcionario);
+				listarDadosDosClientes(funcionario);
 				break;
 			case 8:
-				deletarCliente(funcionario);
+				deletarProduto(funcionario);
 				break;
 			case 9:
-				realizarCompra();
+				deletarCliente(funcionario);
 				break;
 			case 10:
-				listarCompras(funcionario);
+				realizarCompra();
 				break;
 			case 11:
+				listarCompras(funcionario);
+				break;
+			case 12:
 				escolha = sair();
 				if (escolha == 'S' || escolha == 's') {
 					System.out.println("\n=============================================================================");
@@ -126,7 +129,7 @@ public class Principal {
 				}
 				break;
 			}
-		} while(opcao != 11 || escolha == 'n' || escolha == 'N');
+		} while(opcao != 12 || escolha == 'n' || escolha == 'N');
 	}
 
 	//MENU
@@ -139,23 +142,23 @@ public class Principal {
 		System.out.println("[1] Cadastrar um produto ------------------------- (requer acesso elevado)");
 		System.out.println("[2] Cadastrar um cliente");
 		System.out.println("[3] Aumentar ou diminuir estoque de um produto --- (requer acesso elevado)");
-		System.out.println("[3] Editar informações de um produto ------------- (requer acesso elevado)");
-		System.out.println("[4] Editar informações de um cliente ------------- (requer acesso elevado)");
-		System.out.println("[5] Listar dados dos produtos");
-		System.out.println("[6] Listar dados dos clientes -------------------- (requer acesso elevado)");
-		System.out.println("[7] Deletar um produto --------------------------- (requer acesso elevado)");
-		System.out.println("[8] Deletar um cliente --------------------------- (requer acesso elevado)");
-		System.out.println("[9] Realizar uma compra");
-		System.out.println("[10] Listar compras ------------------------------ (requer acesso elevado)");
-		System.out.println("[11] Sair");
+		System.out.println("[4] Editar informações de um produto ------------- (requer acesso elevado)");
+		System.out.println("[5] Editar informações de um cliente ------------- (requer acesso elevado)");
+		System.out.println("[6] Listar dados dos produtos");
+		System.out.println("[7] Listar dados dos clientes -------------------- (requer acesso elevado)");
+		System.out.println("[8] Deletar um produto --------------------------- (requer acesso elevado)");
+		System.out.println("[9] Deletar um cliente --------------------------- (requer acesso elevado)");
+		System.out.println("[10] Realizar uma compra");
+		System.out.println("[11] Listar compras ------------------------------ (requer acesso elevado)");
+		System.out.println("[12] Sair");
 		System.out.println("===========================================================================");
 		System.out.print(">>>Sua opção: ");
 		do {
 			opcao = LerDados.lerInt(opcao);
-			if (opcao < 1 || opcao > 11) {
+			if (opcao < 1 || opcao > 12) {
 				System.out.print(">>>Digite um valor válido: ");
 			}
-		} while(opcao < 1 || opcao > 11);
+		} while(opcao < 1 || opcao > 12);
 		
 		return opcao;
 	}
@@ -276,7 +279,7 @@ public class Principal {
 		System.out.print(">>>Subfamília do perfume: ");
 		subfamilia = LerDados.lerString();
 		System.out.println("\n=========================================================================");
-		System.out.println("PRODUTO CADASTRADO!");
+		System.out.println("Perfume cadastrado.");
 		System.out.println("=========================================================================");
 		
 		//Criação do objeto do tipo Perfumaria através do Construtor
@@ -316,7 +319,7 @@ public class Principal {
 		System.out.print(">>>Tipo de pele do hidratante: ");
 		tipo = LerDados.lerString();
 		System.out.println("\n=========================================================================");
-		System.out.println("PRODUTO CADASTRADO!");
+		System.out.println("Hidratante cadastrado!");
 		System.out.println("=========================================================================");
 		
 		//Criação do objeto do tipo Hidratante através do Construtor
@@ -360,7 +363,7 @@ public class Principal {
 		System.out.print(">>>FPS do protetor solar: ");
 		fps = LerDados.lerInt(fps);
 		System.out.println("\n=========================================================================");
-		System.out.println("PRODUTO CADASTRADO!");
+		System.out.println("Protetor Solar cadastrado");
 		System.out.println("=========================================================================");
 		
 		//Criação do objeto do tipo ProtetorSolar através do Construtor
@@ -407,7 +410,7 @@ public class Principal {
 		System.out.print(">>>Condição dos fios do shampoo: ");
 		condicao = LerDados.lerString();
 		System.out.println("\n=========================================================================");
-		System.out.println("PRODUTO CADASTRADO!");
+		System.out.println("Shampoo cadastrado!");
 		System.out.println("=========================================================================");
 		
 		//Criação do objeto do tipo Shampoo através do Construtor
@@ -454,7 +457,7 @@ public class Principal {
 		System.out.print(">>>Condição dos fios do condicionador: ");
 		condicao = LerDados.lerString();
 		System.out.println("\n=========================================================================");
-		System.out.println("PRODUTO CADASTRADO!");
+		System.out.println("Condicionador cadastrado!");
 		System.out.println("=========================================================================");
 		
 		//Criação do objeto do tipo Condicionador através do Construtor
@@ -494,7 +497,7 @@ public class Principal {
 		System.out.print(">>>Propriedades do sabonete líquido: ");
 		propriedades = LerDados.lerString();
 		System.out.println("\n=========================================================================");
-		System.out.println("PRODUTO CADASTRADO!");
+		System.out.println("Sabonete líquido cadastrado!");
 		System.out.println("=========================================================================");
 		
 		//Criação do objeto do tipo SaboneteLiquido através do Construtor
@@ -530,7 +533,7 @@ public class Principal {
 		System.out.print(">>>Senha do cliente: ");
 		senha = LerDados.lerString();
 		System.out.println("\n=========================================================================");
-		System.out.println("CLIENTE CADASTRADO!");
+		System.out.println("Cliente cadastrado!");
 		System.out.println("=========================================================================");
 		
 		//Criação do objeto do tipo Cliente através Construtor
@@ -543,14 +546,7 @@ public class Principal {
 	//OPÇÃO 3 - Somente o gerenciador do sistema
 	public static void alterarEstoque(GerenciadorDoSistema funcionario) {
 		//Declarações
-		int opcao = 0, quantidade = 0;
-		String codigo = "";
-		Perfumaria perfume;
-		Hidratante hidratante;
-		ProtetorSolar protetor;
-		Shampoo shampoo;
-		Condicionador condicionador;
-		SaboneteLiquido sabonete;
+		int opcao = 0;
 		
 		//Se o login tiver sido validado com sucesso, podemos prosseguir com o cadastro
 		if (login(funcionario)) {
@@ -576,176 +572,23 @@ public class Principal {
 			//Inicia as edições
 			switch (opcao) {
 			case 1:
-				//Se há perfume no sistema, podemos prosseguir
-				if (ConjuntoPerfumaria.temPerfume()) {
-					//Lista os perfumes do sistema
-					listarPerfume();
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo Perfumaria do ArrayList listaPerfumes
-					perfume = ConjuntoPerfumaria.pesquisarPerfume(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (perfume != null) {
-						//Altera a quantidade no estoque
-						System.out.print(">>>Informe a nova quantidade: ");
-						quantidade = LerDados.lerInt(quantidade);
-						perfume.setQuantidadeProduto(quantidade);
-						System.out.println("=========================================================================");
-						System.out.println("Quantidade alterada com sucesso.");
-						System.out.println("=========================================================================");
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum perfume.");
-					System.out.println("=========================================================================");
-				}
+				alterarEstoquePerfume();
 				break;
 			case 2:
-				//Se há hidratante no sistema, podemos prosseguir
-				if (ConjuntoHidratante.temHidratante()) {
-					//Lista os hidratantes do sistema
-					listarHidratante();
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo Hidratante do ArrayList listaHidratantes
-					hidratante = ConjuntoHidratante.pesquisarHidratante(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (hidratante != null) {
-						//Altera a quantidade no estoque
-						System.out.print(">>>Informe a nova quantidade: ");
-						quantidade = LerDados.lerInt(quantidade);
-						hidratante.setQuantidadeProduto(quantidade);
-						System.out.println("=========================================================================");
-						System.out.println("Quantidade alterada com sucesso.");
-						System.out.println("=========================================================================");
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum hidratante.");
-					System.out.println("=========================================================================");
-				}
+				alterarEstoqueHidratante();
 				break;
 			case 3:
-				//Se há protetor solar no sistema, podemos prosseguir
-				if (ConjuntoProtetorSolar.temProtetorSolar()) {
-					//Lista os protetores do sistema
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo ProtetorSolar do ArrayList listaProtetorSolar
-					protetor = ConjuntoProtetorSolar.pesquisarProtetorSolar(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (protetor != null) {
-						//Altera a quantidade no estoque
-						System.out.print(">>>Informe a nova quantidade: ");
-						quantidade = LerDados.lerInt(quantidade);
-						protetor.setQuantidadeProduto(quantidade);
-						System.out.println("=========================================================================");
-						System.out.println("Quantidade alterada com sucesso.");
-						System.out.println("=========================================================================");
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum protetor solar.");
-					System.out.println("=========================================================================");
-				}
+				alterarEstoqueProtetorSolar();
 				break;
 			case 4:
-				//Se há shampoo, podemos prosseguir
-				if (ConjuntoShampoo.temShampoo()) {
-					//Lista os shampoos do sistema
-					listarProtetorSolar();
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo Shampoo do ArrayList listaShampoos
-					shampoo = ConjuntoShampoo.pesquisarShampoo(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (shampoo != null) {
-						//Altera a quantidade no estoque
-						System.out.print(">>>Informe a nova quantidade: ");
-						quantidade = LerDados.lerInt(quantidade);
-						shampoo.setQuantidadeProduto(quantidade);
-						System.out.println("=========================================================================");
-						System.out.println("Quantidade alterada com sucesso.");
-						System.out.println("=========================================================================");
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum shampoo.");
-					System.out.println("=========================================================================");
-				}
+				alterarEstoqueShampoo();
 				break;
 			case 5:
-				//Se há condicionador, podemos prosseguir
-				if (ConjuntoCondicionador.temCondicionador()) {
-					//Lista os condicionadores do sistema
-					listarCondicionador();
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo Condicionador do ArrayList listaCondicionadores
-					condicionador = ConjuntoCondicionador.pesquisarCondicionador(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (condicionador != null) {
-						//Altera a quantidade no estoque
-						System.out.print(">>>Informe a nova quantidade: ");
-						quantidade = LerDados.lerInt(quantidade);
-						condicionador.setQuantidadeProduto(quantidade);
-						System.out.println("=========================================================================");
-						System.out.println("Quantidade alterada com sucesso.");
-						System.out.println("=========================================================================");
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum condicionador.");
-					System.out.println("=========================================================================");
-				}
+				alterarEstoqueCondicionador();
 				break;
 			case 6:
-				//Se há sabonete líquido, podemos prosseguir
-				if (ConjuntoSaboneteLiquido.temSaboneteLiquido()) {
-					//Lista os sabonetes líquido do sistema
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo SaboneteLiquido do ArrayList listaSabonetesLiquido
-					sabonete = ConjuntoSaboneteLiquido.pesquisarSaboneteLiquido(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (sabonete != null) {
-						//Altera a quantidade no estoque
-						System.out.print(">>>Informe a nova quantidade: ");
-						quantidade = LerDados.lerInt(quantidade);
-						sabonete.setQuantidadeProduto(quantidade);
-						System.out.println("=========================================================================");
-						System.out.println("Quantidade alterada com sucesso.");
-						System.out.println("=========================================================================");
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum sabonete líquido.");
-					System.out.println("=========================================================================");
-				}
+				alterarEstoqueSaboneteLiquido();
+				break;
 			}
 		} else {
 			System.out.println("=========================================================================");
@@ -753,19 +596,213 @@ public class Principal {
 			System.out.println("=========================================================================");
 		}
 	}
+	public static void alterarEstoquePerfume() {
+		//Declarações
+		String codigo = "";
+		int quantidade = 0;
+		Perfumaria perfume;
+		
+		//Se há perfume no sistema, podemos prosseguir
+		if (ConjuntoPerfumaria.temPerfume()) {
+			//Lista os perfumes do sistema
+			listarPerfume();
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo Perfumaria do ArrayList listaPerfumes
+			perfume = ConjuntoPerfumaria.pesquisarPerfume(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (perfume != null) {
+				//Altera a quantidade no estoque
+				System.out.print(">>>Informe a nova quantidade: ");
+				quantidade = LerDados.lerInt(quantidade);
+				perfume.setQuantidadeProduto(quantidade);
+				System.out.println("\n=========================================================================");
+				System.out.println("Quantidade alterada com sucesso.");
+				System.out.println("=========================================================================");
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum perfume.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void alterarEstoqueHidratante() {
+		//Declarações 
+		String codigo = "";
+		int quantidade = 0;
+		Hidratante hidratante;
+		
+		//Se há hidratante no sistema, podemos prosseguir
+		if (ConjuntoHidratante.temHidratante()) {
+			//Lista os hidratantes do sistema
+			listarHidratante();
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo Hidratante do ArrayList listaHidratantes
+			hidratante = ConjuntoHidratante.pesquisarHidratante(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (hidratante != null) {
+				//Altera a quantidade no estoque
+				System.out.print(">>>Informe a nova quantidade: ");
+				quantidade = LerDados.lerInt(quantidade);
+				hidratante.setQuantidadeProduto(quantidade);
+				System.out.println("\n=========================================================================");
+				System.out.println("Quantidade alterada com sucesso.");
+				System.out.println("=========================================================================");
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum hidratante.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void alterarEstoqueProtetorSolar() {
+		//Declarações
+		String codigo = "";
+		int quantidade = 0;
+		ProtetorSolar protetor;
+		
+		//Se há protetor solar no sistema, podemos prosseguir
+		if (ConjuntoProtetorSolar.temProtetorSolar()) {
+			//Lista os protetores do sistema
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo ProtetorSolar do ArrayList listaProtetorSolar
+			protetor = ConjuntoProtetorSolar.pesquisarProtetorSolar(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (protetor != null) {
+				//Altera a quantidade no estoque
+				System.out.print(">>>Informe a nova quantidade: ");
+				quantidade = LerDados.lerInt(quantidade);
+				protetor.setQuantidadeProduto(quantidade);
+				System.out.println("\n=========================================================================");
+				System.out.println("Quantidade alterada com sucesso.");
+				System.out.println("=========================================================================");
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum protetor solar.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void alterarEstoqueShampoo() {
+		//Declarações 
+		String codigo = "";
+		int quantidade = 0;
+		Shampoo shampoo;
+		
+		//Se há shampoo, podemos prosseguir
+		if (ConjuntoShampoo.temShampoo()) {
+			//Lista os shampoos do sistema
+			listarProtetorSolar();
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo Shampoo do ArrayList listaShampoos
+			shampoo = ConjuntoShampoo.pesquisarShampoo(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (shampoo != null) {
+				//Altera a quantidade no estoque
+				System.out.print(">>>Informe a nova quantidade: ");
+				quantidade = LerDados.lerInt(quantidade);
+				shampoo.setQuantidadeProduto(quantidade);
+				System.out.println("\n=========================================================================");
+				System.out.println("Quantidade alterada com sucesso.");
+				System.out.println("=========================================================================");
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum shampoo.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void alterarEstoqueCondicionador() {
+		//Declarações 
+		String codigo = "";
+		int quantidade = 0;
+		Condicionador condicionador;
+		
+		//Se há condicionador, podemos prosseguir
+		if (ConjuntoCondicionador.temCondicionador()) {
+			//Lista os condicionadores do sistema
+			listarCondicionador();
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo Condicionador do ArrayList listaCondicionadores
+			condicionador = ConjuntoCondicionador.pesquisarCondicionador(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (condicionador != null) {
+				//Altera a quantidade no estoque
+				System.out.print(">>>Informe a nova quantidade: ");
+				quantidade = LerDados.lerInt(quantidade);
+				condicionador.setQuantidadeProduto(quantidade);
+				System.out.println("\n=========================================================================");
+				System.out.println("Quantidade alterada com sucesso.");
+				System.out.println("=========================================================================");
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum condicionador.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void alterarEstoqueSaboneteLiquido() {
+		//Declarações 
+		String codigo = "";
+		int quantidade = 0;
+		SaboneteLiquido sabonete;
+		
+		//Se há sabonete líquido, podemos prosseguir
+		if (ConjuntoSaboneteLiquido.temSaboneteLiquido()) {
+			//Lista os sabonetes líquido do sistema
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo SaboneteLiquido do ArrayList listaSabonetesLiquido
+			sabonete = ConjuntoSaboneteLiquido.pesquisarSaboneteLiquido(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (sabonete != null) {
+				//Altera a quantidade no estoque
+				System.out.print(">>>Informe a nova quantidade: ");
+				quantidade = LerDados.lerInt(quantidade);
+				sabonete.setQuantidadeProduto(quantidade);
+				System.out.println("\n=========================================================================");
+				System.out.println("Quantidade alterada com sucesso.");
+				System.out.println("=========================================================================");
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum sabonete líquido.");
+			System.out.println("=========================================================================");
+		}
+	}
 	
-	//OPÇÃO 3 - Somente o gerenciador do sistema
-	//OPÇÃO 3 - Somente o gerenciador do sistema
+	//OPÇÃO 4 - Somente o gerenciador do sistema
 	public static void editarProduto(GerenciadorDoSistema funcionario) {
 		//Declarações
 		int opcao = 0;
-		String codigo = "";
-		Perfumaria perfume;
-		Hidratante hidratante;
-		ProtetorSolar protetor;
-		Shampoo shampoo;
-		Condicionador condicionador;
-		SaboneteLiquido sabonete;
 		
 		//Se o login tiver sido validado, podemos prosseguir com a edição
 		if (login(funcionario)) {
@@ -791,142 +828,23 @@ public class Principal {
 			//Inicia as edições
 			switch (opcao) {
 			case 1:
-				//Se há perfume no sistema, podemos prosseguir
-				if (ConjuntoPerfumaria.temPerfume()) {
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo Perfumaria do ArrayList listaPerfumes
-					perfume = ConjuntoPerfumaria.pesquisarPerfume(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (perfume != null) {
-						//Deleta o perfume e faz o recadastro
-						ConjuntoPerfumaria.deletarPerfume(perfume);
-						cadastrarPerfume();
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum perfume.");
-					System.out.println("=========================================================================");
-				}
+				editarPerfume();
 				break;
 			case 2:
-				//Se há hidratante no sistema, podemos prosseguir
-				if (ConjuntoHidratante.temHidratante()) {
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo Hidratante do ArrayList listaHidratantes
-					hidratante = ConjuntoHidratante.pesquisarHidratante(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (hidratante != null) {
-						//Deleta o hidratante e faz o recadastro
-						ConjuntoHidratante.deletarHidratante(hidratante);
-						cadastrarHidratante();
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum hidratante.");
-					System.out.println("=========================================================================");
-				}
+				editarHidratante();
 				break;
 			case 3:
-				//Se há protetor solar no sistema, podemos prosseguir
-				if (ConjuntoProtetorSolar.temProtetorSolar()) {
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo ProtetorSolar do ArrayList listaProtetorSolar
-					protetor = ConjuntoProtetorSolar.pesquisarProtetorSolar(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (protetor != null) {
-						//Deleta o protetor e faz o recadastro
-						ConjuntoProtetorSolar.deletarProtetorSolar(protetor);
-						cadastrarProtetorSolar();
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum protetor solar.");
-					System.out.println("=========================================================================");
-				}
+				editarProtetorSolar();
 				break;
 			case 4:
-				//Se há shampoo, podemos prosseguir
-				if (ConjuntoShampoo.temShampoo()) {
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo Shampoo do ArrayList listaShampoos
-					shampoo = ConjuntoShampoo.pesquisarShampoo(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (shampoo != null) {
-						//Deleta o shampoo e faz o recadastro
-						ConjuntoShampoo.deletarShampoo(shampoo);
-						cadastrarShampoo();
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum shampoo.");
-					System.out.println("=========================================================================");
-				}
+				editarShampoo();
 				break;
 			case 5:
-				//Se há condicionador, podemos prosseguir
-				if (ConjuntoCondicionador.temCondicionador()) {
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo Condicionador do ArrayList listaCondicionadores
-					condicionador = ConjuntoCondicionador.pesquisarCondicionador(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (condicionador != null) {
-						//Deleta o condicionador e faz o recadastro
-						ConjuntoCondicionador.deletarCondicionador(condicionador);
-						cadastrarCondicionador();
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum condicionador.");
-					System.out.println("=========================================================================");
-				}
+				editarCondicionador();
 				break;
 			case 6:
-				//Se há sabonete líquido, podemos prosseguir
-				if (ConjuntoSaboneteLiquido.temSaboneteLiquido()) {
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo SaboneteLiquido do ArrayList listaSabonetesLiquido
-					sabonete = ConjuntoSaboneteLiquido.pesquisarSaboneteLiquido(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (sabonete != null) {
-						//Deleta o sabonete líquido e faz o recadastro
-						ConjuntoSaboneteLiquido.deletarSaboneteLiquido(sabonete);
-						cadastrarSaboneteLiquido();
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum sabonete líquido.");
-					System.out.println("=========================================================================");
-				}
+				editarSaboneteLiquido();
+				break;
 			}
 		} else {
 			System.out.println("=========================================================================");
@@ -934,9 +852,170 @@ public class Principal {
 			System.out.println("=========================================================================");
 		}
 	}
+	public static void editarPerfume() {
+		//Declarações
+		String codigo = "";
+		Perfumaria perfume;
+		
+		//Se há perfume no sistema, podemos prosseguir
+		if (ConjuntoPerfumaria.temPerfume()) {
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo Perfumaria do ArrayList listaPerfumes
+			perfume = ConjuntoPerfumaria.pesquisarPerfume(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (perfume != null) {
+				//Deleta o perfume e faz o recadastro
+				ConjuntoPerfumaria.deletarPerfume(perfume);
+				cadastrarPerfume();
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum perfume.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void editarHidratante() {
+		//Delcarações
+		String codigo = "";
+		Hidratante hidratante;
+		
+		//Se há hidratante no sistema, podemos prosseguir
+		if (ConjuntoHidratante.temHidratante()) {
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo Hidratante do ArrayList listaHidratantes
+			hidratante = ConjuntoHidratante.pesquisarHidratante(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (hidratante != null) {
+				//Deleta o hidratante e faz o recadastro
+				ConjuntoHidratante.deletarHidratante(hidratante);
+				cadastrarHidratante();
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum hidratante.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void editarProtetorSolar() {
+		//Declarações
+		String codigo = "";
+		ProtetorSolar protetor;
+		
+		//Se há protetor solar no sistema, podemos prosseguir
+		if (ConjuntoProtetorSolar.temProtetorSolar()) {
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo ProtetorSolar do ArrayList listaProtetorSolar
+			protetor = ConjuntoProtetorSolar.pesquisarProtetorSolar(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (protetor != null) {
+				//Deleta o protetor e faz o recadastro
+				ConjuntoProtetorSolar.deletarProtetorSolar(protetor);
+				cadastrarProtetorSolar();
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum protetor solar.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void editarShampoo() {
+		//Declarações
+		String codigo = "";
+		Shampoo shampoo;
+		
+		//Se há shampoo, podemos prosseguir
+		if (ConjuntoShampoo.temShampoo()) {
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo Shampoo do ArrayList listaShampoos
+			shampoo = ConjuntoShampoo.pesquisarShampoo(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (shampoo != null) {
+				//Deleta o shampoo e faz o recadastro
+				ConjuntoShampoo.deletarShampoo(shampoo);
+				cadastrarShampoo();
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum shampoo.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void editarCondicionador() {
+		//Declarações
+		String codigo = "";
+		Condicionador condicionador;
+		
+		//Se há condicionador, podemos prosseguir
+		if (ConjuntoCondicionador.temCondicionador()) {
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo Condicionador do ArrayList listaCondicionadores
+			condicionador = ConjuntoCondicionador.pesquisarCondicionador(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (condicionador != null) {
+				//Deleta o condicionador e faz o recadastro
+				ConjuntoCondicionador.deletarCondicionador(condicionador);
+				cadastrarCondicionador();
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum condicionador.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void editarSaboneteLiquido() {
+		//Declarações
+		String codigo = "";
+		SaboneteLiquido sabonete;
+		
+		//Se há sabonete líquido, podemos prosseguir
+		if (ConjuntoSaboneteLiquido.temSaboneteLiquido()) {
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo SaboneteLiquido do ArrayList listaSabonetesLiquido
+			sabonete = ConjuntoSaboneteLiquido.pesquisarSaboneteLiquido(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (sabonete != null) {
+				//Deleta o sabonete líquido e faz o recadastro
+				ConjuntoSaboneteLiquido.deletarSaboneteLiquido(sabonete);
+				cadastrarSaboneteLiquido();
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum sabonete líquido.");
+			System.out.println("=========================================================================");
+		}
+	}
 	
-	//OPÇÃO 4 - Somente o gerenciador do sistema
-	//OPÇÃO 4 - Somente o gerenciador do sistema
+	//OPÇÃO 5 - Somente o gerenciador do sistema
 	public static void editarCliente(GerenciadorDoSistema funcionario) {
 		//Declarações
 		Cliente cliente;
@@ -956,23 +1035,23 @@ public class Principal {
 					ConjuntoCliente.deletarCliente(cliente);
 					cadastrarCliente();
 				} else {
-					System.out.println("=========================================================================");
+					System.out.println("\n=========================================================================");
 					System.out.println("O CPF informado não foi encontrado no sistema.");
 					System.out.println("=========================================================================");
 				}
 			} else {
-				System.out.println("=========================================================================");
+				System.out.println("\n=========================================================================");
 				System.out.println("Ainda não foi cadastrado nenhum cliente.");
 				System.out.println("=========================================================================");
 			}
 		} else {
-			System.out.println("=========================================================================");
+			System.out.println("\n=========================================================================");
 			System.out.println("Usuário não autenticado. Tente novamente.");
 			System.out.println("=========================================================================");
 		}
 	}
 	
-	//OPÇÃO 5
+	//OPÇÃO 6
 	public static void listarDadosDosProdutos() {
 		//Declarações
 		int opcao = 0;
@@ -1079,38 +1158,29 @@ public class Principal {
 		System.out.println("=========================================================================\n");
 	}
 	
-	//OPÇÃO 6 - Somente o gerenciador do sistema
+	//OPÇÃO 7 - Somente o gerenciador do sistema
 	public static void listarDadosDosClientes(GerenciadorDoSistema funcionario) {
-		//Declarações
-		
 		//Se o login tiver sido validado com sucesso, podemos prosseguir com a listagem
 		if(login(funcionario)) {
 			//Se há clientes no sistema, eles serão listados
 			if (ConjuntoCliente.temCliente()) {
 				ConjuntoCliente.listaClientes();
 			} else {
-				System.out.println("=========================================================================");
+				System.out.println("\n=========================================================================");
 				System.out.println("Ainda não foi cadastrado nenhum cliente no sistema.");
 				System.out.println("=========================================================================");
 			}
 		} else {
-			System.out.println("=========================================================================");
+			System.out.println("\n=========================================================================");
 			System.out.println("Usuário não autenticado. Tente novamente.");
 			System.out.println("=========================================================================");
 		}
 	}
 	
-	//OPÇÃO 7 - Somente o gerenciador do sistema
+	//OPÇÃO 8 - Somente o gerenciador do sistema
 	public static void deletarProduto(GerenciadorDoSistema funcionario) {
 		//Declarações
 		int opcao = 0;
-		String codigo = "";
-		Perfumaria perfume;
-		Hidratante hidratante;
-		ProtetorSolar protetor;
-		Shampoo shampoo;
-		Condicionador condicionador;
-		SaboneteLiquido sabonete;
 		
 		//Se o login tiver sido validado, podemos prosseguir com a edição
 		if (login(funcionario)) {
@@ -1136,154 +1206,22 @@ public class Principal {
 			//Inicia as deleções
 			switch (opcao){
 			case 1:
-				//Se há perfume no sistema, podemos prosseguir
-				if (ConjuntoPerfumaria.temPerfume()) {
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo Perfumaria do ArrayList listaPerfumes
-					perfume = ConjuntoPerfumaria.pesquisarPerfume(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (perfume != null) {
-						//Deleta o perfume
-						ConjuntoPerfumaria.deletarPerfume(perfume);
-						System.out.println("=========================================================================");
-						System.out.println("Perfume deletado.");
-						System.out.println("=========================================================================");
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum perfume.");
-					System.out.println("=========================================================================");
-				}
+				deletarPerfume();
 				break;
 			case 2:
-				//Se há hidratante no sistema, podemos prosseguir
-				if (ConjuntoHidratante.temHidratante()) {
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo Hidratante do ArrayList listaHidratantes
-					hidratante = ConjuntoHidratante.pesquisarHidratante(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (hidratante != null) {
-						//Deleta o hidratante
-						ConjuntoHidratante.deletarHidratante(hidratante);
-						System.out.println("=========================================================================");
-						System.out.println("Hidratante deletado.");
-						System.out.println("=========================================================================");
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum hidratante.");
-					System.out.println("=========================================================================");
-				}
+				deletarHidratante();
 				break;
 			case 3:
-				//Se há protetor solar no sistema, podemos prosseguir
-				if (ConjuntoProtetorSolar.temProtetorSolar()) {
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo ProtetorSolar do ArrayList listaProtetorSolar
-					protetor = ConjuntoProtetorSolar.pesquisarProtetorSolar(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (protetor != null) {
-						//Deleta o protetor solar
-						ConjuntoProtetorSolar.deletarProtetorSolar(protetor);
-						System.out.println("=========================================================================");
-						System.out.println("Protetor Solar deletado.");
-						System.out.println("=========================================================================");
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum protetor solar.");
-					System.out.println("=========================================================================");
-				}
+				deletarProtetorSolar();
 				break;
 			case 4:
-				//Se há shampoo no sistema, podemos prosseguir
-				if (ConjuntoShampoo.temShampoo()) {
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo Shampoo do ArrayList listaShampoos
-					shampoo = ConjuntoShampoo.pesquisarShampoo(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (shampoo != null) {
-						//Deleta o shampoo
-						ConjuntoShampoo.deletarShampoo(shampoo);
-						System.out.println("=========================================================================");
-						System.out.println("Shampoo deletado.");
-						System.out.println("=========================================================================");
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");;
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum shampoo.");
-					System.out.println("=========================================================================");
-				}
+				deletarShampoo();
 				break;
 			case 5:
-				//Se há condicionador no sistema, podemos prosseguir
-				if (ConjuntoCondicionador.temCondicionador()) {
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata oo objeto do tipo Condicionador do ArrayList listaCondicionadores
-					condicionador = ConjuntoCondicionador.pesquisarCondicionador(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (condicionador != null) {
-						//Deleta o condicionador
-						ConjuntoCondicionador.deletarCondicionador(condicionador);
-						System.out.println("=========================================================================");
-						System.out.println("Condicionador deletado.");
-						System.out.println("=========================================================================");
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum condicionador.");
-					System.out.println("=========================================================================");
-				}
+				deletarCondicionador();
 				break;
 			case 6:
-				//Se há sabonete líquido no sistema, podemos prosseguir
-				if (ConjuntoSaboneteLiquido.temSaboneteLiquido()) {
-					System.out.print(">>>Informe o código do produto: ");
-					codigo = LerDados.lerString();
-					//Resgata o objeto do tipo SaboneteLiquido do ArrayList listaSabonetesLiquido
-					sabonete = ConjuntoSaboneteLiquido.pesquisarSaboneteLiquido(codigo);
-					//Se o código for reconhecido no sistema, podemos prosseguir
-					if (sabonete != null) {
-						//Deleta o sabonete líquido
-						ConjuntoSaboneteLiquido.deletarSaboneteLiquido(sabonete);
-						System.out.println("=========================================================================");
-						System.out.println("Sabonete Líquido deletado.");
-						System.out.println("=========================================================================");
-					} else {
-						System.out.println("=========================================================================");
-						System.out.println("O código informado não foi encontrado no sistema.");
-						System.out.println("=========================================================================");
-					}
-				} else {
-					System.out.println("=========================================================================");
-					System.out.println("Ainda não foi cadastrado nenhum sabonete líquido.");
-					System.out.println("=========================================================================");
-				}
+				deletarSaboneteLiquido();
 				break;
 			}
 		} else {
@@ -1292,11 +1230,185 @@ public class Principal {
 			System.out.println("=========================================================================");
 		}
 	}
+	public static void deletarPerfume() {
+		//Declarações
+		String codigo = "";
+		Perfumaria perfume;
+		
+		//Se há perfume no sistema, podemos prosseguir
+		if (ConjuntoPerfumaria.temPerfume()) {
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo Perfumaria do ArrayList listaPerfumes
+			perfume = ConjuntoPerfumaria.pesquisarPerfume(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (perfume != null) {
+				//Deleta o perfume
+				ConjuntoPerfumaria.deletarPerfume(perfume);
+				System.out.println("\n=========================================================================");
+				System.out.println("Perfume deletado.");
+				System.out.println("=========================================================================");
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum perfume.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void deletarHidratante() {
+		//Declarações
+		String codigo = "";
+		Hidratante hidratante;
+		
+		//Se há hidratante no sistema, podemos prosseguir
+		if (ConjuntoHidratante.temHidratante()) {
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo Hidratante do ArrayList listaHidratantes
+			hidratante = ConjuntoHidratante.pesquisarHidratante(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (hidratante != null) {
+				//Deleta o hidratante
+				ConjuntoHidratante.deletarHidratante(hidratante);
+				System.out.println("\n=========================================================================");
+				System.out.println("Hidratante deletado.");
+				System.out.println("=========================================================================");
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum hidratante.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void deletarProtetorSolar() {
+		//Declarações
+		String codigo = "";
+		ProtetorSolar protetor;
+		
+		//Se há protetor solar no sistema, podemos prosseguir
+		if (ConjuntoProtetorSolar.temProtetorSolar()) {
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo ProtetorSolar do ArrayList listaProtetorSolar
+			protetor = ConjuntoProtetorSolar.pesquisarProtetorSolar(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (protetor != null) {
+				//Deleta o protetor solar
+				ConjuntoProtetorSolar.deletarProtetorSolar(protetor);
+				System.out.println("\n=========================================================================");
+				System.out.println("Protetor Solar deletado.");
+				System.out.println("=========================================================================");
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum protetor solar.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void deletarShampoo() {
+		//Declarações
+		String codigo = "";
+		Shampoo shampoo;
+		
+		//Se há shampoo no sistema, podemos prosseguir
+		if (ConjuntoShampoo.temShampoo()) {
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo Shampoo do ArrayList listaShampoos
+			shampoo = ConjuntoShampoo.pesquisarShampoo(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (shampoo != null) {
+				//Deleta o shampoo
+				ConjuntoShampoo.deletarShampoo(shampoo);
+				System.out.println("\n=========================================================================");
+				System.out.println("Shampoo deletado.");
+				System.out.println("=========================================================================");
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");;
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum shampoo.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void deletarCondicionador() {
+		//Declarações
+		String codigo = "";
+		Condicionador condicionador;
+		
+		//Se há condicionador no sistema, podemos prosseguir
+		if (ConjuntoCondicionador.temCondicionador()) {
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata oo objeto do tipo Condicionador do ArrayList listaCondicionadores
+			condicionador = ConjuntoCondicionador.pesquisarCondicionador(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (condicionador != null) {
+				//Deleta o condicionador
+				ConjuntoCondicionador.deletarCondicionador(condicionador);
+				System.out.println("\n=========================================================================");
+				System.out.println("Condicionador deletado.");
+				System.out.println("=========================================================================");
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum condicionador.");
+			System.out.println("=========================================================================");
+		}
+	}
+	public static void deletarSaboneteLiquido() {
+		//Declarações
+		String codigo = "";
+		SaboneteLiquido sabonete;
+		
+		//Se há sabonete líquido no sistema, podemos prosseguir
+		if (ConjuntoSaboneteLiquido.temSaboneteLiquido()) {
+			System.out.print(">>>Informe o código do produto: ");
+			codigo = LerDados.lerString();
+			//Resgata o objeto do tipo SaboneteLiquido do ArrayList listaSabonetesLiquido
+			sabonete = ConjuntoSaboneteLiquido.pesquisarSaboneteLiquido(codigo);
+			//Se o código for reconhecido no sistema, podemos prosseguir
+			if (sabonete != null) {
+				//Deleta o sabonete líquido
+				ConjuntoSaboneteLiquido.deletarSaboneteLiquido(sabonete);
+				System.out.println("\n=========================================================================");
+				System.out.println("Sabonete Líquido deletado.");
+				System.out.println("=========================================================================");
+			} else {
+				System.out.println("\n=========================================================================");
+				System.out.println("O código informado não foi encontrado no sistema.");
+				System.out.println("=========================================================================");
+			}
+		} else {
+			System.out.println("\n=========================================================================");
+			System.out.println("Ainda não foi cadastrado nenhum sabonete líquido.");
+			System.out.println("=========================================================================");
+		}
+	}
 	
-	//OPÇÃO 8 - Somente o gerenciador do sistema
+	//OPÇÃO 9 - Somente o gerenciador do sistema
 	public static void deletarCliente(GerenciadorDoSistema funcionario) {
 		//Declarações
-		String nome = "";
+		String cpf = "";
 		Cliente cliente;
 		
 		//Se o login tiver sido validado, podemos prosseguir
@@ -1304,31 +1416,34 @@ public class Principal {
 			//Se há cliente no sistema, podemos prosseguir
 			if (ConjuntoCliente.temCliente()) {
 				System.out.println("===============================================================================================");
-				System.out.print(">>>Informe o nome do cliente: ");
-				nome = LerDados.lerString();
-				cliente = ConjuntoCliente.pesquisarCliente(nome);
+				System.out.print(">>>Informe o CPF do cliente: ");
+				cpf = LerDados.lerString();
+				cliente = ConjuntoCliente.pesquisarCliente(cpf);
 				//Se o nome for encontrado no sistema, podemos prosseguir
 				if (cliente != null) {
 					//Deleta o cliente
 					ConjuntoCliente.deletarCliente(cliente);
-				} else {
+					System.out.println("\n=================================================================================================");
+					System.out.println("Cliente deletado.");
 					System.out.println("=================================================================================================");
-					System.out.println("O nome informado não foi encontrado no sistema.");
+				} else {
+					System.out.println("\n=================================================================================================");
+					System.out.println("O CPF informado não foi encontrado no sistema.");
 					System.out.println("=================================================================================================");
 				}
 			} else {
-				System.out.println("=================================================================================================");
+				System.out.println("\n=================================================================================================");
 				System.out.println("Ainda não foi cadastrado nenhum cliente no sistema.");
 				System.out.println("=================================================================================================");
 			}
 		} else {
-			System.out.println("===============================================================================================");
+			System.out.println("\n===============================================================================================");
 			System.out.println("Usuário não autenticado. Tente novamente.");
 			System.out.println("===============================================================================================");
 		}
 	}
 	
-	//OPÇÃO 9 - Codificar o problema de zeragem do item no estoque
+	//OPÇÃO 10 - Codificar o problema de zeragem do item no estoque
 	public static void realizarCompra() {
 		//Declarações
 		Cliente cliente;
@@ -1823,7 +1938,7 @@ public class Principal {
 		}
 	}
 	
-	//OPÇÃO 10 - Somente o gerenciador do sistema
+	//OPÇÃO 11 - Somente o gerenciador do sistema
 	public static void listarCompras(GerenciadorDoSistema funcionario) {
 		//Declarações
 		String cpf = "";
@@ -1849,7 +1964,7 @@ public class Principal {
 						ConjuntoCompra.listagemCompras(cliente.getCpf());
 						//Armazena a quantidade de compras na loja pelo cliente
 						quantidade = ConjuntoCompra.quantidade(cliente.getCpf());
-						System.out.println("=========================================================================");
+						System.out.println("\n=========================================================================");
 						System.out.println("Quantidade de compras realizadas: " + quantidade);
 						System.out.println("=========================================================================\n");
 					} else {
@@ -1874,7 +1989,7 @@ public class Principal {
 		}
 	}
 	
-	//OPÇÃO 11
+	//OPÇÃO 12
 	public static char sair() {
 		//Declarações
 		char escolha = 0;
