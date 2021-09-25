@@ -1,4 +1,4 @@
-package produtos;
+package model;
 
 public abstract class Produto {
 	//Atributos

@@ -1,7 +1,8 @@
-package arraylists;
+package controller;
 
 import java.util.ArrayList;
-import produtos.Condicionador;;
+
+import model.Condicionador;
 
 public class ConjuntoCondicionador {
 	//Criação do ArrayList de objetos do tipo Condicionador

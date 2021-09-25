@@ -1,4 +1,4 @@
-package leituraDeDados;
+package model;
 
 import java.util.Scanner;
 

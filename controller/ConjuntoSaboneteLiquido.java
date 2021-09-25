@@ -1,7 +1,8 @@
-package arraylists;
+package controller;
 
 import java.util.ArrayList;
-import produtos.SaboneteLiquido;
+
+import model.SaboneteLiquido;
 
 public class ConjuntoSaboneteLiquido {
 	//Criação do ArrayList de objetos do tipo SaboneteLiquido

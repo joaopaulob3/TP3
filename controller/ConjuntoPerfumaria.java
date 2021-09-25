@@ -1,7 +1,8 @@
-package arraylists;
+package controller;
 
 import java.util.ArrayList;
-import produtos.Perfumaria;
+
+import model.Perfumaria;
 
 public class ConjuntoPerfumaria{
 	//Criação do ArrayList de objetos do tipo Perfumaria

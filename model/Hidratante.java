@@ -1,4 +1,4 @@
-package produtos;
+package model;
 
 public class Hidratante extends Produto{
 	//Atributos

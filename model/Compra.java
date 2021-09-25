@@ -1,7 +1,4 @@
-package compra;
-
-import pessoas.Cliente;
-import produtos.Produto;
+package model;
 
 public class Compra {
 	//Atributos

@@ -1,4 +1,4 @@
-package pessoas;
+package model;
 
 public class Cliente extends Pessoa{
 	//Atributos

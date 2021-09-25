@@ -1,4 +1,4 @@
-package produtos;
+package model;
 
 public class Shampoo extends Produto{
 	//Atributos

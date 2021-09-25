@@ -1,7 +1,8 @@
-package arraylists;
+package controller;
 
 import java.util.ArrayList;
-import produtos.Hidratante;
+
+import model.Hidratante;
 
 public class ConjuntoHidratante {
 	//Criação do ArrayList de objetos do tipo Hidratante

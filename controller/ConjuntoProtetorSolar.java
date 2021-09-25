@@ -1,7 +1,8 @@
-package arraylists;
+package controller;
 
 import java.util.ArrayList;
-import produtos.ProtetorSolar;
+
+import model.ProtetorSolar;
 
 public class ConjuntoProtetorSolar {
 	//Criação do ArrayList de objetos do tipo ProtetorSolar

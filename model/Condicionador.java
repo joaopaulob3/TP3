@@ -1,4 +1,4 @@
-package produtos;
+package model;
 
 public class Condicionador extends Produto{
 	//Atributos

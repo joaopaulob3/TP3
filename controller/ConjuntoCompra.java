@@ -1,8 +1,14 @@
-package arraylists;
+package controller;
 
 import java.util.ArrayList;
-import compra.Compra;
-import produtos.*;
+
+import model.Compra;
+import model.Condicionador;
+import model.Hidratante;
+import model.Perfumaria;
+import model.ProtetorSolar;
+import model.SaboneteLiquido;
+import model.Shampoo;
 
 public class ConjuntoCompra {
 	//Criação do ArrayList contendo objetos do tipo Compra (com Cliente e Produto)
